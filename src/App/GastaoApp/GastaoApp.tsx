@@ -1,7 +1,7 @@
 export function GastaoApp() {
   return (
     <>
-      <h1>Samir</h1>
+      <h1>Samir 2</h1>
     </>
   );
 }
