@@ -1,6 +1,9 @@
 import { Routes, Route, Outlet } from "react-router"
 import { HomeRoute, LoginRoute, RegisterRoute, DefaultGastaoRoute } from "../../1. Models/Routes/PathRoutes"
-import { Link } from "react-router-dom"
+import { Login } from "../2. Login/Login"
+import { Register } from "../3. Register/Register"
+import { DefaultGastao } from "../4. Default Board/DefaultGastao"
+import { Home } from "./Home"
 
 export function Layout(props: any) {
 
@@ -23,47 +26,4 @@ export function Layout(props: any) {
     )
 }
 
-export const Home = () => {
-    return (<>
-        <div className="container">
-            <nav>
-                <Link to={HomeRoute.Path} className="btn btn-primary">
-                    Home
-                </Link>
-                <Link to={LoginRoute.Path} className="btn btn-primary">
-                    Login
-                </Link>
-                <Link to={RegisterRoute.Path} className="btn btn-primary">
-                    Register
-                </Link>
-                <Link to={DefaultGastaoRoute.Path} className="btn btn-primary">
-                    DefaultGastao
-                </Link>
 
-
-            </nav>
-            Home
-        </div>
-    </>)
-}
-export const Login = () => {
-    return (<>
-        <div className="container">
-            Login
-        </div>
-    </>)
-}
-export const Register = () => {
-    return (<>
-        <div className="container">
-            Register
-        </div>
-    </>)
-}
-export const DefaultGastao = () => {
-    return (<>
-        <div className="container">
-            DefaultGastao
-        </div>
-    </>)
-}
