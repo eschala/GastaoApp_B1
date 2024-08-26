@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { HomeRoute, LoginRoute, RegisterRoute, DefaultGastaoRoute } from "../../App/GastaoApp/1. Models/Routes/PathRoutes";
+import { LinkButton } from "../Buttons/LinkButton";
 
 export function NavbarGastao() {
     return <nav>
@@ -15,6 +16,9 @@ export function NavbarGastao() {
         <Link to={DefaultGastaoRoute.Path} className="btn btn-primary">
             DefaultGastao
         </Link>
+        <LinkButton href={DefaultGastaoRoute.Path} className={"btn btn-primary"} context={"DefaultGastao"}>
+
+        </LinkButton>
 
 
     </nav>;

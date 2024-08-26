@@ -5,10 +5,9 @@ import { Register } from "../3. Register/Register"
 import { DefaultGastao } from "../4. Default Board/DefaultGastao"
 import { Home } from "../1. Home/Home"
 
-export function Layout(props: any) {
+export function Layout() {
 
 
-    const classContainer = "Layout"
 
     return (<>
         <Routes>
