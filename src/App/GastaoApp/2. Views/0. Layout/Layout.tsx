@@ -3,7 +3,7 @@ import { HomeRoute, LoginRoute, RegisterRoute, DefaultGastaoRoute } from "../../
 import { Login } from "../2. Login/Login"
 import { Register } from "../3. Register/Register"
 import { DefaultGastao } from "../4. Default Board/DefaultGastao"
-import { Home } from "./Home"
+import { Home } from "../1. Home/Home"
 
 export function Layout(props: any) {
 
