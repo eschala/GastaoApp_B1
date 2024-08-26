@@ -2,7 +2,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css'
-import { GastaoApp } from './App/GastaoApp/GastaoApp';
+import { GastaoApp } from './App/GastaoApp';
 
 function App() {
   /*   const [count, setCount] = useState(0) */
@@ -13,9 +13,7 @@ function App() {
    */
   return (
     <>
-      <GastaoApp >
-
-      </GastaoApp>
+      <GastaoApp />
     </>
   )
 }
