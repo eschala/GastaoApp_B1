@@ -16,7 +16,7 @@ export function NavbarGastao() {
         <Link to={DefaultGastaoRoute.Path} className="btn btn-primary">
             DefaultGastao
         </Link>
-        <LinkButton href={DefaultGastaoRoute.Path} className={"btn btn-primary"} context={"DefaultGastao"}>
+        <LinkButton to={DefaultGastaoRoute.Path} className={"btn btn-primary"} context={"DefaultGastao"}>
 
         </LinkButton>
 
