@@ -25,7 +25,8 @@ export function LinkButton({ id,
     onMouseOver,
     type,
     dataBsToggle,
-    context, }: ILinkButton | any) {
+    context
+}: ILinkButton | any) {
 
     return (
         <>
@@ -42,8 +43,8 @@ export function LinkButton({ id,
                 data-bs-toggle={dataBsToggle}
             /* uso para tooltip */
             >
-
                 {context}
+
             </Link>
         </>
     )

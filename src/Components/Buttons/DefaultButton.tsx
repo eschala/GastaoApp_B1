@@ -21,7 +21,8 @@ export function DefaultButton({ id,
     onMouseOver,
     type,
     dataBsToggle,
-    context, }: IDefaultButton | any) {
+    context
+}: IDefaultButton | any) {
 
     return (
         <>
@@ -36,7 +37,6 @@ export function DefaultButton({ id,
                 data-bs-toggle={dataBsToggle}
             /* uso para tooltip */
             >
-
                 {context}
             </button>
         </>

@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import { HomeRoute, LoginRoute, RegisterRoute, DefaultGastaoRoute } from "../../App/GastaoApp/1. Models/Routes/PathRoutes";
 import { LinkButton } from "../Buttons/LinkButton";
+import { AddressButton } from "../Buttons/AddressButton";
+import { DefaultButton } from "../Buttons/DefaultButton";
 
 export function NavbarGastao() {
+
+    const mostrarConsoleLog = () => { console.log("Activado") }
+    const mostrarAlert = () => { alert("Activado") }
+
     return <nav>
         <Link to={HomeRoute.Path} className="btn btn-primary">
             Home
@@ -16,10 +22,9 @@ export function NavbarGastao() {
         <Link to={DefaultGastaoRoute.Path} className="btn btn-primary">
             DefaultGastao
         </Link>
-        <LinkButton to={DefaultGastaoRoute.Path} className={"btn btn-primary"} context={"DefaultGastao"}>
-
-        </LinkButton>
-
+        <AddressButton href={DefaultGastaoRoute.Path} className={"btn btn-success"} context={"AddressButton"} onClick={() => mostrarAlert()} />
+        <LinkButton to={DefaultGastaoRoute.Path} className={"btn btn-success"} context={"LinkButton"} onClick={() => mostrarConsoleLog()} />
+        <DefaultButton /* to={DefaultGastaoRoute.Path} */ className={"btn btn-success"} context={"DefaultButton"} onClick={() => mostrarConsoleLog()} />
 
     </nav>;
 }

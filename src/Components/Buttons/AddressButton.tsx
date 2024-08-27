@@ -1,3 +1,5 @@
+import context from "react-bootstrap/esm/AccordionContext"
+
 interface IAddressButton {
 
     id?: string | number
@@ -24,7 +26,7 @@ export function AddressButton({ id,
     onMouseOver,
     type,
     dataBsToggle,
-    context, }: IAddressButton | any) {
+    context }: IAddressButton | any) {
 
     return (
         <>
@@ -41,7 +43,6 @@ export function AddressButton({ id,
                 data-bs-toggle={dataBsToggle}
             /* uso para tooltip */
             >
-
                 {context}
             </a>
         </>
