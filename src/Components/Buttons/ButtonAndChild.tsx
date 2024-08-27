@@ -1,5 +1,5 @@
 
-interface IDefaultButton {
+interface IButtonAndChild {
 
     id?: string | number
     className?: string
@@ -10,22 +10,22 @@ interface IDefaultButton {
     type?: string
     dataBsToggle?: string
     context?: string
-    child?: ChildNode
+    child?: any
 
 }
 
 
-export function DefaultButton({ id,
+export function ButtonAndChild({ id,
     className: valor,
     rel,
     onClick,
     onMouseOver,
     type,
     dataBsToggle,
-    context,
-}: IDefaultButton | any) {
 
-    const DefaultButton_ = <button
+}: IButtonAndChild | any, props: any) {
+
+    const ButtonAndChild_ = <button
 
         id={id}
         className={valor}
@@ -35,7 +35,7 @@ export function DefaultButton({ id,
         type={type}
         data-bs-toggle={dataBsToggle}
     >
-        {context}
+        {props.child}
 
 
     </button>
@@ -43,7 +43,7 @@ export function DefaultButton({ id,
 
     return (
         <>
-            {DefaultButton_}
+            {ButtonAndChild_}
         </>
     )
 }
