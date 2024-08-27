@@ -1,28 +1,10 @@
-import { Routes, Route, Outlet } from "react-router"
-import { HomeRoute, LoginRoute, RegisterRoute, DefaultGastaoRoute } from "../../1. Models/Routes/PathRoutes"
-import { Login } from "../2. Login/Login"
-import { Register } from "../3. Register/Register"
-import { DefaultGastao } from "../4. Default Board/DefaultGastao"
-import { Home } from "../1. Home/Home"
-
-export function Layout() {
-
-
-
+import "./Layout.css"
+export const Layout = () => {
     return (<>
-        <Routes>
-
-            <Route path={HomeRoute.Path} element={<Home />} />
-            <Route path={LoginRoute.Path} element={<Login />} />
-            <Route path={RegisterRoute.Path} element={<Register />} />
-            <Route path={DefaultGastaoRoute.Path} element={<DefaultGastao />} />
-
-
-
-        </Routes>
-        <Outlet />
-    </>
-    )
-}
-
-
+        <div style={{ backgroundColor: "blueviolet" }} className="Layout container-fluid vh-100 vw-100">
+            <div className="container-1-navbar container-layout">1.Navbar</div>
+            <div className="container-2-board container-layout">2.Board</div>
+            <div className="container-3-footer container-layout">3.Footer</div>
+        </div>
+    </>);
+};

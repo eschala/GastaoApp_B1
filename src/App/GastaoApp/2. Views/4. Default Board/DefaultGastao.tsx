@@ -1,6 +1,6 @@
 export const DefaultGastao = () => {
     return (<>
-        <div className="container">
+        <div style={{ backgroundColor: "gray" }} className="container-fluid vh-100">
             DefaultGastao
         </div>
     </>);

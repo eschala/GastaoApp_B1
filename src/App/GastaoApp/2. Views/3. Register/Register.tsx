@@ -1,6 +1,6 @@
 export const Register = () => {
     return (<>
-        <div className="container">
+        <div style={{ backgroundColor: "aliceblue" }} className="container-fluid vh-100">
             Register
         </div>
     </>);
