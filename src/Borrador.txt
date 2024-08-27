@@ -1,0 +1,92 @@
+/* PathRoutes.tsx React TypeSript Module */
+export class HomeRoute {
+    static Path: string = "/"
+}
+export class LoginRoute {
+    static Path: string = "/Login"
+}
+export class RegisterRoute {
+    static Path: string = "/Register"
+}
+export class DefaultGastaoRoute {
+    static Path: string = "/Gastao"
+}
+/* App.tsx */
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css'
+import { GastaoApp } from './App/GastaoApp';
+function App() {
+    return (
+        <>
+            <GastaoApp />
+        </>
+    )
+}
+export default App
+/* GastaoApp.tsx  renderizada por App.tsx */
+/*    <App>
+        <BrowserRouter>
+            <Layout></Layout>
+        <BrowserRouter/>
+      <App/>
+ */
+import { BrowserRouter } from "react-router-dom";
+import { Layout } from "./GastaoApp/2. Views/0. Layout/Layout";
+export function GastaoApp() {
+  return (
+    <>
+      <BrowserRouter>
+        <Layout>
+        </Layout>
+      </BrowserRouter>
+    </>
+  );
+}
+/* Layout.tsx */
+import { Outlet } from "react-router";
+import "./Layout.css"
+import { NavbarGastao } from "../../../../Components/Navbar/NavbarGastao";
+export const Layout = () => {
+    return (<>
+        <div style={{ backgroundColor: "blueviolet" }} className="Layout">
+            <div className="container-1-navbar container-layout">
+                <NavbarGastao />
+            </div>
+            <div className="container-2-board container-layout">
+                <Outlet />
+            </div>
+            <div className="container-3-footer container-layout">3.Footer</div>
+        </div>
+    </>);
+};
+/* NavbarGastao.tsx */
+import { HomeRoute, LoginRoute, RegisterRoute, DefaultGastaoRoute } from "../../App/GastaoApp/1. Models/Routes/PathRoutes";
+import { LinkButton } from "../Buttons/LinkButton";
+export function NavbarGastao() {
+    const mostrarConsoleLog = () => { console.log("Activado") }
+    return (
+        <nav>
+            <LinkButton to={HomeRoute.Path} className={"btn btn-success"} context={"Home"} onClick={() => mostrarConsoleLog()} />
+            <LinkButton to={LoginRoute.Path} className={"btn btn-success"} context={"Login"} onClick={() => mostrarConsoleLog()} />
+            <LinkButton to={RegisterRoute.Path} className={"btn btn-success"} context={"Register"} onClick={() => mostrarConsoleLog()} />
+            <LinkButton to={DefaultGastaoRoute.Path} className={"btn btn-success"} context={"DefaultGastao"} onClick={() => mostrarConsoleLog()} />
+        </nav>)
+}
+/* Login.tsx */
+export function Login() {
+    return (<>
+        <div style={{ backgroundColor: "green" }} className="container-fluid vh-100">
+            <h1>
+                Login
+            </h1>
+
+        </div>
+    </>);
+}
+export function Register() {
+    return (<>
+        <div style={{ backgroundColor: "aliceblue" }} className="container-fluid vh-100">
+            Register
+        </div>
+    </>);
+}

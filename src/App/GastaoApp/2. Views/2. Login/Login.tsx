@@ -1,7 +1,11 @@
-export const Login = () => {
+/* Login.tsx */
+export function Login() {
     return (<>
         <div style={{ backgroundColor: "green" }} className="container-fluid vh-100">
-            Login
+            <h1>
+                Login
+            </h1>
+
         </div>
     </>);
-};
+}
