@@ -7,16 +7,15 @@
  */
 import { BrowserRouter } from "react-router-dom";
 import { Layout } from "./GastaoApp/2. Views/0. Layout/Layout";
-import { RoutesViews } from "./GastaoApp/2. Views/0. RoutesViews/RoutesViews";
 
 export function GastaoApp() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter >
         <Layout >
         </Layout>
-
       </BrowserRouter>
+
     </>
   );
 }

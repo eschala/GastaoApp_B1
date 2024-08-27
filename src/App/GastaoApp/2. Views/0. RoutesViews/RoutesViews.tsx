@@ -9,15 +9,19 @@ import { Home } from "../1. Home/Home"
 export function RoutesViews() {
 
     return (<>
+        {/* <div className="vh-100 bg-primary"> */}
+
         <Routes>
 
             <Route path={HomeRoute.Path} element={<Home />}>
-                <Route path={LoginRoute.Path} element={<Login />} />
-                <Route path={RegisterRoute.Path} element={<Register />} />
-                <Route path={DefaultGastaoRoute.Path} element={<DefaultGastao />} />
             </Route>
-
+            <Route path={LoginRoute.Path} element={<Login />} />
+            <Route path={RegisterRoute.Path} element={<Register />} />
+            <Route path={DefaultGastaoRoute.Path} element={<DefaultGastao />} />
         </Routes>
+
+
+        {/* </div> */}
 
 
     </>

@@ -1,12 +1,13 @@
-import { NavbarGastao } from "../../../../Components/Navbar/NavbarGastao";
 
 
 export const Home = () => {
     return (<>
-        <div style={{ backgroundColor: "yellow" }} className="container-fluid vh-75">
-            <div className="container-1-navbar container-layout">
-                <NavbarGastao />
-            </div>
+        <div style={{ backgroundColor: "aliceblue" }} className="container-fluid h-100">
+
+            <h1>
+                {"<Home/>"}
+            </h1>
+
 
         </div>
     </>);
