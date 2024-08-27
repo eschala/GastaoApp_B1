@@ -3,18 +3,25 @@
 .Layout {
     display: flex;
     flex-direction: column;
+    width: 100vw;
+    height: 100vh;
 }
 
 .container-1-navbar {
     display: flex;
     border: solid rgb(255, 87, 87) 2px;
+    height: 10vh;
+
 }
 
 .container-2-board {
     display: flex;
+    flex: auto;
 }
 
 .container-3-footer {
     border: solid rgb(43, 255, 0) 2px;
     display: flex;
+    height: 10vh;
+
 }
