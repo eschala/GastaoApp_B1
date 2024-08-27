@@ -5,13 +5,13 @@ export class HomeRoute {
 }
 export class LoginRoute {
 
-    static Path: string = "/Login"
+    static Path: string = "Login"
 }
 export class RegisterRoute {
 
-    static Path: string = "/Register"
+    static Path: string = "Register"
 }
 export class DefaultGastaoRoute {
 
-    static Path: string = "/Gastao"
+    static Path: string = "Gastao"
 }

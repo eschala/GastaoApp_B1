@@ -8,7 +8,7 @@ export function NavbarGastao() {
 
     return (
         <>
-            <nav style={{ backgroundColor: "darkblue" }} className="navbar navbar-expand-lg bg-primary-subtle w-100">
+            <nav style={{ backgroundColor: "darkblue", color: "white" }} className="navbar navbar-expand-lg w-100">
                 <div className="container-fluid">
 
                     <div className="1-navbar-brand-logo d-flex">
@@ -31,28 +31,28 @@ export function NavbarGastao() {
 const toggleHome = (
     <LinkButton
         to={HomeRoute.Path}
-        className={"navbar-brand container-fluid"}
+        className={"navbar-brand container-fluid btn btn-outline-dark  text-light"}
         context={"Inicio"}
         onClick={() => console.log("a")} />
 );
 const toggleLogin = (
     <LinkButton
         to={LoginRoute.Path}
-        className={"navbar-brand container-fluid"}
+        className={"navbar-brand container-fluid btn btn-outline-dark  text-light"}
         context={"login"}
         onClick={() => console.log("a")} />
 );
 const toggleRegister = (
     <LinkButton
         to={RegisterRoute.Path}
-        className={"navbar-brand container-fluid"}
+        className={"navbar-brand container-fluid btn btn-outline-dark  text-light"}
         context={"Register"}
         onClick={() => console.log("a")} />
 );
 const toggleDefault = (
     <LinkButton
         to={DefaultGastaoRoute.Path}
-        className={"navbar-brand container-fluid"}
+        className={"navbar-brand container-fluid btn btn-outline-dark  text-light"}
         context={"Gastao"}
         onClick={() => console.log("a")} />
 );

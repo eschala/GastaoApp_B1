@@ -1,12 +1,18 @@
+import './DefaultGastao.css';
+
+
 export function DefaultGastao() {
     return (<>
-        <div style={{ backgroundColor: "gray" }} className="container-fluid h-100 d-flex">
-            <div className="sidebar bg-light d-none">
+        <div style={{ backgroundColor: "gray" }} className="DefaultGastao">
+            <div className="DefaultGastao-sub-1 DefaultGastao-sub">
                 <h1>{"<sidebar/>"}</h1>
             </div>
-            <h1>
-                {"<Gastao/>"}
-            </h1>
+            <div className="DefaultGastao-sub-2 DefaultGastao-sub">
+
+                <h1>
+                    {"<Gastao/>"}
+                </h1>
+            </div>
         </div>
     </>);
 }

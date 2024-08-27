@@ -11,7 +11,7 @@ export const Layout = () => {
         {/* <RoutesViews /> */}
         <div style={{ backgroundColor: "blueviolet" }} className="Layout">
             <div className="container-1-navbar container-layout d-flex">
-                <NavbarGastao></NavbarGastao>
+                <NavbarGastao />
             </div>
             <div className="container-2-board container-layout">
 
