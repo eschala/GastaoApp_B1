@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Toggle } from '../../1. Models/GlobalVariables/GlobalVariables';
 import './DefaultGastao.css';
 import { CollapseGastaoSideBar } from '../../../../Components/Collapse/Collapse';
+import { Outlet } from 'react-router';
 
 
 export function DefaultGastao() {
@@ -19,7 +20,7 @@ export function DefaultGastao() {
     }
     function SideBar() {
         return <div className={"DefaultGastao-sub-1 DefaultGastao-sub " + "d-flex flex-column"}>
-            <h1>{"<sidebar/>"}</h1>
+            <h5>{"<sidebar/>"}</h5>
             <CollapseGastaoSideBar />
         </div>;
     }
@@ -38,7 +39,9 @@ export function DefaultGastao() {
                         {"<Gastao/>"}
                     </h1>
                     <button type="button" className='btn btn-outline-dark' onClick={() => console.clear()}>Limpiar Console</button>
-                    <h1>{"Toggle.SideBar.Show = " + Toggle.SideBar.Show}</h1>
+                    {/* <h1>{"Toggle.SideBar.Show = " + Toggle.SideBar.Show}</h1> */}
+
+                    <Outlet />
                 </div>
             </div>
         );

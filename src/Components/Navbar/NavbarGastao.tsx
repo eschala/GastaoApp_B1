@@ -21,30 +21,33 @@ function NavbarGastao() {
     const toggleHome = (
         <LinkButton
             to={HomeRoute.Path}
-            className={"navbar-brand container-fluid btn btn-outline-dark  text-light"}
+            className={"navbar-brand container-fluid btn btn-outline-dark  text-light "}
             context={"Inicio"}
             onClick={() => console.log("Home")} />
     );
     const toggleLogin = (
         <LinkButton
             to={LoginRoute.Path}
-            className={"navbar-brand container-fluid btn btn-outline-dark  text-light"}
+            className={"navbar-brand container-fluid btn btn-outline-dark  text-light "}
             context={"login"}
             onClick={() => console.log("Login")} />
     );
     const toggleRegister = (
         <LinkButton
             to={RegisterRoute.Path}
-            className={"navbar-brand container-fluid btn btn-outline-dark  text-light"}
+            className={"navbar-brand container-fluid btn btn-outline-dark  text-light "}
             context={"Register"}
             onClick={() => console.log("Register")} />
     );
     const toggleDefault = (
-        <LinkButton
-            to={DefaultGastaoRoute.Path}
-            className={"navbar-brand container-fluid btn btn-outline-dark  text-light"}
-            context={"Gastao"}
-            onClick={() => console.log("Gastao")} />
+        <>
+            <LinkButton
+                to={DefaultGastaoRoute.Path}
+                className={"navbar-brand container-fluid btn btn-outline-dark  text-light "}
+                context={"Gastao"}
+                onClick={() => console.log("Gastao")} />
+
+        </>
     );
     const toggleSideBar = (
         <button

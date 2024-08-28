@@ -1,30 +1,61 @@
 import { Accordion } from "react-bootstrap";
+import { LinkButton } from "../Buttons/LinkButton";
+import { CreateRoute, DeleteRoute, IngresosRoute, ReadRoute, UpdateRoute } from "../../App/GastaoApp/1. Models/Routes/PathRoutes";
+
 
 export function AccordionBootstrap() {
     return (
-        <Accordion defaultActiveKey="0">
+        <Accordion defaultActiveKey="-1" style={{ overflow: "auto" }}>
             <Accordion.Item eventKey="0">
-                <Accordion.Header>Accordion Item #1</Accordion.Header>
-                <Accordion.Body className='overflow-y-scroll h-25'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+                <Accordion.Header>Usuarios</Accordion.Header>
+                <Accordion.Body>
+                    Usuarios
                 </Accordion.Body>
             </Accordion.Item>
-            <Accordion.Item eventKey="1">
-                <Accordion.Header>Accordion Item #2</Accordion.Header>
-                <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+            <Accordion.Item eventKey="1" >
+                <Accordion.Header className="">Ingresos</Accordion.Header>
+                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
+                    <LinkButton to={"/Gastao/Ingresos/Create"} className={"button-sidebar"} context="Crear Nuevo" />
+
+                </Accordion.Body>
+                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
+                    <LinkButton to={"/Gastao/Ingresos/Read"} className={"button-sidebar"} context="Buscar / Consultar" />
+
+                </Accordion.Body>
+                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
+                    <LinkButton to={"/Gastao/Ingresos/Update"} className={"button-sidebar"} context="Editar / Actualizar" />
+
+                </Accordion.Body>
+                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
+                    <LinkButton to={"/Gastao/Ingresos/Delete"} className={"button-sidebar"} context="Eliminar" />
+
+                </Accordion.Body>
+                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
+                    <LinkButton to={"/Gastao/Ingresos/Report"} className={"button-sidebar"} context="Ver Informe" />
+
+                </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="2">
+                <Accordion.Header>Egresos</Accordion.Header>
+                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
+                    <LinkButton to={"/Gastao/Egresos/Create"} className={"button-sidebar"} context="Crear Nuevo" />
+
+                </Accordion.Body>
+                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
+                    <LinkButton to={"/Gastao/Egresos/Read"} className={"button-sidebar"} context="Buscar / Consultar" />
+
+                </Accordion.Body>
+                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
+                    <LinkButton to={"/Gastao/Egresos/Update"} className={"button-sidebar"} context="Editar / Actualizar" />
+
+                </Accordion.Body>
+                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
+                    <LinkButton to={"/Gastao/Egresos/Delete"} className={"button-sidebar"} context="Eliminar" />
+
+                </Accordion.Body>
+                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
+                    <LinkButton to={"/Gastao/Egresos/Report"} className={"button-sidebar"} context="Ver Informe" />
+
                 </Accordion.Body>
             </Accordion.Item>
         </Accordion>
