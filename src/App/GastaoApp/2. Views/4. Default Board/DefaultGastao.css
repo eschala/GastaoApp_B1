@@ -4,7 +4,9 @@
     height: 100%;
 }
 
-.DefaultGastao-sub {}
+.DefaultGastao-sub {
+    padding: 1%;
+}
 
 .DefaultGastao-sub-1 {
     display: flex;
@@ -18,5 +20,13 @@
     border: 1px solid sandybrown;
     justify-content: center;
     align-items: center;
+
+}
+
+.hide {
+
+    position: absolute;
+    top: 10vh;
+    left: 30vw;
 
 }

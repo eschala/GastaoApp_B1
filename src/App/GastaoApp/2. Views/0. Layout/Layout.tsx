@@ -2,9 +2,10 @@
 
 import "./Layout.css"
 import { Footer } from "../../../../Components/Footer/Footer";
-import { NavbarGastao } from "../../../../Components/Navbar/NavbarGastao";
+
 import { RoutesViews } from "../0. RoutesViews/RoutesViews";
 import { Outlet } from "react-router";
+import NavbarGastao from "../../../../Components/Navbar/NavbarGastao";
 
 export const Layout = () => {
     return (<>

@@ -1,3 +1,5 @@
+import { ElementExample2 } from "../0. Borrador/ElementExample2";
+
 /* Login.tsx */
 export function Login() {
     return (<>
@@ -5,7 +7,7 @@ export function Login() {
             <h1>
                 {"<Login/>"}
             </h1>
-
+            <ElementExample2 />
         </div>
     </>);
 }
