@@ -20,13 +20,37 @@
     border: 1px solid sandybrown;
     justify-content: center;
     align-items: center;
+    height: 100%;
+
+
 
 }
 
 .hide {
 
-    position: absolute;
-    top: 10vh;
-    left: 30vw;
+    display: block;
+    height: min-content;
 
+}
+
+.DefaultGastao-sub-2-1 {
+    /* Button Hide */
+    display: flex;
+
+    border: 1px solid green;
+    width: fit-content;
+    height: 100%;
+}
+
+.DefaultGastao-sub-2-2 {
+    /* Content */
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+
+    border: 1px solid green;
 }

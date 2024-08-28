@@ -1,5 +1,5 @@
 /* NavbarGastao.tsx */
-import { useState } from "react";
+
 import { HomeRoute, LoginRoute, RegisterRoute, DefaultGastaoRoute } from "../../App/GastaoApp/1. Models/Routes/PathRoutes";
 import { LinkButton } from "../Buttons/LinkButton";
 import { Toggle } from "../../App/GastaoApp/1. Models/GlobalVariables/GlobalVariables";
@@ -7,16 +7,14 @@ import { Toggle } from "../../App/GastaoApp/1. Models/GlobalVariables/GlobalVari
 export let valorEnabledSidebar: boolean
 
 function NavbarGastao() {
-    const [toggleHideSideBar, setToggleHideSideBar] = useState(false)
+
 
     function toggleSwitchSideBar() {
 
-        setToggleHideSideBar(!toggleHideSideBar);
-        valorEnabledSidebar = toggleHideSideBar
-        Toggle.SideBar.Show = valorEnabledSidebar
+
 
         console.log("El valor de Toggle.SideBar.Show  es: " + Toggle.SideBar.Show)
-        console.log("El valor de toggleHideSideBar es: " + toggleHideSideBar)
+
 
     }
 
