@@ -1,11 +1,22 @@
 /* RoutesViews.tsx */
 import { Routes, Route } from "react-router"
 import { HomeRoute, LoginRoute, RegisterRoute, DefaultGastaoRoute } from "../../1. Models/Routes/PathRoutes"
+import { Home } from "../1. Home/Home"
 import { Login } from "../2. Login/Login"
 import { Register } from "../3. Register/Register"
+import { CreateIngresos } from "../4. Default Board/CRUD/2. Ingresos/1. CREATE/CreateIngresos"
+import { ReadIngresos } from "../4. Default Board/CRUD/2. Ingresos/2. READ/ReadIngresos"
+import { UpdateIngresos } from "../4. Default Board/CRUD/2. Ingresos/3. UPDATE/UpdateIngresos"
+import { DeleteIngresos } from "../4. Default Board/CRUD/2. Ingresos/4. DELETE/DeleteIngresos"
+import { ReportIngresos } from "../4. Default Board/CRUD/2. Ingresos/ReportIngresos"
+import { CreateEgresos } from "../4. Default Board/CRUD/3. Egresos/1. CREATE/CreateEgresos"
+import { ReadEgresos } from "../4. Default Board/CRUD/3. Egresos/2. READ/ReadEgresos"
+import { UpdateEgresos } from "../4. Default Board/CRUD/3. Egresos/3. UPDATE/UpdateEgresos"
+import { DeleteEgresos } from "../4. Default Board/CRUD/3. Egresos/4. DELETE/DeleteEgresos"
+import { ReportEgresos } from "../4. Default Board/CRUD/3. Egresos/ReportEgresos"
 import { DefaultGastao } from "../4. Default Board/DefaultGastao"
-import { Home } from "../1. Home/Home"
-import { CreateEgresos, CreateIngresos, DeleteEgresos, DeleteIngresos, ReadEgresos, ReadIngresos, ReportEgresos, ReportIngresos, UpdateEgresos, UpdateIngresos } from "../4. Default Board/CRUD/2. Ingresos/1. CREATE/CreateIngresos"
+
+
 
 export function RoutesViews() {
 

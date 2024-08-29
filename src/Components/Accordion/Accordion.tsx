@@ -1,6 +1,5 @@
 import { Accordion } from "react-bootstrap";
 import { LinkButton } from "../Buttons/LinkButton";
-import { CreateRoute, DeleteRoute, IngresosRoute, ReadRoute, UpdateRoute } from "../../App/GastaoApp/1. Models/Routes/PathRoutes";
 
 
 export function AccordionBootstrap() {

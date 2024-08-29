@@ -21,21 +21,21 @@ function NavbarGastao() {
     const toggleHome = (
         <LinkButton
             to={HomeRoute.Path}
-            className={"navbar-brand container-fluid btn btn-outline-dark  text-light "}
+            className={"navbar-brand container-fluid btn btn-outline-dark  text-light i-1"}
             context={"Inicio"}
             onClick={() => console.log("Home")} />
     );
     const toggleLogin = (
         <LinkButton
             to={LoginRoute.Path}
-            className={"navbar-brand container-fluid btn btn-outline-dark  text-light "}
+            className={"navbar-brand container-fluid btn btn-outline-dark  text-light i-2"}
             context={"login"}
             onClick={() => console.log("Login")} />
     );
     const toggleRegister = (
         <LinkButton
             to={RegisterRoute.Path}
-            className={"navbar-brand container-fluid btn btn-outline-dark  text-light "}
+            className={"navbar-brand container-fluid btn btn-outline-dark  text-light i-3"}
             context={"Register"}
             onClick={() => console.log("Register")} />
     );
@@ -43,7 +43,7 @@ function NavbarGastao() {
         <>
             <LinkButton
                 to={DefaultGastaoRoute.Path}
-                className={"navbar-brand container-fluid btn btn-outline-dark  text-light "}
+                className={"navbar-brand container-fluid btn btn-outline-dark  text-light i-4"}
                 context={"Gastao"}
                 onClick={() => console.log("Gastao")} />
 
@@ -66,15 +66,23 @@ function NavbarGastao() {
     /* A partir de aqui se renderiza el componente Navbar */
     return (
         <>
-            <nav style={{ backgroundColor: "darkblue", color: "white" }} className="navbar navbar-expand-lg w-100">
-                <div className="container-fluid">
+            <nav style={{ backgroundColor: "darkblue", color: "white" }} className="navbar-brand-logo-1 navbar navbar-expand-lg w-100">{/* navbar navbar-expand-lg */}
+                <div className="navbar-brand-logo-sub d-flex container-fluid">
 
-                    <div className="1-navbar-brand-logo d-flex">
-                        {toggleSideBar}
-                        {toggleHome}
-                        {toggleLogin}
-                        {toggleRegister}
-                        {toggleDefault}
+                    <div className="navbar-brand-logo-sub-1 d-flex justify-content-between container-fluid">
+                        <div className="navbar-brand-logo-sub-1-1 d-flex">
+                            {toggleSideBar}
+                            {toggleHome}
+                            <div className="navbar-brand-logo-sub-1-1-1 d-flex"></div>
+                            {toggleLogin}
+                            {toggleRegister}
+                            {toggleDefault}
+                        </div>
+                        <div className="navbar-brand-logo-sub-1-2">
+
+                            {toggleDefault}
+                        </div>
+
                     </div>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
