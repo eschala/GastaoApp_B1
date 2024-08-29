@@ -1,4 +1,4 @@
-
+import { UsersTable } from "../0. Borrador/TestTableApi";
 
 export const Home = () => {
     return (<>
@@ -7,7 +7,9 @@ export const Home = () => {
             <h1>
                 {"<Home/>"}
             </h1>
-
+            <div className="container-fluid">
+                < UsersTable />
+            </div>
 
         </div>
     </>);

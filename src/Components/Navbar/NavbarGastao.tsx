@@ -8,13 +8,9 @@ export let valorEnabledSidebar: boolean
 
 function NavbarGastao() {
 
-
     function toggleSwitchSideBar() {
 
-
-
         console.log("El valor de Toggle.SideBar.Show  es: " + Toggle.SideBar.Show)
-
 
     }
 
@@ -80,7 +76,11 @@ function NavbarGastao() {
                         </div>
                         <div className="navbar-brand-logo-sub-1-2">
 
-                            {toggleDefault}
+                            <LinkButton
+                                to={DefaultGastaoRoute.Path}
+                                className={"navbar-brand container-fluid btn btn-outline-dark  text-light i-4"}
+                                context={"Usuario"}
+                                onClick={() => console.log("Gastao")} />
                         </div>
 
                     </div>
