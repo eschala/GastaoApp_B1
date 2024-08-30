@@ -1,124 +1,115 @@
-/* TestApi.tsx */
-/* import { useState, useEffect } from "react" */
-
-/* ATbUsers */
-/* setATbUsers */
-
-/* Ejemplo de el primer registro que arrija la api en metodo GET
-    "idUser": 1,
-    "tipoUserId": null,
-    "nameUser": "Eduar",
-    "lastNameUser": "Chalá",
-    "dniUser": 1000618284,
-    "emailUser": "eduar.chala28@outlook.com",
-
-    "idUser": 0,
-    "tipoUserId": 0,
-    "nameUser": "string",
-    "lastNameUser": "string",
-    "dniUser": 0,
-    "emailUser": "string",
-    "passUser": "string",
-
-*/
-
-/* Api: https://localhost:44318/api/ATbUsers Modelo de Usuarios de la tabla "ATbUsers" */
-
-/* interface User {
-    idUser: number;
-    tipoUserId: number | null;
-    nameUser: string;
-    lastNameUser: string;
-    dniUser: number;
-    emailUser: string;
-    passUser: string;
-} */
-/* 
-export const TestApi = () => {
-    const [ATbUsers, setATbUsers] = useState<User[]>([]);
-
-    useEffect(() => {
-        fetch('https://localhost:44318/api/ATbUsers')
-
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                setATbUsers(data);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
-
-    const Tabla_0 = (
-
-        <table border={1} className="table w-100">
-            <thead className="primary">
-                <tr>
-
-                    <th scope="col">ID</th>
-
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Cedula / DNI</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Password</th>
-                </tr>
-            </thead>
-            <tbody className="table-group-divider">
-                {ATbUsers.map(user => (
-                    <tr className="table" key={user.idUser}>
-                        <td>{user.idUser}</td>
-
-                        <td>{user.nameUser}</td>
-                        <td>{user.lastNameUser}</td>
-                        <td>{user.dniUser}</td>
-                        <td>{user.emailUser}</td>
-                        <input value={user.passUser} type="password" />
-                    </tr>
+import {
+    MaterialReactTable,
+    useMaterialReactTable,
+    type MRT_Row,
+    createMRTColumnHelper,
+} from 'material-react-table';
+import { Box, Button } from '@mui/material';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import { jsPDF } from 'jspdf'; //or use your library of choice here
+import autoTable from 'jspdf-autotable';
+import { GetATbUsers, User } from '../../1. Models/Functions/API Responses/GetATbUsers';
 
 
-                ))}
-            </tbody>
-        </table>
-    );
-    const Tabla_1 = (
-        <div>
-            <table border={1}>
-                <thead>
-                    <tr>
+const columnHelper = createMRTColumnHelper<User>();
 
-                        <th>idUser</th>
-                        <th>tipoUserId</th>
-                        <th>nameUser</th>
-                        <th>lastNameUser</th>
-                        <th>dniUser</th>
-                        <th>emailUser</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {ATbUsers.map(user => (
-                        <tr className="table" key={user.idUser}>
-                            <td>{user.idUser}</td>
-                            <td>{user.tipoUserId}</td>
-                            <td>{user.nameUser}</td>
-                            <td>{user.lastNameUser}</td>
-                            <td>{user.dniUser}</td>
-                            <td>{user.emailUser}</td>
-                        </tr>
+const columns = [
+    columnHelper.accessor('idUser', {
+        header: 'ID',
+        size: 40,
+    }),
+    columnHelper.accessor('tipoUserId', {
+        header: 'Tipo',
+        size: 120,
+    }),
+    columnHelper.accessor('nameUser', {
+        header: 'Nombre',
+        size: 120,
+    }),
+    columnHelper.accessor('lastNameUser', {
+        header: 'Apellido',
+        size: 120,
+    }),
+    columnHelper.accessor('dniUser', {
+        header: 'Cedula',
+        size: 120,
+    }),
+    columnHelper.accessor('emailUser', {
+        header: 'Correo',
+        size: 120,
+    }),
+    columnHelper.accessor('passUser', {
+        header: 'Contraseña',
+        size: 120,
+    }),
 
+];
 
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
-    return (
-        Tabla_0
-    );
-}
- */
+export const UsersTablePdf = () => {
+    const handleExportRows = (rows: MRT_Row<User>[]) => {
+        const doc = new jsPDF();
+        const tableData = rows.map((row) => Object.values(row.original));
+        const tableHeaders = columns.map((c) => c.header);
+
+        autoTable(doc, {
+            head: [tableHeaders],
+            body: tableData,
+        });
+
+        doc.save('Users.pdf');
+    };
+    const data = GetATbUsers()
+    let sam = data.keys
+    console.log(sam.toString)
+
+    const table = useMaterialReactTable({
+        columns,
+        data,
+        enableRowSelection: true,
+        columnFilterDisplayMode: 'popover',
+        paginationDisplayMode: 'pages',
+        positionToolbarAlertBanner: 'bottom',
+        renderTopToolbarCustomActions: ({ table }) => (
+            <Box
+                sx={{
+                    display: 'flex',
+                    gap: '12px',
+                    padding: '5px',
+                    flexWrap: 'wrap',
+                }}
+            >
+                <Button
+                    disabled={table.getPrePaginationRowModel().rows.length === 0}
+                    //export all rows, including from the next page, (still respects filtering and sorting)
+                    onClick={() =>
+                        handleExportRows(table.getPrePaginationRowModel().rows)
+                    }
+                    startIcon={<FileDownloadIcon />}
+                >
+                    Exportar Todas las Filas
+                </Button>
+                <Button
+                    disabled={table.getRowModel().rows.length === 0}
+                    //export all rows as seen on the screen (respects pagination, sorting, filtering, etc.)
+                    onClick={() => handleExportRows(table.getRowModel().rows)}
+                    startIcon={<FileDownloadIcon />}
+                >
+                    Exportar Pagina
+                </Button>
+                <Button
+                    disabled={
+                        !table.getIsSomeRowsSelected() && !table.getIsAllRowsSelected()
+                    }
+                    //only export selected rows
+                    onClick={() => handleExportRows(table.getSelectedRowModel().rows)}
+                    startIcon={<FileDownloadIcon />}
+                >
+                    Exportar Filas Seleccionadas
+                </Button>
+            </Box>
+        ),
+    });
+
+    return <MaterialReactTable table={table} />;
+};
+

@@ -1,3 +1,4 @@
+import { UsersTablePdf } from "../0. Borrador/TestApi";
 import { UsersTable } from "../0. Borrador/TestTableApi";
 
 export const Home = () => {
@@ -8,7 +9,7 @@ export const Home = () => {
                 {"<Home/>"}
             </h1>
             <div className="container-fluid">
-                < UsersTable />
+                < UsersTablePdf />
             </div>
 
         </div>
