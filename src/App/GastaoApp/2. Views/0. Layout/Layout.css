@@ -1,27 +1,38 @@
-.container-layout {}
-
-.Layout {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
+* {
+    box-sizing: border-box;
+    /* Incluye padding y border en el cálculo del ancho */
 }
 
-.container-1-navbar {
-    display: flex;
-    border: solid rgb(255, 87, 87) 2px;
-    height: 10vh;
+.menu-hide-button {
+    display: none;
 
 }
 
-.container-2-board {
-    display: flex;
-    flex: auto;
+button {
+
+    background-color: transparent;
+    border: 0px;
 }
 
-.container-3-footer {
-    border: solid rgb(43, 255, 0) 2px;
-    display: flex;
-    height: 10vh;
+.main-render {}
 
+/* button:hover {} */
+
+
+@media (width <=600px) {
+    .menu-hide-button {
+        display: block;
+
+    }
+
+    .toggle-sidebar {
+        display: none;
+    }
 }
+
+
+/* @media screen and (width >=600px) {
+    .menu-hide-button {
+        display: block;
+    }
+} */

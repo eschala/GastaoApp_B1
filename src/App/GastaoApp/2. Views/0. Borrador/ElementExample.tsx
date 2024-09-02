@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ElementExample2 } from "./ElementExample2";
+
 import { variables } from "./Varariables";
 import './Varariables.tsx';
 

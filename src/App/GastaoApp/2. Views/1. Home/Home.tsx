@@ -1,5 +1,4 @@
 import { UsersTablePdf } from "../0. Borrador/TestApi";
-import { UsersTable } from "../0. Borrador/TestTableApi";
 
 export const Home = () => {
     return (<>

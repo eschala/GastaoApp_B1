@@ -10,6 +10,9 @@ Despues de decargar el repositorio instalar los siguientes paquetes
 ## npm install react-router-dom
 
 ## npm i material-react-table @mui/material @mui/x-date-pickers @mui/icons-material @emotion/react @emotion/styled
+
+## npm install jspdf jspdf-autotable
+
 Y por ultimo ver la aplicación en funcionamiento con:
 
 npm run dev

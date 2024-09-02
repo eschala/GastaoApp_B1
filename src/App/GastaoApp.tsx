@@ -6,7 +6,10 @@
       <App/>
  */
 import { BrowserRouter } from "react-router-dom";
-import { Layout } from "./GastaoApp/2. Views/0. Layout/Layout";
+
+
+import Layout from "./GastaoApp/2. Views/0. Layout/Layout";
+
 
 export function GastaoApp() {
   return (
