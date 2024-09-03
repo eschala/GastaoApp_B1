@@ -1,62 +1,111 @@
-import { Accordion } from "react-bootstrap";
-import { LinkButton } from "../Buttons/LinkButton";
+
+import Accordion from '@mui/material/Accordion';
+
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { CreateRoute, DefaultGastaoRoute, DeleteRoute, ReadRoute, ReportRoute, UpdateRoute, UsersRoute } from '../../App/GastaoApp/1. Models/Routes/PathRoutes';
+import { Link } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/material/IconButton';
 
 
-export function AccordionBootstrap() {
+
+
+export default function AccordionUsage() {
     return (
-        <Accordion defaultActiveKey="-1" style={{ overflow: "auto" }}>
-            <Accordion.Item eventKey="0">
-                <Accordion.Header>Usuarios</Accordion.Header>
-                <Accordion.Body>
+        <>
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1-content"
+                    id="panel1-header"
+                >
                     Usuarios
-                </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="1" >
-                <Accordion.Header className="">Ingresos</Accordion.Header>
-                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
-                    <LinkButton to={"/Gastao/Ingresos/Create"} className={"button-sidebar"} context="Crear Nuevo" />
+                </AccordionSummary>
+                <AccordionDetails style={{ display: "flex", flexDirection: "column", width: "100%" }}>
 
-                </Accordion.Body>
-                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
-                    <LinkButton to={"/Gastao/Ingresos/Read"} className={"button-sidebar"} context="Buscar / Consultar" />
 
-                </Accordion.Body>
-                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
-                    <LinkButton to={"/Gastao/Ingresos/Update"} className={"button-sidebar"} context="Editar / Actualizar" />
+                    <Link to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + CreateRoute.Path}>
 
-                </Accordion.Body>
-                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
-                    <LinkButton to={"/Gastao/Ingresos/Delete"} className={"button-sidebar"} context="Eliminar" />
+                        <Button color='inherit' variant='contained' style={{ flex: 1, backgroundColor: "yellow" }} startIcon={
 
-                </Accordion.Body>
-                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
-                    <LinkButton to={"/Gastao/Ingresos/Report"} className={"button-sidebar"} context="Ver Informe" />
+                            <DeleteIcon />
 
-                </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="2">
-                <Accordion.Header>Egresos</Accordion.Header>
-                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
-                    <LinkButton to={"/Gastao/Egresos/Create"} className={"button-sidebar"} context="Crear Nuevo" />
+                        }>
+                            Crear
+                        </Button>
+                    </Link>
+                    <Link style={{ flex: 1, }} to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + UpdateRoute.Path}>
 
-                </Accordion.Body>
-                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
-                    <LinkButton to={"/Gastao/Egresos/Read"} className={"button-sidebar"} context="Buscar / Consultar" />
+                        <Button color='primary' variant='contained' style={{ flex: 1, }} startIcon={
 
-                </Accordion.Body>
-                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
-                    <LinkButton to={"/Gastao/Egresos/Update"} className={"button-sidebar"} context="Editar / Actualizar" />
+                            <DeleteIcon />
 
-                </Accordion.Body>
-                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
-                    <LinkButton to={"/Gastao/Egresos/Delete"} className={"button-sidebar"} context="Eliminar" />
+                        }>
+                            Editar
+                        </Button>
+                    </Link>
 
-                </Accordion.Body>
-                <Accordion.Body className='overflow d-flex flex-column justify-content-center bg-light'>
-                    <LinkButton to={"/Gastao/Egresos/Report"} className={"button-sidebar"} context="Ver Informe" />
 
-                </Accordion.Body>
-            </Accordion.Item>
-        </Accordion>
+                    <Link to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + DeleteRoute.Path}>
+
+                        <Button color='error' variant='contained' style={{ flex: 1, }} startIcon={
+
+                            <DeleteIcon />
+
+                        }>
+                            Eliminar
+                        </Button>
+                    </Link>
+
+                    <Link to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + ReadRoute.Path}>
+
+                        <Button color='secondary' variant='contained' style={{ flex: 1, backgroundColor: "gray" }} startIcon={
+
+                            <DeleteIcon />
+
+                        }>
+                            Consultar
+                        </Button>
+                    </Link>
+                    <Link to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + ReportRoute.Path}>
+
+                        <Button color='info' variant='contained' style={{ flex: 1, }} startIcon={
+
+                            <DeleteIcon />
+
+                        }>
+                            Informes
+                        </Button>
+                    </Link>
+                </AccordionDetails>
+            </Accordion >
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel2-content"
+                    id="panel2-header"
+                >
+                    Ingresos
+                </AccordionSummary>
+                <AccordionDetails>
+                    {"<List/>"}
+                </AccordionDetails>
+            </Accordion>
+            <Accordion >
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel3-content"
+                    id="panel3-header"
+                >
+                    Egresos
+                </AccordionSummary>
+                <AccordionDetails>
+                    {"<List/>"}
+                </AccordionDetails>
+
+            </Accordion>
+        </>
     );
 }

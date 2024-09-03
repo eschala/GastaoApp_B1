@@ -1,10 +1,10 @@
-import { AccordionBootstrap } from '../Accordion/Accordion';
+import AccordionUsage from "../Accordion/Accordion";
 
 
 export function CollapseGastaoSideBar() {
     return (
         <>
-            <AccordionBootstrap />
+            <AccordionUsage />
         </>
     )
 }

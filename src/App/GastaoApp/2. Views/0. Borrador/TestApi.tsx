@@ -69,13 +69,16 @@ export const UsersTablePdf = () => {
         columnFilterDisplayMode: 'popover',
         paginationDisplayMode: 'pages',
         positionToolbarAlertBanner: 'bottom',
+
         renderTopToolbarCustomActions: ({ table }) => (
             <Box
                 sx={{
+
                     display: 'flex',
-                    gap: '12px',
+                    gap: '6px',
                     padding: '5px',
                     flexWrap: 'wrap',
+
                 }}
             >
                 <Button

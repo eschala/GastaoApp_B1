@@ -15,6 +15,11 @@ import { UpdateEgresos } from "../4. Default Board/CRUD/3. Egresos/3. UPDATE/Upd
 import { DeleteEgresos } from "../4. Default Board/CRUD/3. Egresos/4. DELETE/DeleteEgresos"
 import { ReportEgresos } from "../4. Default Board/CRUD/3. Egresos/ReportEgresos"
 import { DefaultGastao } from "../4. Default Board/DefaultGastao"
+import { CreateUsers } from "../4. Default Board/CRUD/1. Users/1. CREATE/CreateUsers"
+import { ReadUsers } from "../4. Default Board/CRUD/1. Users/2. READ/ReadUsers"
+import { UpdateUsers } from "../4. Default Board/CRUD/1. Users/3. UPDATE/UpdateUsers"
+import { DeleteUsers } from "../4. Default Board/CRUD/1. Users/4. DELETE/DeleteUsers"
+import { ReportUsers } from "../4. Default Board/CRUD/1. Users/ReportUsers"
 
 
 
@@ -30,6 +35,12 @@ export function RoutesViews() {
             <Route path={LoginRoute.Path} element={<Login />} />
             <Route path={RegisterRoute.Path} element={<Register />} />
             <Route path={DefaultGastaoRoute.Path} element={<DefaultGastao />}>
+                <Route path={"Users/Create"} element={<CreateUsers />} />
+                <Route path={"Users/Read"} element={<ReadUsers />} />
+                <Route path={"Users/Update"} element={<UpdateUsers />} />
+                <Route path={"Users/Delete"} element={<DeleteUsers />} />
+                <Route path={"Users/Report"} element={<ReportUsers />} />
+
                 <Route path={"Ingresos/Create"} element={<CreateIngresos />} />
                 <Route path={"Ingresos/Read"} element={<ReadIngresos />} />
                 <Route path={"Ingresos/Update"} element={<UpdateIngresos />} />

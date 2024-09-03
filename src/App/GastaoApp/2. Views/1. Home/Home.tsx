@@ -8,7 +8,7 @@ export const Home = () => {
                 {"<Home/>"}
             </h1>
             <div className="container-fluid">
-                < UsersTablePdf />
+                {/* < UsersTablePdf /> */}
             </div>
 
         </div>
