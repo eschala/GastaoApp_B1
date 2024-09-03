@@ -7,10 +7,13 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { CreateRoute, DefaultGastaoRoute, DeleteRoute, ReadRoute, ReportRoute, UpdateRoute, UsersRoute } from '../../App/GastaoApp/1. Models/Routes/PathRoutes';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/material/IconButton';
-
-
-
+/* import DeleteIcon from '@mui/material/IconButton'; */
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import PersonIcon from '@mui/icons-material/Person';
+import SearchIcon from '@mui/icons-material/Search';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 
 export default function AccordionUsage() {
     return (
@@ -21,64 +24,66 @@ export default function AccordionUsage() {
                     aria-controls="panel1-content"
                     id="panel1-header"
                 >
+                    <PersonIcon />
                     Usuarios
                 </AccordionSummary>
-                <AccordionDetails style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+                <AccordionDetails style={{ display: "flex", flexDirection: "column", minWidth: "100px", border: "1px solid black" }}>
+                    <div className="" style={{ display: "flex", flexDirection: "column", maxWidth: "140px", border: "1px solid black" }}>
 
 
-                    <Link to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + CreateRoute.Path}>
+                        <Link style={{ width: "100%" }} to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + CreateRoute.Path}>
 
-                        <Button color='inherit' variant='contained' style={{ flex: 1, backgroundColor: "yellow" }} startIcon={
+                            <Button variant='outlined' style={{ backgroundColor: "", width: "100%" }} startIcon={
 
-                            <DeleteIcon />
+                                <AddCircleIcon />
+                            }>
+                                Crear
+                            </Button>
+                        </Link>
+                        <Link style={{ width: "100%", }} to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + UpdateRoute.Path}>
 
-                        }>
-                            Crear
-                        </Button>
-                    </Link>
-                    <Link style={{ flex: 1, }} to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + UpdateRoute.Path}>
+                            <Button variant='outlined' style={{ width: "100%", }} startIcon={
 
-                        <Button color='primary' variant='contained' style={{ flex: 1, }} startIcon={
+                                <EditIcon />
 
-                            <DeleteIcon />
-
-                        }>
-                            Editar
-                        </Button>
-                    </Link>
+                            }>
+                                Editar
+                            </Button>
+                        </Link>
 
 
-                    <Link to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + DeleteRoute.Path}>
+                        <Link to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + DeleteRoute.Path}>
 
-                        <Button color='error' variant='contained' style={{ flex: 1, }} startIcon={
+                            <Button variant='outlined' style={{ width: "100%", }} startIcon={
 
-                            <DeleteIcon />
+                                <DeleteIcon />
 
-                        }>
-                            Eliminar
-                        </Button>
-                    </Link>
+                            }>
+                                Eliminar
+                            </Button>
+                        </Link>
 
-                    <Link to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + ReadRoute.Path}>
+                        <Link to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + ReadRoute.Path}>
 
-                        <Button color='secondary' variant='contained' style={{ flex: 1, backgroundColor: "gray" }} startIcon={
+                            <Button variant='outlined' style={{ width: "100%", backgroundColor: "" }} startIcon={
 
-                            <DeleteIcon />
+                                <SearchIcon />
 
-                        }>
-                            Consultar
-                        </Button>
-                    </Link>
-                    <Link to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + ReportRoute.Path}>
+                            }>
+                                Consultar
+                            </Button>
+                        </Link>
+                        <Link to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + ReportRoute.Path}>
 
-                        <Button color='info' variant='contained' style={{ flex: 1, }} startIcon={
+                            <Button variant='outlined' style={{ width: "100%", }} startIcon={
 
-                            <DeleteIcon />
+                                <AssignmentIcon />
 
-                        }>
-                            Informes
-                        </Button>
-                    </Link>
+                            }>
+                                Informes
+                            </Button>
+                        </Link>
+                    </div>
                 </AccordionDetails>
             </Accordion >
             <Accordion>

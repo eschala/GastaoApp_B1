@@ -1,6 +1,6 @@
 .DefaultGastao {
     display: flex;
-    width: 100%;
+    flex-direction: column;
     height: 100%;
 }
 
@@ -21,6 +21,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+
 
 }
 
@@ -50,7 +51,7 @@
     justify-items: center;
     align-items: center;
 
-    background-color: aliceblue;
+
     border: 1px solid rgb(244, 194, 79);
 }
 
@@ -74,62 +75,5 @@
     color: white;
 }
 
-.navbar-brand-logo-1 {
-    /* display: flex; */
-    /* width: 100%; */
-}
 
-.navbar-brand-logo-sub {
-    /* display: flex; */
-    /* background-color: aqua; */
-    /* width: 100%; */
-}
-
-.navbar-brand-logo-sub-1 {
-    /* display: flex; */
-    /* background-color: blueviolet; */
-    /* width: 100%; */
-
-}
-
-.navbar-brand-logo-sub-1-1 {
-    /* display: flex; */
-    /* s */
-    /* background-color: aliceblue; */
-    /* flex: 1; */
-
-
-}
-
-.navbar-brand-logo-sub-1-1-1 {
-    /* display: flex; */
-    /* s */
-    /* background-color: aliceblue; */
-    /* flex: 1; */
-
-
-}
-
-@media screen and (width <=600px) {
-    .i-1 {}
-
-    .i-2 {
-
-        display: none;
-    }
-
-    .i-3 {
-        display: none;
-
-    }
-
-    .i-4 {
-        display: none;
-
-    }
-
-
-
-
-
-}
+@media screen and (width <=600px) {}

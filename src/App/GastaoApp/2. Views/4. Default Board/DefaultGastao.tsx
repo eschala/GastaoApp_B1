@@ -1,71 +1,33 @@
 
-import { useState } from 'react';
-import { Toggle } from '../../1. Models/GlobalVariables/GlobalVariables';
-import './DefaultGastao.css';
-import { CollapseGastaoSideBar } from '../../../../Components/Collapse/Collapse';
+/* import './DefaultGastao.css'; */
+
 import { Outlet } from 'react-router';
 
-const exampleSideBar = (
-    <>
-        <h5>{"<sidebar/>"}</h5>
-        <CollapseGastaoSideBar />
-    </>
-)
-export const exampleBoardRenderized = (
-    <>
-        <h1>
-            {"<Gastao/>"}
-        </h1>
-        <button type="button" className='btn btn-outline-dark' onClick={() => console.clear()}>Limpiar Console</button>
-        {/* <h1>{"Toggle.SideBar.Show = " + Toggle.SideBar.Show}</h1> */}
-
-    </>
-)
 
 export function DefaultGastao() {
 
 
-    let [showSide, setShowSide] = useState(Toggle.SideBar.Show)
-
-    const toggleSide_ = () => {
-        setShowSide(!showSide)
-        Toggle.SideBar.Show = showSide
-        console.log("Toggle.SideBar.Show = " + !Toggle.SideBar.Show)
-        console.log("Slide Showed = " + Toggle.SideBar.Show)
-        console.log("Slide Hiden = " + !Toggle.SideBar.Show)
-    }
-    function SideBar() {
-        return <div className={"DefaultGastao-sub-1 DefaultGastao-sub " + "d-flex flex-column"}>
-            {exampleSideBar}
-        </div>;
-    }
-    function Board() {
-        return (
-            <div className="DefaultGastao-sub-2 DefaultGastao-sub">
-                <div className="DefaultGastao-sub-2-1">
-                    {/*                     <button onClick={() => { toggleSide_() }} className="hide btn btn-outline-dark">
-                        {"<-"}
-                    </button> */}
-
-                </div>
-                <div className="DefaultGastao-sub-2-2">
-                    {/* {exampleBoardRenderized} */}
-
-                    <Outlet />
-                </div>
-            </div>
-        );
-    }
-
-
-
     return (<>
-        <div style={{ backgroundColor: "gray" }} className="DefaultGastao">
-            {showSide == true ? <SideBar /> : null}
+        <div style={{}} className="DefaultGastao">
+
             {<Board />}
         </div>
     </>);
 }
 
+function Board() {
+    return (
+        <div className="DefaultGastao-sub-2 DefaultGastao-sub">
+            <div className="DefaultGastao-sub-2-1">
+                <h1>Samir</h1>
 
+            </div>
+            <div className="DefaultGastao-sub-2-2">
+
+
+                <Outlet />
+            </div>
+        </div>
+    );
+}
 

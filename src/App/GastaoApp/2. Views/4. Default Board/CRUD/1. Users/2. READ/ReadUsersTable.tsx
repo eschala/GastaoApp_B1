@@ -8,48 +8,90 @@ import { Box, Button } from '@mui/material';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { jsPDF } from 'jspdf'; //or use your library of choice here
 import autoTable from 'jspdf-autotable';
-import { GetATbUsers, User } from '../../1. Models/Functions/API Responses/GetATbUsers';
+import { GetATbUsers, User } from '../../../../../1. Models/Functions/API Responses/GetATbUsers';
 
 
 const columnHelper = createMRTColumnHelper<User>();
 
-const columns = [
-    columnHelper.accessor('idUser', {
-        header: 'ID',
-        size: 40,
-    }),
-    columnHelper.accessor('tipoUserId', {
-        header: 'Tipo',
-        size: 120,
-    }),
-    columnHelper.accessor('nameUser', {
-        header: 'Nombre',
-        size: 120,
-    }),
-    columnHelper.accessor('lastNameUser', {
-        header: 'Apellido',
-        size: 120,
-    }),
-    columnHelper.accessor('dniUser', {
-        header: 'Cedula',
-        size: 120,
-    }),
-    columnHelper.accessor('emailUser', {
-        header: 'Correo',
-        size: 120,
-    }),
-    columnHelper.accessor('passUser', {
-        header: 'Contraseña',
-        size: 120,
-    }),
+const LoggedAdmin = !true
 
-];
+function difinedColumns(AdminLogged: boolean) {
+    let columns: any;
+    if (AdminLogged) {
+        columns = [
+            columnHelper.accessor('idUser', {
+                header: 'ID',
+                size: 25,
+            }),
+            columnHelper.accessor('tipoUserId', {
+                header: 'Tipo',
+                size: 90,
+            }),
+            columnHelper.accessor('nameUser', {
+                header: 'Nombre',
+                size: 90,
+            }),
+            columnHelper.accessor('lastNameUser', {
+                header: 'Apellido',
+                size: 90,
+            }),
+            columnHelper.accessor('dniUser', {
+                header: 'Cedula',
+                size: 90,
+            }),
+            columnHelper.accessor('emailUser', {
+                header: 'Correo',
+                size: 90,
+            }),
+            columnHelper.accessor('passUser', {
+                header: 'Contraseña',
+                size: 90,
+            }),
 
-export const UsersTablePdf = () => {
+        ];
+
+    }
+    else {
+
+        columns = [
+            columnHelper.accessor('idUser', {
+                header: 'ID',
+                size: 25,
+            }),
+
+            columnHelper.accessor('nameUser', {
+                header: 'Nombre',
+                size: 90,
+            }),
+            columnHelper.accessor('lastNameUser', {
+                header: 'Apellido',
+                size: 90,
+            }),
+            columnHelper.accessor('dniUser', {
+                header: 'Cedula',
+                size: 90,
+            }),
+            columnHelper.accessor('emailUser', {
+                header: 'Correo',
+                size: 90,
+            }),
+
+
+        ];
+
+    }
+    return columns;
+
+}
+
+
+const columns = difinedColumns(LoggedAdmin);
+
+export const ReadUsersTable = () => {
     const handleExportRows = (rows: MRT_Row<User>[]) => {
         const doc = new jsPDF();
         const tableData = rows.map((row) => Object.values(row.original));
-        const tableHeaders = columns.map((c) => c.header);
+        const tableHeaders = columns.map((c: any) => c.header);
 
         autoTable(doc, {
             head: [tableHeaders],
@@ -58,7 +100,7 @@ export const UsersTablePdf = () => {
 
         doc.save('Users.pdf');
     };
-    const data = GetATbUsers()
+    const data = GetATbUsers(LoggedAdmin)
     let sam = data.keys
     console.log(sam.toString)
 
@@ -70,10 +112,11 @@ export const UsersTablePdf = () => {
         paginationDisplayMode: 'pages',
         positionToolbarAlertBanner: 'bottom',
 
+
         renderTopToolbarCustomActions: ({ table }) => (
             <Box
                 sx={{
-
+                    maxWidth: "100%",
                     display: 'flex',
                     gap: '6px',
                     padding: '5px',

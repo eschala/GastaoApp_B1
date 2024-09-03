@@ -19,7 +19,7 @@ let count: number;
 export default function AccountMenu() {
 
     count++
-    const [charUser, setCharUser] = useState("Us")
+    const [charUser, setCharUser] = useState("S")
 
     function setCharUserLetter() {
         if (charUser !== "") {
@@ -41,18 +41,18 @@ export default function AccountMenu() {
     };
     return (
         <React.Fragment>
-            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', }}>
 
                 <Tooltip title="Cuenta">
                     <IconButton
                         onClick={handleClick}
-                        size="small"
+                        size="large"
                         sx={{ ml: 2 }}
                         aria-controls={open ? 'account-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <Avatar sx={{ width: 32, height: 32 }}>{charUser}</Avatar>
+                        <Avatar sx={{ width: 40, height: 40, color: "white" }}>{charUser}</Avatar>
                     </IconButton>
                 </Tooltip>
             </Box>
@@ -83,7 +83,7 @@ export default function AccountMenu() {
                                 right: 14,
                                 width: 10,
                                 height: 10,
-                                bgcolor: 'background.paper',
+                                /* bgcolor: 'background.paper', */
                                 transform: 'translateY(-50%) rotate(45deg)',
                                 zIndex: 0,
                             },

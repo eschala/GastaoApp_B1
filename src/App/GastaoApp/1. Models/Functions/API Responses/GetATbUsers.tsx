@@ -7,7 +7,7 @@ class ApiATbUsers {
 
     static port: number = 7210
     static localhost: string = "localhost"
-    static host: string = "192.168.101.85"
+    static host: string = "192.168.101.78"
     static Url: string = (`https://${this.localhost}:${this.port}/api/ATbUsers`)
     static UrlGetById = (id: number) => {
         return (this.Url + "/" + id)
@@ -26,10 +26,11 @@ export interface User {
     passUser: string;
 }
 
-export function GetATbUsers() {
+export function GetATbUsers(props: any) {
     const [ATbUsers, setATbUsers] = useState<User[]>([]);
 
     useEffect(() => {
+
         fetch(ApiATbUsers.Url)
             .then((response) => {
                 if (!response.ok) {
@@ -38,18 +39,32 @@ export function GetATbUsers() {
                 return response.json();
             })
             .then((data) => {
-                // Mapea los datos a la estructura del modelo User
-                const users: User[] = data.map((user: any) => ({
-                    idUser: user.idUser,
-                    tipoUserId: user.tipoUserId,
-                    nameUser: user.nameUser,
-                    lastNameUser: user.lastNameUser,
-                    dniUser: user.dniUser,
-                    emailUser: user.emailUser,
-                    passUser: user.passUser || "", // Asigna una cadena vacía si no hay contraseña
-                }));
 
-                setATbUsers(users);
+                if (props.AdminLog == true) {
+                    const users: User[] = data.map((user: any) => ({
+                        idUser: user.idUser,
+                        tipoUserId: user.tipoUserId,
+                        nameUser: user.nameUser,
+                        lastNameUser: user.lastNameUser,
+                        dniUser: user.dniUser,
+                        emailUser: user.emailUser,
+                        passUser: user.passUser || "", // Asigna una cadena vacía si no hay contraseña
+                    }));
+                    setATbUsers(users);
+                }
+                else {
+                    const users: User[] = data.map((user: any) => ({
+                        idUser: user.idUser,
+                        /* tipoUserId: user.tipoUserId, */
+                        nameUser: user.nameUser,
+                        lastNameUser: user.lastNameUser,
+                        dniUser: user.dniUser,
+                        emailUser: user.emailUser,
+                        /* passUser: user.passUser || "",  */// Asigna una cadena vacía si no hay contraseña
+                    }));
+                    setATbUsers(users);
+                }
+
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);

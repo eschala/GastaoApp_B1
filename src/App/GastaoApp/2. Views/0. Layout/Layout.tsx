@@ -24,10 +24,7 @@ import AccordionUsage from '../../../../Components/Accordion/Accordion';
 
 // or
 
-
-
-
-const drawerWidth = 240;
+const drawerWidth = 210;
 
 const Board = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
     open?: boolean;
@@ -106,9 +103,9 @@ export default function Layout() {
 
     return (
         <>
-            <Box sx={{ display: 'flex', backgroundColor: "blueviolet", }}>
+            <Box sx={{ display: 'flex', }}>
                 <CssBaseline />
-                <NavbarLayout position="fixed" open={open} style={{ backgroundColor: theme.palette.primary.dark }}>
+                <NavbarLayout position="fixed" open={open} style={{}}>
                     <Toolbar>
 
                         <IconButton
@@ -121,6 +118,7 @@ export default function Layout() {
                             sx={[
                                 {
                                     mr: 2,
+                                    fontSize: 40
                                 },
                                 open && { display: 'none' },
                             ]}
@@ -128,32 +126,28 @@ export default function Layout() {
                             <MenuIcon />
                         </IconButton>
 
-                        <Link to={HomeRoute.Path} style={{ backgroundColor: "transparent" }}>
+                        <Link to={HomeRoute.Path} style={{ backgroundColor: "" }}>
                             <ButtonItemList context={
-                                <SvgIcon>
-                                    <HomeIcon style={{ color: "white" }} />
+                                <SvgIcon sx={{ fontSize: 40 }}>
+                                    <HomeIcon sx={{ fontSize: 50 }} style={{ color: "white" }} />
                                 </SvgIcon>
                             } open={open} />
                         </Link>
-                        <Link to={HomeRoute.Path} style={{ backgroundColor: "transparent" }}>
-
-                        </Link>
-
                         <div className="" style={{ flex: 1 }}></div>
-                        <Link to={DefaultGastaoRoute.Path} style={{ backgroundColor: "transparent" }}>
+                        <Link to={DefaultGastaoRoute.Path} style={{ backgroundColor: "" }}>
 
                             <ButtonItemList context={"App"} open={open} />
                         </Link>
                         <AccountMenu />
                     </Toolbar>
                 </NavbarLayout>
-                <Drawer style={{ backgroundColor: theme.palette.primary.dark }}
+                <Drawer style={{}}
                     sx={{
                         backgroundColor: "",
                         width: drawerWidth,
                         flexShrink: 0,
                         '& .MuiDrawer-paper': {/* Color del side bar */
-                            backgroundColor: theme.palette.primary.dark,
+
                             width: drawerWidth,
                             boxSizing: 'border-box',
                         },
@@ -163,6 +157,9 @@ export default function Layout() {
                     open={open}
                 >
                     <DrawerHeader>
+                        <Button style={{ color: "white", flex: 1 }} onClick={handleDrawerClose}>
+                            Gastao APP
+                        </Button>
                         <IconButton onClick={handleDrawerClose}>
                             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                         </IconButton>
@@ -171,13 +168,13 @@ export default function Layout() {
                     <AccordionUsage />{/* SideBar */}
                 </Drawer>
                 <Board open={open} style={{
-                    backgroundColor: "red",
+
                     minHeight: "100vh",
                     display: "flex",
                     flexDirection: "column",
                     overflow: "hidden" // Evita el scroll horizontal
                 }}>
-                    <DrawerHeader style={{ backgroundColor: "blueviolet" }} />
+                    <DrawerHeader style={{}} />
 
                     <div className='board-render' style={{
                         flexGrow: 1,
@@ -191,7 +188,7 @@ export default function Layout() {
                         <Outlet />
 
                     </div>
-                    <div className="footer" style={{ backgroundColor: "aliceblue", flexShrink: 0 }}>
+                    <div className="footer" style={{ flexShrink: 0 }}>
                         {<Footer />}
                     </div>
                 </Board>
@@ -213,8 +210,8 @@ const ButtonItemList = (props?: any | null | undefined) => {
                 aria-haspopup="true"
                 aria-expanded={props.open ? 'true' : undefined}
                 onClick={props.handleClick}
-                color='inherit'
-                style={{ color: "white" }}
+                /* color='' */
+                style={{ color: "white", fontSize: 20 }}
             >
                 {props.context}
             </Button>
