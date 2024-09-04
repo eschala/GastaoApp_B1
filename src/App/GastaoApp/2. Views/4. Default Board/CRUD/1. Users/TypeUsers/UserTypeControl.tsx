@@ -40,10 +40,11 @@ export function UserTypeControl() {
     }
 
     return (
-        <Box sx={{ minWidth: 120, width: "85%" }}>
-            <FormControl fullWidth>
+        <Box sx={{ width: "1fr", display: "flex" }}>
+            <FormControl style={{ width: "1fr", flex: 1 }} sx={{ p: 1 }}>
                 <InputLabel id="demo-simple-select-label">Tipo de Usuario</InputLabel>
                 <Select
+                    sx={{}}
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={selectedType}

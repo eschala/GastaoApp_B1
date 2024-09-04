@@ -62,8 +62,10 @@ export function FormCreateUsers() {
                 alignItems: "center",
                 alignContent: "center",
             }}>
+            <div className="" style={{ width: "100%", }}>
+                <UserTypeControl />
 
-            <UserTypeControl />
+            </div>
             <NameControl />
             <LastNameControl />
             <EmailControl />
@@ -76,10 +78,10 @@ export function FormCreateUsers() {
 
 function PasswordControl(showPassword: boolean, handleClickShowPassword: () => void, handleMouseDownPassword: (event: React.MouseEvent<HTMLButtonElement>) => void, handleMouseUpPassword: (event: React.MouseEvent<HTMLButtonElement>) => void) {
     return (
-        <FormControl sx={{ m: 1, }} variant="outlined">
+        <FormControl sx={{ m: 0, p: 1, width: "100%" }} variant="outlined">
             <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
             <OutlinedInput
-                sx={{ maxWidth: "300px", minWidth: "100px", }}
+                sx={{ minWidth: "100px", }}
                 id="outlined-adornment-password"
                 type={showPassword ? 'text' : 'password'}
                 endAdornment={<InputAdornment position="end">
@@ -100,10 +102,10 @@ function PasswordControl(showPassword: boolean, handleClickShowPassword: () => v
 
 function LastNameControl() {
     return (
-        <FormControl sx={{ m: 1, }}>
+        <FormControl sx={{ m: 0, p: 1, width: "100%" }}>
             <TextField
                 type='text'
-                style={{ maxWidth: "300px", minWidth: "100px" }}
+                style={{}}
                 helperText="" /* "Por favor escriba su apellido" */
                 id="demo-helper-text-aligned"
                 label="Apellido" />
@@ -114,11 +116,11 @@ function LastNameControl() {
 
 function NameControl() {
     return (
-        <FormControl sx={{ m: 1, }}>
+        <FormControl sx={{ m: 0, p: 1, width: "100%" }}>
 
             <TextField
                 type='text'
-                style={{ maxWidth: "300px", minWidth: "100px" }}
+                style={{}}
                 helperText="" /* "Por favor escriba su nombre" */
                 id="demo-helper-text-aligned"
                 label="Nombre" />
@@ -127,11 +129,11 @@ function NameControl() {
 }
 function EmailControl() {
     return (
-        <FormControl sx={{ m: 1, }}>
+        <FormControl sx={{ m: 0, p: 1, width: "100%" }}>
 
             <TextField
                 type='email'
-                style={{ maxWidth: "300px", minWidth: "100px" }}
+                style={{}}
                 helperText="" /* "Por favor escriba su nombre" */
                 id="demo-helper-text-aligned"
                 label="Correo Electrónico" />
@@ -140,11 +142,11 @@ function EmailControl() {
 }
 function DniControl() {
     return (
-        <FormControl sx={{ m: 1, }}>
+        <FormControl sx={{ m: 0, p: 1, width: "100%" }}>
 
             <TextField
                 type='number'
-                style={{ maxWidth: "300px", minWidth: "100px" }}
+                style={{}}
                 helperText="" /* "Por favor escriba su nombre" */
                 id="demo-helper-text-aligned"
                 label="Cedula / DNI" />
