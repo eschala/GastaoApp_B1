@@ -10,6 +10,11 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { UserTypeControl } from '../TypeUsers/UserTypeControl';
+
+
+/* import UserTypeControl from '../TypeUsers/UserTypeControl'; */
+
 
 export const Tittle_ = (
     <h1 className="text-dark">
@@ -47,7 +52,7 @@ export function FormCreateUsers() {
         <div className=""
             style={{
                 minHeight: "300px",
-                width: "700px",
+                width: "500px",
                 border: "1px aliceblue solid",
                 flexWrap: "wrap",
                 display: "flex",
@@ -58,6 +63,7 @@ export function FormCreateUsers() {
                 alignContent: "center",
             }}>
 
+            <UserTypeControl />
             <NameControl />
             <LastNameControl />
             <EmailControl />
@@ -145,3 +151,4 @@ function DniControl() {
         </FormControl>
     )
 }
+

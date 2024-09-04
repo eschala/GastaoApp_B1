@@ -1,14 +1,17 @@
 class ApiATbUsers {
     /* https://localhost:7210/api/ATbUsers */
     /* 'http://localhost:5187/api/ATbUsers' */
+    /* https://localhost:7190/api/ATbUsers */
     /* 5187 */
     /* 7210 */
     /* 5000 */
-
-    static port: number = 7210
+    /* 5098 */
+    /* 7190 */
+    static api: string = "/api/ATbUsers"
+    static port: number = 7190
     static localhost: string = "localhost"
     static host: string = "192.168.101.78"
-    static Url: string = (`https://${this.localhost}:${this.port}/api/ATbUsers`)
+    static Url: string = (`https://${this.host}:${this.port}${this.api}`)
     static UrlGetById = (id: number) => {
         return (this.Url + "/" + id)
     }
