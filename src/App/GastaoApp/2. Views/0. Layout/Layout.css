@@ -1,38 +1,34 @@
-* {
-    box-sizing: border-box;
-    /* Incluye padding y border en el cálculo del ancho */
+.btn-create:hover {
+    background-color: rgb(255, 255, 75);
+    color: black;
+    transition: 300ms;
+    font-size: 12pt;
 }
 
-.menu-hide-button {
-    display: none;
-
+.btn-update:hover {
+    background-color: rgb(54, 57, 255);
+    color: white;
+    transition: 300ms;
+    font-size: 12pt;
 }
 
-button {
-
-    background-color: transparent;
-    border: 0px;
+.btn-delete:hover {
+    background-color: rgb(255, 49, 49);
+    color: white;
+    transition: 300ms;
+    font-size: 12pt;
 }
 
-.main-render {}
-
-/* button:hover {} */
-
-
-@media (width <=600px) {
-    .menu-hide-button {
-        display: block;
-
-    }
-
-    .toggle-sidebar {
-        display: none;
-    }
+.btn-read:hover {
+    background-color: rgb(68, 68, 68);
+    color: white;
+    transition: 300ms;
+    font-size: 12pt;
 }
 
-
-/* @media screen and (width >=600px) {
-    .menu-hide-button {
-        display: block;
-    }
-} */
+.btn-report:hover {
+    background-color: rgb(115, 112, 143);
+    color: white;
+    transition: 300ms;
+    font-size: 12pt;
+}

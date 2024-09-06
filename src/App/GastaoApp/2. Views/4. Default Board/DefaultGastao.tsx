@@ -3,7 +3,6 @@
 
 import { Outlet } from 'react-router';
 
-
 export function DefaultGastao() {
 
 
@@ -19,7 +18,7 @@ function Board() {
     return (
         <div className="DefaultGastao-sub-2 DefaultGastao-sub">
             <div className="DefaultGastao-sub-2-1">
-                <h1>Samir</h1>
+                <h1>Gastao</h1>
 
             </div>
             <div className="DefaultGastao-sub-2-2">

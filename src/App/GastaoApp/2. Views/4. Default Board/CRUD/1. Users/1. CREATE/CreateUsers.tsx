@@ -12,21 +12,27 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { UserTypeControl } from '../TypeUsers/UserTypeControl';
 
+import './CreateUsersStyles.css';
+
+
 
 /* import UserTypeControl from '../TypeUsers/UserTypeControl'; */
 
 
-export const Tittle_ = (
-    <h1 className="text-dark">
-        {"<CreateUsers/>"}
+export const ContextTittle = (
+
+    <h1>
+        Crear nuevo usuario
     </h1>
-);
+
+)
+
 export function CreateUsers() {
 
 
     return (<>
-        <div style={{ border: "1px yellow solid", width: "100%", display: "flex", justifyItems: "center", justifyContent: "center" }} >
-            {/*             {Tittle_} */}
+        <div className='create' >
+            {ContextTittle}
             <FormCreateUsers />
         </div >
     </>);
@@ -49,18 +55,9 @@ export function FormCreateUsers() {
 
     return (
 
-        <div className=""
+        <div className="form-create"
             style={{
-                minHeight: "300px",
-                width: "500px",
-                border: "1px aliceblue solid",
-                flexWrap: "wrap",
-                display: "flex",
-                flexDirection: "row",
-                justifyItems: "center",
-                justifyContent: "center",
-                alignItems: "center",
-                alignContent: "center",
+
             }}>
             <div className="" style={{ width: "100%", }}>
                 <UserTypeControl />
@@ -79,7 +76,7 @@ export function FormCreateUsers() {
 function PasswordControl(showPassword: boolean, handleClickShowPassword: () => void, handleMouseDownPassword: (event: React.MouseEvent<HTMLButtonElement>) => void, handleMouseUpPassword: (event: React.MouseEvent<HTMLButtonElement>) => void) {
     return (
         <FormControl sx={{ m: 0, p: 1, width: "100%" }} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+            <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
             <OutlinedInput
                 sx={{ minWidth: "100px", }}
                 id="outlined-adornment-password"

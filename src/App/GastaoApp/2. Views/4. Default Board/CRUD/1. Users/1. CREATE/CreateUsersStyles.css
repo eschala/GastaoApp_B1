@@ -1,0 +1,32 @@
+.create {
+
+    border: 1px rgb(235, 255, 58) solid;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+
+
+
+}
+
+.form-create {
+
+    border: 1px rgb(235, 255, 58) solid;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+
+}
+
+@media screen and (width<=500px) {
+
+    .form-create {
+        width: 100%;
+    }
+}

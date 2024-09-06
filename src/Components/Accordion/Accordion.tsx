@@ -31,18 +31,18 @@ export default function AccordionUsage() {
                     <div className="" style={{ display: "flex", flexDirection: "column", maxWidth: "140px", border: "1px solid black" }}>
 
 
-                        <Link style={{ width: "100%" }} to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + CreateRoute.Path}>
+                        <Link className='btn-create' style={{ width: "100%" }} to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + CreateRoute.Path}>
 
-                            <Button variant='outlined' style={{ backgroundColor: "", width: "100%" }} startIcon={
+                            <Button className='btn-create' variant='outlined' style={{ backgroundColor: "", width: "100%" }} startIcon={
 
                                 <AddCircleIcon />
                             }>
                                 Crear
                             </Button>
                         </Link>
-                        <Link style={{ width: "100%", }} to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + UpdateRoute.Path}>
+                        <Link className='btn-update' style={{ width: "100%", }} to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + UpdateRoute.Path}>
 
-                            <Button variant='outlined' style={{ width: "100%", }} startIcon={
+                            <Button className='btn-update' variant='outlined' style={{ width: "100%", }} startIcon={
 
                                 <EditIcon />
 
@@ -52,9 +52,9 @@ export default function AccordionUsage() {
                         </Link>
 
 
-                        <Link to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + DeleteRoute.Path}>
+                        <Link className='btn-delete' to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + DeleteRoute.Path}>
 
-                            <Button variant='outlined' style={{ width: "100%", }} startIcon={
+                            <Button className='btn-delete' variant='outlined' style={{ width: "100%", }} startIcon={
 
                                 <DeleteIcon />
 
@@ -63,9 +63,9 @@ export default function AccordionUsage() {
                             </Button>
                         </Link>
 
-                        <Link to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + ReadRoute.Path}>
+                        <Link className='btn-read' to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + ReadRoute.Path}>
 
-                            <Button variant='outlined' style={{ width: "100%", backgroundColor: "" }} startIcon={
+                            <Button className='btn-read' variant='outlined' style={{ width: "100%", backgroundColor: "" }} startIcon={
 
                                 <SearchIcon />
 
@@ -73,9 +73,9 @@ export default function AccordionUsage() {
                                 Consultar
                             </Button>
                         </Link>
-                        <Link to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + ReportRoute.Path}>
+                        <Link className='btn-report' to={DefaultGastaoRoute.Path + "/" + UsersRoute.Path + "/" + ReportRoute.Path}>
 
-                            <Button variant='outlined' style={{ width: "100%", }} startIcon={
+                            <Button className='btn-report' variant='outlined' style={{ width: "100%", }} startIcon={
 
                                 <AssignmentIcon />
 

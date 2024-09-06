@@ -1,0 +1,30 @@
+.update {
+
+    border: 1px lightblue solid;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.form-update {
+
+    border: 1px lightblue solid;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+
+}
+
+@media screen and (width<=500px) {
+
+    .form-update {
+        width: 100%;
+    }
+}

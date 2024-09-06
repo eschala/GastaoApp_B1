@@ -22,7 +22,9 @@ import { RoutesViews } from '../0. RoutesViews/RoutesViews';
 import { DefaultGastaoRoute, HomeRoute } from '../../1. Models/Routes/PathRoutes';
 import AccordionUsage from '../../../../Components/Accordion/Accordion';
 
-// or
+
+/* styles */
+import './Layout.css';
 
 const drawerWidth = 210;
 
