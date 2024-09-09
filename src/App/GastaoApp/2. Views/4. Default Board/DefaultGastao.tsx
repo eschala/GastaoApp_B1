@@ -3,6 +3,9 @@
 
 import { Outlet } from 'react-router';
 
+
+
+
 export function DefaultGastao() {
 
 
@@ -25,6 +28,7 @@ function Board() {
 
 
                 <Outlet />
+
             </div>
         </div>
     );

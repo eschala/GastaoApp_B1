@@ -33,7 +33,7 @@ export function DeleteUsers() {
 
 export const ContextTittle = (
     <h1 className="text-dark">
-        Editar
+        Eliminar
     </h1>
 );
 

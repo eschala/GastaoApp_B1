@@ -1,12 +1,12 @@
 import { Box, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent, CircularProgress } from '@mui/material';
 
-import { GetAzTbTipoUsers, ITypeUser } from '../../../../../1. Models/Functions/API Responses/GetAzTbTipoUsers';
+import { GetAzTbTipoUsers, TipoUser } from '../../../../../1. Models/Functions/API Responses/GetAzTbTipoUsers';
 
 import { useEffect, useState } from 'react';
 
 export function UserTypeControl() {
     const [selectedType, setSelectedType] = useState('');
-    const [userTypes, setUserTypes] = useState<ITypeUser[]>([]);
+    const [userTypes, setUserTypes] = useState<TipoUser[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -42,7 +42,7 @@ export function UserTypeControl() {
     return (
         <Box sx={{ width: "1fr", display: "flex" }}>
             <FormControl style={{ width: "1fr", flex: 1 }} sx={{ p: 1 }}>
-                <InputLabel id="demo-simple-select-label">Tipo de Usuario</InputLabel>
+                <InputLabel id="demo-simple-select-label">{""}</InputLabel>
                 <Select
                     sx={{}}
                     labelId="demo-simple-select-label"
@@ -51,7 +51,7 @@ export function UserTypeControl() {
                     label="Tipo de Usuario"
                     onChange={handleChange}
                 >
-                    {userTypes.map((userType: ITypeUser) => (
+                    {userTypes.map((userType: TipoUser) => (
                         <MenuItem key={userType.idTipoUser} value={userType.idTipoUser}>
                             {userType.tipoUser}
                         </MenuItem>

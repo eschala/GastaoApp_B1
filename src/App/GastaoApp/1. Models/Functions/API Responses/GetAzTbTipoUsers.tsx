@@ -19,11 +19,11 @@ class ApiAzTbTipoUsers {
 }
 
 
-export interface ITypeUser {
+export interface TipoUser {
     idTipoUser: number;
     tipoUser: string;
 }
-export function GetAzTbTipoUsers(): Promise<ITypeUser[]> { // Asegúrate de especificar el tipo de retorno
+export function GetAzTbTipoUsers(): Promise<TipoUser[]> { // Asegúrate de especificar el tipo de retorno
     return new Promise((resolve, reject) => {
         fetch(ApiAzTbTipoUsers.Url)
             .then((response) => {
@@ -33,7 +33,7 @@ export function GetAzTbTipoUsers(): Promise<ITypeUser[]> { // Asegúrate de espe
                 return response.json();
             })
             .then((data: any) => {
-                const typeUser: ITypeUser[] = data.map((type: any) => ({
+                const typeUser: TipoUser[] = data.map((type: any) => ({
                     idTipoUser: type.idTipoUser || 0, // Asegúrate de que sea un número
                     tipoUser: type.tipoUser || "",
                 }));

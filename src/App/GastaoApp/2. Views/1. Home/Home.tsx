@@ -1,12 +1,13 @@
 
+
 export const Home = () => {
     return (<>
-        <div style={{}} className="container-fluid h-100">
+        <div style={{ width: "100%" }} className="">
 
-            <h1>
+            <h3>
                 {"<Home/>"}
-            </h1>
-            <div className="container-fluid">
+            </h3>
+            <div className="" style={{ backgroundColor: "gray" }}>
 
             </div>
 

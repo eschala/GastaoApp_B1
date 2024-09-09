@@ -13,7 +13,7 @@ import { GetATbUsers, User } from '../../../../../1. Models/Functions/API Respon
 
 const columnHelper = createMRTColumnHelper<User>();
 
-const LoggedAdmin = !true;
+const LoggedAdmin = true;
 
 function defineColumns(AdminLogged: boolean) {
     return AdminLogged ? [
@@ -58,13 +58,11 @@ export const ReadUsersTable = () => {
         columnFilterDisplayMode: 'popover',
         paginationDisplayMode: 'pages',
         positionToolbarAlertBanner: 'bottom',
-        editDisplayMode: 'modal',
-        enableEditing: true,
 
         renderTopToolbarCustomActions: ({ table }) => (
             <Box
                 sx={{
-                    maxWidth: "90%",
+                    maxWidth: "100%",
                     display: 'flex',
                     gap: '6px',
                     padding: '5px',

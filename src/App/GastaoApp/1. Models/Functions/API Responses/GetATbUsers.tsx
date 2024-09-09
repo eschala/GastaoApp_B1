@@ -1,80 +1,50 @@
-class ApiATbUsers {
-    /* https://localhost:7210/api/ATbUsers */
-    /* 'http://localhost:5187/api/ATbUsers' */
-    /* https://localhost:7190/api/ATbUsers */
-    /* 5187 */
-    /* 7210 */
-    /* 5000 */
-    /* 5098 */
-    /* 7190 */
-    static api: string = "/api/ATbUsers"
-    static port: number = 7190
-    static localhost: string = "localhost"
-    static host: string = "192.168.101.78"
-    static Url: string = (`https://${this.host}:${this.port}${this.api}`)
-    static UrlGetById = (id: number) => {
-        return (this.Url + "/" + id)
-    }
-}
 
 import { useState, useEffect } from "react";
+import { ATbUsersAPI } from "./API/ApiUrl";
 
 export interface User {
     idUser: number;
-    tipoUserId: number | null;
-    nameUser: string;
-    lastNameUser: string;
-    dniUser: number;
-    emailUser: string;
-    passUser: string;
+    tipoUserId?: number | null;
+    nameUser?: string | null;
+    lastNameUser?: string | null;
+    dniUser?: number | null;
+    emailUser?: string | null;
+    passUser?: string | null;
 }
 
-export function GetATbUsers(props: any) {
+export function GetATbUsers(AdminLogged: boolean | any) {
     const [ATbUsers, setATbUsers] = useState<User[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-
-        fetch(ApiATbUsers.Url)
-            .then((response) => {
+        const fetchUsers = async () => {
+            try {
+                const response = await fetch(ATbUsersAPI.Url);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                return response.json();
-            })
-            .then((data) => {
-
-                if (props.AdminLog == true) {
-                    const users: User[] = data.map((user: any) => ({
-                        idUser: user.idUser,
-                        tipoUserId: user.tipoUserId,
-                        nameUser: user.nameUser,
-                        lastNameUser: user.lastNameUser,
-                        dniUser: user.dniUser,
-                        emailUser: user.emailUser,
-                        passUser: user.passUser || "", // Asigna una cadena vacía si no hay contraseña
-                    }));
-                    setATbUsers(users);
-                }
-                else {
-                    const users: User[] = data.map((user: any) => ({
-                        idUser: user.idUser,
-                        /* tipoUserId: user.tipoUserId, */
-                        nameUser: user.nameUser,
-                        lastNameUser: user.lastNameUser,
-                        dniUser: user.dniUser,
-                        emailUser: user.emailUser,
-                        /* passUser: user.passUser || "",  */// Asigna una cadena vacía si no hay contraseña
-                    }));
-                    setATbUsers(users);
-                }
-
-            })
-            .catch((error) => {
+                const data = await response.json();
+                const users: User[] = data.map((user: any) => ({
+                    idUser: user.idUser,
+                    tipoUserId: user.tipoUserId,
+                    nameUser: user.nameUser,
+                    lastNameUser: user.lastNameUser,
+                    dniUser: user.dniUser,
+                    emailUser: user.emailUser,
+                    passUser: user.passUser || "",
+                }));
+                setATbUsers(users);
+            } catch (error) {
+                setError('Error fetching data');
                 console.error('Error fetching data:', error);
-            });
-    }, []);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    return (ATbUsers);
+        fetchUsers();
+    }, [AdminLogged]);
+
+    return ATbUsers;
 }
-
-/* export const dataATbUsers = GetATbUsers() */
