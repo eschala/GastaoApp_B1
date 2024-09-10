@@ -1,5 +1,6 @@
 
 
+import { FormUpdateUsersBORRADOR } from '../2. READ/FormUpdateBorrador';
 import { FormUpdateUsers } from './FormUpdateUsers';
 import './UpdateUsersStyles.css';
 
@@ -12,6 +13,8 @@ export function UpdateUsers() {
             {ContextTittle}
 
             <FormUpdateUsers />
+            {ContextTittle}
+            <FormUpdateUsersBORRADOR />
 
 
         </div>

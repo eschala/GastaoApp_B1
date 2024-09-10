@@ -1,0 +1,100 @@
+return ({/*renderizado Componente de FormUpdateUsersBORRADOR*/}
+        <>
+            {GetUsersFiltrados.length > 0 && (
+                <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    backgroundColor: "blue",
+                    padding: "20px",
+                    borderRadius: "5px"
+                }}>
+                    <h1>Registro {indiceActual + 1} de {GetUsersFiltrados.length}</h1>
+
+                    <NameControl
+                        valorControl={currentData.nameUser}
+                        nameField={"nameUser"}
+                        handleEvent={(e) => handleChangeValue('nameUser', e.target.value)}
+
+                    />
+                    <LastNameControl valorControl={currentData.lastNameUser} nameField={"lastNameUser"}
+                        handleEvent={(e) => handleChangeValue('lastNameUser', e.target.value)}
+                    />
+                    <EmailControl valorControl={currentData.emailUser} nameField={"emailUser"}
+                        handleEvent={(e) => handleChangeValue('emailUser', e.target.value)}
+                    />
+                    <DniControl
+                        valorControl={currentData.dniUser} nameField={"dniUser"} handleEvent={(e) => handleChangeValue('dniUser', e.target.value)}
+                    />
+
+                    <PasswordControl valorControl={currentData.passUser} nameField={"passUser"}
+                        handleEvent={(e) => handleChangeValue('passUser', e.target.value)}
+                    />
+                    <div className="sections-buttons" style={{ marginTop: "20px", display: "flex", justifyContent: "space-between", width: "100%" }}>
+                        <Button variant='outlined' onClick={PrevRegister} disabled={indiceActual === 0}>
+                            Anterior
+                        </Button>
+                        <Button variant='outlined' onClick={NextRegister} disabled={indiceActual === GetUsersFiltrados.length - 1}>
+                            Siguiente
+                        </Button>
+                    </div>
+                </div>
+            )}
+
+        </>
+    );
+
+
+//PasswordControl
+
+interface PasswordControlProps {
+    getPass?: string | null | undefined | any | any;
+    showPassword?: boolean | any;
+    handleClickShowPassword: () => void;
+    handleMouseDownPassword: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    handleMouseUpPassword: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const PasswordControl: React.FC<PasswordControlProps> = ({
+
+    showPassword,
+    handleClickShowPassword,
+    handleMouseDownPassword,
+    handleMouseUpPassword,
+}, { nameField, valorControl, handleEvent }: InputControls
+) => {
+
+    return (
+        <FormControl sx={{ m: 0, p: 1, width: "100%" }} variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">{"Contraseña"}</InputLabel>
+            <OutlinedInput
+                name={nameField}
+                value={valorControl || null}
+                onChange={handleEvent}
+                sx={{ minWidth: "100px" }}
+                type={showPassword ? 'text' : 'password'}
+                placeholder='Contraseña'
+                endAdornment={
+                    <InputAdornment position="end">
+                        <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            onMouseUp={handleMouseUpPassword}
+                            edge="end"
+                        >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                    </InputAdornment>
+                }
+            />
+        </FormControl>
+    );
+};
+
+//error:
+        <PasswordControl valorControl={currentData.passUser} nameField={"passUser"}
+        handleEvent={(e) => handleChangeValue('passUser', e.target.value)}
+    ¿Por qué no me sale error en esta parte?
+
+

@@ -14,6 +14,7 @@ export function NameControl(prop: any) {
         <FormControl sx={{ m: 0, p: 1, width: "100%" }}>
 
             <TextField
+
                 name='nameUser'
                 placeholder='Nombre'
                 type='text'
@@ -30,6 +31,7 @@ export function LastNameControl(prop: any) {
     return (
         <FormControl sx={{ m: 0, p: 1, width: "100%" }}>
             <TextField
+
                 name='lastNameUser'
                 placeholder='Apellido'
                 type='text'
@@ -48,6 +50,7 @@ export function DniControl(prop: any) {
         <FormControl sx={{ m: 0, p: 1, width: "100%" }}>
 
             <TextField
+
                 name='dniUser'
                 placeholder='DNI / Cedula'
                 type='number'
@@ -64,6 +67,7 @@ export function EmailControl(prop: any) {
         <FormControl sx={{ m: 0, p: 1, width: "100%" }}>
 
             <TextField
+
                 name='emailUser'
                 placeholder='Correo'
                 type='email'

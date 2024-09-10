@@ -1,8 +1,8 @@
 export function Footer() {
     return <footer>
-        <h1>
-            Eduar Samir Chalá C.
-        </h1>
+        <h2>
+            © 2024 All Rights Reserved by Eduar Samir Chalá C.
+        </h2>
     </footer>;
 }
 

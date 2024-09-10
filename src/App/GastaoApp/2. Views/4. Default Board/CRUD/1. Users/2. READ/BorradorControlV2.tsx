@@ -9,78 +9,85 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useState } from 'react';
+import { User } from '../../../../../1. Models/Functions/API Responses/GetATbUsers';
+interface InputControls {
+    nameField: string; // Nombre del campo
+    valorControl: any | number | string | null | undefined; // Valor actual del campo// Se define la función para manejar el cambio
+    handleEvent: (e: any) => void;
 
-function NameControl({ initialName }: { initialName: string | null | undefined | any }) {
-    const [name, setName] = useState(initialName || '');
+}
+// Manejador de cambios para los inputs
+export const handleChange = (fieldName: string | any, fieldValue: string | number | any, dataContext: User | any) => {
+    const [dataCurrent, setDataCurrent] = useState(dataContext)
 
+    setDataCurrent({
+        ...dataCurrent,
+        [fieldName]: fieldValue,
+    });
+};
+
+function NameControl({ nameField, valorControl, handleEvent }: InputControls) {
     return (
-        <FormControl sx={{ m: 0, p: 1, width: "100%" }}>
+        <FormControl style={{ margin: 0, padding: 1, width: "100%" }}>
             <TextField
-                name='nameUser'
+                name={nameField} // Usar el nombre del campo
                 placeholder='Nombre'
                 type='text'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={valorControl} // Valor controlado
+
+                onChange={handleEvent}
                 style={{}}
-                helperText=""
             />
         </FormControl>
     );
 }
-
-function LastNameControl({ initialLastName }: { initialLastName: string | null | undefined | any }) {
-    const [lastName, setLastName] = useState(initialLastName || '');
-
+function LastNameControl({ nameField, valorControl, handleEvent }: InputControls) {
     return (
-        <FormControl sx={{ m: 0, p: 1, width: "100%" }}>
+        <FormControl style={{ margin: 0, padding: 1, width: "100%" }}>
             <TextField
-                name='lastNameUser'
+                name={nameField} // Usar el nombre del campo
                 placeholder='Apellido'
                 type='text'
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                value={valorControl} // Valor controlado
+
+                onChange={handleEvent}
                 style={{}}
-                helperText=""
             />
         </FormControl>
     );
 }
-
-function DniControl({ initialDNI }: { initialDNI: number | null | undefined | any }) {
-    const [dni, setDni] = useState(initialDNI || 0);
-
+function DniControl({ nameField, valorControl, handleEvent }: InputControls) {
     return (
-        <FormControl sx={{ m: 0, p: 1, width: "100%" }}>
+        <FormControl style={{ margin: 0, padding: 1, width: "100%" }}>
             <TextField
-                name='dniUser'
+                name={nameField} // Usar el nombre del campo
                 placeholder='DNI / Cedula'
                 type='number'
-                value={dni}
-                onChange={(e) => setDni(Number(e.target.value))}
+                value={valorControl} // Valor controlado
+
+                onChange={handleEvent}
                 style={{}}
-                helperText=""
             />
         </FormControl>
     );
 }
 
-function EmailControl({ initialEmail }: { initialEmail: string | null | undefined | any }) {
-    const [email, setEmail] = useState(initialEmail || '');
-
+function EmailControl({ nameField, valorControl, handleEvent }: InputControls) {
     return (
-        <FormControl sx={{ m: 0, p: 1, width: "100%" }}>
+        <FormControl style={{ margin: 0, padding: 1, width: "100%" }}>
             <TextField
-                name='emailUser'
+                name={nameField} // Usar el nombre del campo
                 placeholder='Correo'
                 type='email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={valorControl} // Valor controlado
+
+                onChange={handleEvent}
                 style={{}}
-                helperText=""
             />
         </FormControl>
     );
 }
+
 
 interface PasswordControlProps {
     getPass?: string | null | undefined | any | any;
@@ -88,41 +95,46 @@ interface PasswordControlProps {
     handleClickShowPassword: () => void;
     handleMouseDownPassword: (event: React.MouseEvent<HTMLButtonElement>) => void;
     handleMouseUpPassword: (event: React.MouseEvent<HTMLButtonElement>) => void;
+
+    nameField: string; // Nombre del campo
+    valorControl: any | number | string | null | undefined; // Valor actual del campo// Se define la función para manejar el cambio
+    handleEvent: (e: any) => void;
 }
 
-const PasswordControl: React.FC<PasswordControlProps> = ({
-    getPass,
+function PasswordControl({
+
     showPassword,
     handleClickShowPassword,
     handleMouseDownPassword,
     handleMouseUpPassword,
-}) => {
-    const [pass, setPass] = useState(getPass || '');
+    nameField,
+    valorControl,
+    handleEvent,
+}: PasswordControlProps, /* { nameField, valorControl, handleEvent }: InputControls */) {
 
     return (
         <FormControl sx={{ m: 0, p: 1, width: "100%" }} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
+            <InputLabel htmlFor="outlined-adornment-password">{"Contraseña"}</InputLabel>
             <OutlinedInput
-                name='passUser'
-                value={pass}
-                onChange={(e) => setPass(e.target.value)}
+                name={nameField}
+                value={valorControl}
+                onChange={handleEvent}
+                sx={{ minWidth: "100px" }}
                 type={showPassword ? 'text' : 'password'}
-                endAdornment={
-                    <InputAdornment position="end">
-                        <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
-                            onMouseUp={handleMouseUpPassword}
-                            edge="end"
-                        >
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                    </InputAdornment>
-                }
-            />
+                placeholder='Contraseña'
+                endAdornment={<InputAdornment position="end">
+                    <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        onMouseUp={handleMouseUpPassword}
+                        edge="end"
+                    >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                </InputAdornment>} />
         </FormControl>
     );
-};
+}
 
 export { NameControl, LastNameControl, DniControl, EmailControl, PasswordControl };

@@ -13,8 +13,8 @@ export function FormUpdateUsers() {
 
     const {
         indiceActual,
-        filtros,
-        manejarCambioFiltro,
+        /*         filtros,
+                manejarCambioFiltro, */
         GetUsersFiltrados,
         PrevRegister,
         NextRegister
@@ -46,7 +46,6 @@ export function FormUpdateUsers() {
                     <EmailControl getEmail={GetUsersFiltrados[indiceActual].emailUser} />{/* Form control con input */}
                     <DniControl getCedula={GetUsersFiltrados[indiceActual].dniUser} />{/* Form control con input */}
 
-
                     <PasswordControl
                         getPass={GetUsersFiltrados[indiceActual].passUser}
                         showPassword={showPassword}
@@ -75,7 +74,6 @@ export function FormUpdateUsers() {
                     <EmailControl getEmail={GetUsersFiltrados[indiceActual].emailUser} />
                     <DniControl getCedula={GetUsersFiltrados[indiceActual].dniUser} />
 
-                    
                     <PasswordControl
                         getPass={GetUsersFiltrados[indiceActual].passUser}
                         showPassword={showPassword}
