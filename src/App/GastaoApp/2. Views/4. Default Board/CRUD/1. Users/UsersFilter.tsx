@@ -47,6 +47,9 @@ export function UserFilter() {
         }
     };
 
+
+
+
     const NextRegister = () => {
         if (indiceActual < GetUsersFiltrados.length - 1) {
             setIndiceActual(indiceActual + 1);
@@ -60,5 +63,6 @@ export function UserFilter() {
         GetUsersFiltrados,
         PrevRegister,
         NextRegister,
+
     };
 }

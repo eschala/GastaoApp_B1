@@ -1,7 +1,7 @@
 
 
 import { FormUpdateUsersBORRADOR } from '../2. READ/FormUpdateBorrador';
-import { FormUpdateUsers } from './FormUpdateUsers';
+/* import { FormUpdateUsers } from './FormUpdateUsers'; */
 import './UpdateUsersStyles.css';
 
 /* import UserTypeControl from '../TypeUsers/UserTypeControl'; */
@@ -10,9 +10,9 @@ export function UpdateUsers() {
     return (<>
         <div className='update' style={{}} >
 
-            {ContextTittle}
+            {/*             {ContextTittle}
 
-            <FormUpdateUsers />
+            <FormUpdateUsers /> */}
             {ContextTittle}
             <FormUpdateUsersBORRADOR />
 

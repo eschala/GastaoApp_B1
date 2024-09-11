@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
-import { ATbUsersAPI } from "./API/ApiUrl";
+import { API_Url } from "./API/ApiUrl";
+
 
 export interface User {
     idUser: number;
@@ -12,15 +13,21 @@ export interface User {
     passUser?: string | null;
 }
 
+let getUsers = new API_Url()
+
 export function GetATbUsers(AdminLogged: boolean | any) {
+    let UrlApiUsers: string = getUsers.GetUrl("192.168.101.78", "7190", "/api/ATbUsers")
+    let UrlApiUser: string = getUsers.GetUrlByID("192.168.101.77", "7190", "/api/ATbUsers", 12)
+
     const [ATbUsers, setATbUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
+    const [errorFetch, setErrorFetch] = useState<string | null>(null);
 
     useEffect(() => {
+        console.log(UrlApiUser)
         const fetchUsers = async () => {
             try {
-                const response = await fetch(ATbUsersAPI.Url);
+                const response = await fetch(UrlApiUsers);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -36,10 +43,12 @@ export function GetATbUsers(AdminLogged: boolean | any) {
                 }));
                 setATbUsers(users);
             } catch (error) {
-                setError('Error fetching data');
-                console.error('Error fetching data:', error);
+
+                setErrorFetch('Error fetching data');
+                console.error(errorFetch, error);
             } finally {
                 setLoading(false);
+                console.log(loading);
             }
         };
 

@@ -113,8 +113,8 @@ function PasswordControl({
 }: PasswordControlProps, /* { nameField, valorControl, handleEvent }: InputControls */) {
 
     return (
-        <FormControl sx={{ m: 0, p: 1, width: "100%" }} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">{"Contraseña"}</InputLabel>
+        <FormControl style={{ margin: 0, padding: 1, width: "100%" }} variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">{""}</InputLabel>
             <OutlinedInput
                 name={nameField}
                 value={valorControl}

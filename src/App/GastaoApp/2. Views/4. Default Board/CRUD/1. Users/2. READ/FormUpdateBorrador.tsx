@@ -2,15 +2,16 @@ import { useEffect, useState } from 'react';
 import { UserFilter } from '../UsersFilter';
 import { DniControl, EmailControl, LastNameControl, NameControl, PasswordControl } from './BorradorControlV2';
 
-
 import Button from '@mui/material/Button';
 import React from 'react';
 
-
+let firstRegister: boolean
 
 export function FormUpdateUsersBORRADOR() {
-    const [showPassword, setShowPassword] = React.useState(false);
 
+    const { indiceActual, GetUsersFiltrados, PrevRegister, NextRegister, } = UserFilter();
+
+    const [showPassword, setShowPassword] = React.useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -22,21 +23,27 @@ export function FormUpdateUsersBORRADOR() {
         event.preventDefault();
     };
 
-    const { indiceActual, GetUsersFiltrados, PrevRegister, NextRegister } = UserFilter();
+    useEffect(() => {
+
+    }, [])
 
     const [currentData, setCurrentData] = useState({
-        nameUser: '',
-        lastNameUser: '',
-        emailUser: '',
+        idUser: 0,
+        nameUser: "",
+        lastNameUser: "",
+        emailUser: "",
         dniUser: 0,
-        passUser: '',
-    });
+        passUser: "",
+    })
+
 
     // Efecto para actualizar currentData cuando cambia el índice actual
     useEffect(() => {
+
         if (GetUsersFiltrados.length > 0) {
             const currentUser = GetUsersFiltrados[indiceActual];
             setCurrentData({
+                idUser: currentUser.idUser ?? 0,
                 nameUser: currentUser.nameUser ?? '',
                 lastNameUser: currentUser.lastNameUser ?? '',
                 emailUser: currentUser.emailUser ?? '',
@@ -46,6 +53,8 @@ export function FormUpdateUsersBORRADOR() {
         }
     }, [indiceActual]);
 
+
+
     // Manejador de cambios para los inputs
     const handleChangeValue = (fieldName: any, fieldValue: any) => {
         setCurrentData({
@@ -54,6 +63,10 @@ export function FormUpdateUsersBORRADOR() {
         });
     };
 
+    if (currentData.idUser == null || currentData.idUser == 0)
+        firstRegister = false
+    else
+        firstRegister = true
     return (
         <>
             {GetUsersFiltrados.length > 0 && (
@@ -61,36 +74,35 @@ export function FormUpdateUsersBORRADOR() {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    backgroundColor: "blue",
+                    backgroundColor: "darkblue",
                     padding: "20px",
                     borderRadius: "5px"
                 }}>
-                    <h1>Registro {indiceActual + 1} de {GetUsersFiltrados.length}</h1>
 
                     <NameControl
-                        valorControl={currentData.nameUser}
+                        valorControl={firstRegister == false ? GetUsersFiltrados[0].nameUser : currentData.nameUser}
                         nameField={"nameUser"}
                         handleEvent={(e) => handleChangeValue('nameUser', e.target.value)}
 
                     />
                     <LastNameControl
-                        valorControl={currentData.lastNameUser}
+                        valorControl={firstRegister == false ? GetUsersFiltrados[0].lastNameUser : currentData.lastNameUser}
                         nameField={"lastNameUser"}
                         handleEvent={(e) => handleChangeValue('lastNameUser', e.target.value)}
                     />
                     <EmailControl
-                        valorControl={currentData.emailUser}
+                        valorControl={firstRegister == false ? GetUsersFiltrados[0].emailUser : currentData.emailUser}
                         nameField={"emailUser"}
                         handleEvent={(e) => handleChangeValue('emailUser', e.target.value)}
                     />
                     <DniControl
-                        valorControl={currentData.dniUser}
+                        valorControl={firstRegister == false ? GetUsersFiltrados[0].dniUser : currentData.dniUser}
                         nameField={"dniUser"}
                         handleEvent={(e) => handleChangeValue('dniUser', e.target.value)}
                     />
 
                     <PasswordControl
-                        valorControl={currentData.passUser}
+                        valorControl={firstRegister == false ? GetUsersFiltrados[0].passUser : currentData.passUser}
                         nameField={"passUser"}
                         handleEvent={(e) => handleChangeValue('passUser', e.target.value)}
                         showPassword={showPassword}
@@ -98,11 +110,15 @@ export function FormUpdateUsersBORRADOR() {
                         handleMouseDownPassword={handleMouseDownPassword}
                         handleMouseUpPassword={handleMouseUpPassword}
                     />
+                    <h2>Registro {indiceActual + 1} de {GetUsersFiltrados.length}</h2>
                     <div className="sections-buttons" style={{ marginTop: "20px", display: "flex", justifyContent: "space-between", width: "100%" }}>
-                        <Button variant='outlined' onClick={PrevRegister} disabled={indiceActual === 0}>
+                        <Button className='btn-register' style={{ border: "white solid 1px", }} variant='outlined' onClick={PrevRegister} disabled={indiceActual === 0}>
                             Anterior
                         </Button>
-                        <Button variant='outlined' onClick={NextRegister} disabled={indiceActual === GetUsersFiltrados.length - 1}>
+                        <Button className='btn-register' style={{ border: "white solid 1px", }} variant='outlined' onClick={() => alert("User Actual = " + GetUsersFiltrados[0].nameUser)} disabled={indiceActual === GetUsersFiltrados.length - 1}>
+                            Primero
+                        </Button>
+                        <Button className='btn-register' style={{ border: "white solid 1px", }} variant='outlined' onClick={NextRegister} disabled={indiceActual === GetUsersFiltrados.length - 1}>
                             Siguiente
                         </Button>
                     </div>
