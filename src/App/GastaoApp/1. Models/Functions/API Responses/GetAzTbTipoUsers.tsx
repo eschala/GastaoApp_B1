@@ -11,7 +11,7 @@ class ApiAzTbTipoUsers {
     static api: string = "/api/AzTbTipoUsers"
     static port: number = 7190
     static localhost: string = "localhost"
-    static host: string = "192.168.101.78"
+    static host: string = "192.168.101.77"
     static Url: string = (`https://${this.host}:${this.port}${this.api}`)
     static UrlGetById = (id: number) => {
         return (this.Url + "/" + id)

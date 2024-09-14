@@ -1,10 +1,12 @@
 import * as React from 'react';
 
-import { UserTypeControl } from '../TypeUsers/UserTypeControl';
 
-import { UserFilter } from '../UsersFilter';
+
+
 import { Button } from '@mui/material';
 import { DniControl, EmailControl, LastNameControl, NameControl, PasswordControl } from '../FormControls/Controls';
+import { UserTypeControl } from '../TypeUsers/UserTypeControl';
+import { UserFilter } from '../../../../../3. Contexts/UsersFilter';
 
 /* import { DniControl, EmailControl, LastNameControl, NameControl, PasswordControl } from '../FormControls/Controls'; */
 
@@ -12,7 +14,7 @@ export function FormUpdateUsers() {
     const [showPassword, setShowPassword] = React.useState(false);
 
     const {
-        indiceActual,
+        indexCurrent: indiceActual,
         /*         filtros,
                 manejarCambioFiltro, */
         GetUsersFiltrados,

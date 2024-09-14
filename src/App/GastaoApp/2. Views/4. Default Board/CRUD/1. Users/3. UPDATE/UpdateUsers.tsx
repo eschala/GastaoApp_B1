@@ -1,7 +1,8 @@
 
+import { FindUserByID } from '../../../../../1. Models/Functions/API Responses/UserComponentOnTestFind';
+import { FormUpdateUsersBORRADOR } from './FormUpdateBorrador';
 
-import { FormUpdateUsersBORRADOR } from '../2. READ/FormUpdateBorrador';
-/* import { FormUpdateUsers } from './FormUpdateUsers'; */
+import { FormUpdateUsers } from './FormUpdateUsers';
 import './UpdateUsersStyles.css';
 
 /* import UserTypeControl from '../TypeUsers/UserTypeControl'; */
@@ -14,8 +15,9 @@ export function UpdateUsers() {
 
             <FormUpdateUsers /> */}
             {ContextTittle}
+            {/* <FormUpdateUsers /> */}
             <FormUpdateUsersBORRADOR />
-
+            {/* <FindUserByID /> */}
 
         </div>
     </>);
@@ -23,7 +25,7 @@ export function UpdateUsers() {
 
 export const ContextTittle = (
     <h1 className="text-dark">
-        Editar
+        {/* Editar */}
     </h1>
 );
 

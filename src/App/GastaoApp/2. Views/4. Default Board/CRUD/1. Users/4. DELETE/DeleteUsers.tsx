@@ -10,9 +10,10 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { UserTypeControl } from '../TypeUsers/UserTypeControl';
+
 
 import './DeleteUsersStyles.css';
+import { UserTypeControl } from '../TypeUsers/UserTypeControl';
 
 
 

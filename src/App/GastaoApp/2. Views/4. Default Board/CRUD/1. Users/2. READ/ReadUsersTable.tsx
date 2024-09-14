@@ -13,12 +13,12 @@ import { GetATbUsers, User } from '../../../../../1. Models/Functions/API Respon
 
 const columnHelper = createMRTColumnHelper<User>();
 
-const LoggedAdmin = !true;
+const LoggedAdmin = true;
 
 function defineColumns(AdminLogged: boolean) {
     return AdminLogged ? [
         columnHelper.accessor('idUser', { header: 'ID', size: 25 }),
-        columnHelper.accessor('tipoUserId', { header: 'Tipo', size: 90 }),
+        columnHelper.accessor('tipoUserId', { header: 'Tipo', size: 25 }),
         columnHelper.accessor('nameUser', { header: 'Nombre', size: 90 }),
         columnHelper.accessor('lastNameUser', { header: 'Apellido', size: 90 }),
         columnHelper.accessor('dniUser', { header: 'Cédula', size: 90 }),

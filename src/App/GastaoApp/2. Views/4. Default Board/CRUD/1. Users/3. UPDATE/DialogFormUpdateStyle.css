@@ -1,0 +1,65 @@
+.section-control-dialog-form {
+    background-color: rgba(240, 248, 255, 0);
+}
+
+.section-form-dialog {
+
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.section-idUser-dialog-form {
+
+    flex: 100%;
+    order: 0;
+}
+
+.section-tipoUserId-dialog-form {
+
+    flex: 50%;
+    order: 0;
+}
+
+
+.section-dniUser-dialog-form {
+
+    flex: 50%;
+    order: 1;
+}
+
+
+.section-nameUser-dialog-form {
+
+    flex: 50%;
+    order: 2;
+}
+
+
+.section-lastNameUser-dialog-form {
+
+    flex: 50%;
+    order: 3;
+}
+
+
+.section-emailUser-dialog-form {
+
+    flex: 50%;
+    order: 4;
+}
+
+
+.section-passUser-dialog-form {
+
+    flex: 50%;
+    order: 5;
+}
+
+@media screen and (width <=550px) {
+    .section-control-dialog-form {
+        flex: 100%;
+    }
+}

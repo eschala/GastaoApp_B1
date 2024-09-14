@@ -32,3 +32,147 @@
     transition: 300ms;
     font-size: 12pt;
 }
+
+.section-control {
+
+    display: flex;
+    border: rgb(168, 186, 255) solid 1px;
+    flex-direction: column;
+
+}
+
+.section-dniUser {
+    flex: 50%;
+
+    order: 1;
+}
+
+.section-nameUser {
+    flex: 50%;
+
+    order: 2;
+}
+
+.section-lastNameUser {
+    flex: 50%;
+
+    order: 3;
+}
+
+
+.section-emailUser {
+    flex: 50%;
+
+    order: 4;
+}
+
+.section-passUser {
+    flex: 100%;
+
+    order: 5;
+}
+
+.btn-first-register:hover {}
+
+.btn-prev-register:hover {}
+
+.btn-next-register:hover {}
+
+.btn-last-register:hover {}
+
+
+.btn-register:hover {
+    /*  */
+
+    border: 1pt #3c3cff solid;
+    color:
+        rgb(0, 6, 53);
+    background-color:
+        rgb(155, 142, 255);
+    font-weight: 700;
+}
+
+@media screen and (width<=340px) {
+    .section-control {
+
+        width: 100%;
+    }
+
+    .section-form {
+        width: 100%;
+    }
+
+    .form-update-user {
+        flex: 1;
+        width: 100%;
+    }
+
+    .sections-buttons-navigation {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn-first-register {
+        flex: 100%;
+    }
+
+    .btn-prev-register {
+        flex: 50%;
+    }
+
+    .btn-next-register {
+        flex: 50%;
+    }
+
+    .btn-last-register {
+        flex: 100%;
+    }
+}
+
+@media screen and (width>=640px) {
+    .form-update-user {
+        width: 60%;
+    }
+
+    .section-control {
+
+        width: 50%;
+    }
+
+
+
+    .section-passUser {
+        flex: 100%;
+
+
+    }
+
+
+
+    .section-form {
+        display: flex;
+        flex-direction: row;
+
+        flex-wrap: wrap;
+
+        width: 90%;
+    }
+}
+
+@media screen and (width>=940px) {
+    .section-form {
+        display: flex;
+        flex-direction: row;
+
+        flex-wrap: wrap;
+
+        width: 70%;
+    }
+}
+
+@media screen and (height>=1080px) {
+    .section-form {
+        font-size: 2rem;
+    }
+
+}

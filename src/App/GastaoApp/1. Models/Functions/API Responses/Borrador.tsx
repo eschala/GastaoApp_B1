@@ -1,56 +1,50 @@
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import { GetATbUsers, User } from "./GetATbUsers";
+import { useState } from "react";
 
+const ClearConsole = () => console.clear();
+export const NoneFunction = () => 0;
+function UserComponentOnTestFind() {
+    const [inputIdUserValue, setInputIdUserValue] = useState(0)
+    let data: User[] = GetATbUsers(true)
 
-/*
-export function GetAzTbTipoUsers(props: any) {
-    const [AzTbTipoUsers, setAzTbTipoUsers] = useState<UserType[]>([]);
+    return (
+        <div style={{
+            width: "100%",
+            flexWrap: "wrap",
+            flexDirection: "column",
+            border: "1px solid white",
+            justifyContent: "center",
+            alignItems: "center"
+        }}>
+            <h1>Buscar Usuario</h1>
+            <div onClick={() => 0} className="" style={{ display: "flex", width: "100%", flexWrap: "wrap" }}>
 
-    useEffect(() => {
+                <TextField style={{ flex: "100%" }} label="ID Usuario" name="idUser" type="number" value={inputIdUserValue} onChange={(e) => setInputIdUserValue(Number(e.target.value))} placeholder="Ingrese el ID de l usuario" />
+                <Button id="buttonMas" onClick={() => setInputIdUserValue(inputIdUserValue + 1)} style={{ textAlign: "center", flex: "50%" }}> <h1>Más +</h1> </Button>
+                <Button id="buttonMenos" onClick={() => setInputIdUserValue(inputIdUserValue - 1)} style={{ textAlign: "center", flex: "50%" }}> <h1>Menos -</h1> </Button>
+            </div>
+            <div onClick={() => 0} className="" style={{ display: "flex", width: "100%", flexWrap: "wrap" }}>
 
-        fetch(ApiAzTbTipoUsers.Url)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then((data) => {
+                <h4 style={{ textAlign: "center", flex: "100%" }}>{"(Argumento/Expresión)"}</h4>
+                <h4 style={{ textAlign: "center", flex: "50%" }}>{"(Resultado)"}</h4>
+            </div>
+            <Button variant="outlined" style={{ flex: "100%" }} onClick={() => 0}>Buscar</Button>
+            <Button variant="outlined" style={{ flex: "100%" }} onClick={() => 0}>Mostrar Users</Button>
+            <Button variant="outlined" style={{ flex: "100%" }} onClick={ClearConsole}>Limpiar LOG</Button>
 
-                if (props.AdminLog == true) {
-                    const userType: UserType[] = data.map((userType: any) => ({
-                        ID_Tipo_User: userType.ID_Tipo_User,
-                        Tipo_User: userType.Tipo_User,
-
-                    }));
-                    setAzTbTipoUsers(userType);
-                }
-                else {
-                    const userType: UserType[] = data.map((userType: any) => ({
-
-                        Tipo_User: userType.Tipo_User,
-
-
-                    }));
-                    setAzTbTipoUsers(userType);
-                }
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
-    return (AzTbTipoUsers);
+            <div className="" style={{ width: "100%", border: "blue 1pt solid", display: "none", flexWrap: "wrap" }}>
+                {data.map(m => <div className="" style={{ width: "100%", border: "yellow 1pt solid", flex: "30%", display: "flex", flexWrap: "wrap" }}>
+                    <div className="" style={{ width: "100%", border: "white", flex: "30%", display: "flex", flexDirection: "column", flexWrap: "wrap" }}>
+                        <p style={{ fontWeight: "bolder" }}> ID: {m.idUser + ""}</p>
+                        <p>{""}</p>                        <p>{""}</p>
+                    </div>
+                </div>
+                )}
+            </div>
+        </div>
+    );
 }
-*/
-// Asegúrate de que tengas un archivo de tipos para UserType
-
-/* export async function GetAzTbTipoUsers(isAdmin: any): Promise<UserType[]> {
-    const response = await fetch(ApiAzTbTipoUsers.Url);
-    if (!response.ok) {
-        throw new Error('Error fetching data from API');
-    }
-    const data = await response.json();
-    console.log(data)
-    console.log(data.ID_Tipo_User)
-    console.log(data.Tipo_User)
-
-    return data
-} */
+export { UserComponentOnTestFind as FindUserByID }
+/*¿ Cómo hago para buscar un registro por el campo "idUser" de "GetAtbusers(true)" que es una funcion que me retorna todos los registros de la tabla "ATbUsers" con la asignada por una interfaz en typescript como "User"? */

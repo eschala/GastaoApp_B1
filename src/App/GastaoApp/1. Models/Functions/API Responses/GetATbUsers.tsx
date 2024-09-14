@@ -16,7 +16,7 @@ export interface User {
 let getUsers = new API_Url()
 
 export function GetATbUsers(AdminLogged: boolean | any) {
-    let UrlApiUsers: string = getUsers.GetUrl("192.168.101.78", "7190", "/api/ATbUsers")
+    let UrlApiUsers: string = getUsers.GetUrl("192.168.101.77", "7190", "/api/ATbUsers")
     let UrlApiUser: string = getUsers.GetUrlByID("192.168.101.77", "7190", "/api/ATbUsers", 12)
 
     const [ATbUsers, setATbUsers] = useState<User[]>([]);
@@ -24,7 +24,9 @@ export function GetATbUsers(AdminLogged: boolean | any) {
     const [errorFetch, setErrorFetch] = useState<string | null>(null);
 
     useEffect(() => {
-        console.log(UrlApiUser)
+        () => {
+            loading
+        }
         const fetchUsers = async () => {
             try {
                 const response = await fetch(UrlApiUsers);
@@ -32,23 +34,34 @@ export function GetATbUsers(AdminLogged: boolean | any) {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                const users: User[] = data.map((user: any) => ({
-                    idUser: user.idUser,
-                    tipoUserId: user.tipoUserId,
-                    nameUser: user.nameUser,
-                    lastNameUser: user.lastNameUser,
-                    dniUser: user.dniUser,
-                    emailUser: user.emailUser,
-                    passUser: user.passUser || "",
-                }));
-                setATbUsers(users);
+                if (AdminLogged == true) {
+                    const users: User[] = data.map((user: any) => ({
+                        idUser: user.idUser,
+                        tipoUserId: user.tipoUserId,
+                        nameUser: user.nameUser,
+                        lastNameUser: user.lastNameUser,
+                        dniUser: user.dniUser,
+                        emailUser: user.emailUser,
+                        passUser: user.passUser || "",
+                    }));
+                    setATbUsers(users);
+                } else {
+                    const users: User[] = data.map((user: any) => ({
+                        idUser: user.idUser,
+                        nameUser: user.nameUser,
+                        lastNameUser: user.lastNameUser,
+                        dniUser: user.dniUser,
+                        emailUser: user.emailUser,
+                    }));
+                    setATbUsers(users);
+                }
             } catch (error) {
 
                 setErrorFetch('Error fetching data');
                 console.error(errorFetch, error);
             } finally {
                 setLoading(false);
-                console.log(loading);
+                /* console.log(loading); */
             }
         };
 
@@ -57,3 +70,5 @@ export function GetATbUsers(AdminLogged: boolean | any) {
 
     return ATbUsers;
 }
+
+

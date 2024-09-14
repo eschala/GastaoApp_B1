@@ -1,11 +1,12 @@
 import React from 'react';
-import { UserFilter } from './UsersFilter';
+import { UserFilter } from '../../../../3. Contexts/UsersFilter';
+
 
 
 export const UserFilterComponent: React.FC = () => {
     const {
-        indiceActual,
-        filtros,
+        indexCurrent: indiceActual,
+        filters: filtros,
         manejarCambioFiltro,
         GetUsersFiltrados,
         PrevRegister,
@@ -15,7 +16,7 @@ export const UserFilterComponent: React.FC = () => {
     return (
         <div>
             {/* Aquí van los campos de filtro, usando manejarCambioFiltro */}
-            <input type="text" name="UserName" value={filtros.UserName} onChange={manejarCambioFiltro} />
+            <input type="text" name="UserName" value={filtros.nameUserFilter} onChange={manejarCambioFiltro} />
             {/* Más campos de entrada según lo necesites */}
 
             {GetUsersFiltrados.length > 0 ? (
