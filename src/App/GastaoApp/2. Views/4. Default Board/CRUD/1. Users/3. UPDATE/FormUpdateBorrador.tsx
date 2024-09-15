@@ -8,7 +8,10 @@ import { GetUserTypeControl } from '../TypeUsers/UserTypeControl';
 
 import { DialogFormUpdate } from './DialogFormUpdate';
 import { FindUserByID } from '../../../../../1. Models/Functions/API Responses/UserComponentOnTestFind';
-import { UsersFiltersContext } from '../../../../../3. Contexts/UsersFiltersContext';
+import { FilterInput, UsersFiltersContext } from '../../../../../3. Contexts/UsersFiltersContext';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import { Child } from '../../../../../1. Models/Types/Types';
 
 
 
@@ -16,7 +19,7 @@ import { UsersFiltersContext } from '../../../../../3. Contexts/UsersFiltersCont
 
 let firstRegister: boolean
 
-export function FormUpdateUsersBORRADOR() {
+export function FormUpdateUsersBORRADOR({ children }: Child | any) {
 
     /* const { indexCurrent: indexCurrent, GetUsersFiltered, PrevRegister, NextRegister, FirstRegister, LastRegister } = UserFilter(); */
     const {
@@ -26,6 +29,7 @@ export function FormUpdateUsersBORRADOR() {
         NextRegister,
         FirstRegister,
         LastRegister,
+        handelControlChangeFilters,
 
     } = useContext(UsersFiltersContext)
     const [showPassword, setShowPassword] = React.useState(false);
@@ -66,18 +70,30 @@ export function FormUpdateUsersBORRADOR() {
     // Efecto para actualizar currentData cuando cambia el índice actual
     useEffect(() => {
 
+
+
+    }, []);
+
+    const setData = () => {
+        const currentUser = GetUsersFiltered[indexCurrent];
+        setCurrentData({
+            idUserFilter: currentUser.idUser ?? 0,
+            tipoUserIdFilter: currentUser.tipoUserId ?? 0,
+            nameUserFilter: currentUser.nameUser ?? '',
+            lastNameUserFilter: currentUser.lastNameUser ?? '',
+            emailUserFilter: currentUser.emailUser ?? '',
+            dniUserFilter: currentUser.dniUser ?? 0,
+            passUserFilter: currentUser.passUser ?? '',
+        });
+    }
+    useEffect(() => {
+
         if (GetUsersFiltered.length > 0) {
-            const currentUser = GetUsersFiltered[indexCurrent];
-            setCurrentData({
-                idUserFilter: currentUser.idUser ?? 0,
-                tipoUserIdFilter: currentUser.tipoUserId ?? 0,
-                nameUserFilter: currentUser.nameUser ?? '',
-                lastNameUserFilter: currentUser.lastNameUser ?? '',
-                emailUserFilter: currentUser.emailUser ?? '',
-                dniUserFilter: currentUser.dniUser ?? 0,
-                passUserFilter: currentUser.passUser ?? '',
-            });
+            setData();
         }
+        else {
+        }
+        console.log("GetUsersFiltered.length", GetUsersFiltered.length)
     }, [indexCurrent]);
 
 
@@ -91,35 +107,32 @@ export function FormUpdateUsersBORRADOR() {
     };
 
     let setFlexDirection: any = "column"
-    if (currentData.idUserFilter == null || currentData.idUserFilter == 0)
-        firstRegister = false
-    else
-        firstRegister = true
 
+    switch (currentData.idUserFilter) {
+        case null:
+
+            firstRegister = false
+            break;
+        case 0:
+
+            break;
+
+        default:
+            firstRegister = true
+            break;
+    }
+
+    if (GetUsersFiltered.length == 1) {
+        /* setData() */
+    }
+    else {
+    }
+    let numV: number | any
     const testingLog = () => {
-        /* alert("Usaurio editado: " + GetUsersFiltered[indexCurrent].nameUser); */
-        /* console.clear() */
-        let numV: any = 0
-
-        if (firstRegister == false) {
-            numV = 0
-
-        }
-        else {
-
-            numV = currentData.idUserFilter
-        }
+        (firstRegister === false ? numV = 0 : numV = currentData.idUserFilter);
         alert("currentData.idUser: " + numV)
     }
-    useEffect(() => {
 
-        setTimeout(() => {
-            /* PrevRegister() */
-
-            console.log("RESET FIRST")
-        }, 1000)
-
-    }, [])
     /* 
     GetUsersToAdmin[0].idUser => IdUser_Current
     GetUsersToAdmin[0].tipoUserId => TipoUserId_Current
@@ -143,6 +156,11 @@ export function FormUpdateUsersBORRADOR() {
      */
     return (
         <>
+            <div className="" style={{ width: "60%" }}>
+                {FilterInput(handelControlChangeFilters)}
+                <h1>{"GetUsersFiltered.length" + " " + GetUsersFiltered.length}</h1>
+
+            </div>
             {GetUsersFiltered.length > 0 && (
                 <div
                     className='form-update-user'
@@ -160,6 +178,7 @@ export function FormUpdateUsersBORRADOR() {
                     <h1>ID: {firstRegister == false ? 0 : currentData.idUserFilter}</h1>
 
                     <div className="section-form">
+                        {children}
 
 
                         <div className="section-control section-tipoUserId"
@@ -167,14 +186,12 @@ export function FormUpdateUsersBORRADOR() {
                                 width: "",
                                 display: "flex",
                                 textAlign: "center"
-                            }}
-                        >
+                            }}>
                             <label htmlFor="" style={{ display: "flex", flexDirection: "column", alignItems: "", justifyItems: "", margin: "0.2rem 1rem", }}>
                                 Tipo de Usuario:
                             </label>
                             <div className="" style={{ width: "100%", }}>
                                 <GetUserTypeControl nameField={'tipoUserId'} valueTypeIdUser={firstRegister == false ? 0 : currentData.tipoUserIdFilter} />
-
                             </div>
                         </div>
                         <div className="section-control section-nameUser"
@@ -287,3 +304,5 @@ export function FormUpdateUsersBORRADOR() {
         </>
     );
 }
+
+
