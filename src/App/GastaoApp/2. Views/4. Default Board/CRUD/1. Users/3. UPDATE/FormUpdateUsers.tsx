@@ -17,7 +17,7 @@ export function FormUpdateUsers() {
         indexCurrent: indiceActual,
         /*         filtros,
                 manejarCambioFiltro, */
-        GetUsersFiltrados,
+        GetUsersFiltered: GetUsersFiltrados,
         PrevRegister,
         NextRegister
     } = UserFilter();

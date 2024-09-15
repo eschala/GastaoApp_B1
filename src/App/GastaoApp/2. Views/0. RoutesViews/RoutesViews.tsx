@@ -1,5 +1,5 @@
 /* RoutesViews.tsx */
-import { Routes, Route } from "react-router"
+import { Routes, Route, Outlet, } from "react-router"
 import { HomeRoute, LoginRoute, RegisterRoute, DefaultGastaoRoute } from "../../1. Models/Routes/PathRoutes"
 import { Home } from "../1. Home/Home"
 import { Login } from "../2. Login/Login"
@@ -20,6 +20,8 @@ import { ReadUsers } from "../4. Default Board/CRUD/1. Users/2. READ/ReadUsers"
 import { UpdateUsers } from "../4. Default Board/CRUD/1. Users/3. UPDATE/UpdateUsers"
 import { DeleteUsers } from "../4. Default Board/CRUD/1. Users/4. DELETE/DeleteUsers"
 import { ReportUsers } from "../4. Default Board/CRUD/1. Users/ReportUsers"
+import { Users } from "../4. Default Board/CRUD/1. Users/Users"
+import { UserFiltersContextProvider } from "../../3. Contexts/UsersFiltersContext"
 
 
 
@@ -35,11 +37,21 @@ export function RoutesViews() {
             <Route path={LoginRoute.Path} element={<Login />} />
             <Route path={RegisterRoute.Path} element={<Register />} />
             <Route path={DefaultGastaoRoute.Path} element={<DefaultGastao />}>
-                <Route path={"Users/Create"} element={<CreateUsers />} />
-                <Route path={"Users/Read"} element={<ReadUsers />} />
-                <Route path={"Users/Update"} element={<UpdateUsers />} />
-                <Route path={"Users/Delete"} element={<DeleteUsers />} />
-                <Route path={"Users/Report"} element={<ReportUsers />} />
+                <Route path="Users" element={
+                    < UserFiltersContextProvider>
+                        <Users>
+
+                            {/* <h1>Samir</h1> */}
+                            <Outlet></Outlet>
+                        </Users>
+                    </UserFiltersContextProvider>
+                }>
+                    <Route path={"Create"} element={<CreateUsers />} />
+                    <Route path={"Read"} element={<ReadUsers />} />
+                    <Route path={"Update"} element={<UpdateUsers />} />
+                    <Route path={"Delete"} element={<DeleteUsers />} />
+                    <Route path={"Report"} element={<ReportUsers />} />
+                </Route>
 
                 <Route path={"Ingresos/Create"} element={<CreateIngresos />} />
                 <Route path={"Ingresos/Read"} element={<ReadIngresos />} />

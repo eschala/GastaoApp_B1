@@ -75,7 +75,7 @@ export function UserFilter() {
         indexCurrent,
         filters,
         manejarCambioFiltro,
-        GetUsersFiltrados,
+        GetUsersFiltered: GetUsersFiltrados,
         PrevRegister,
         NextRegister,
         nextprevA,

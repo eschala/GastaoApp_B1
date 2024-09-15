@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useEffect } from 'react';
 import { useState } from "react";
 import { GetATbUsers, User } from "../1. Models/Functions/API Responses/GetATbUsers";
 
@@ -15,12 +15,39 @@ type UsersFiltersContextProviderProps = {
 };
 
 type UsersFiltersContextType = {
-
+    mostrarMensaje: () => void;
+    handelControlChangeFilters: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    normalizeString: (convertNormalString: string) => string;
+    GetUsersByFilter: User[] /* | User */; // Asegúrate de que User esté importado correctamente
+    GetUsersFiltered: User[] /* | User */; // Asegúrate de que User esté importado correctamente
+    GetUsersToAdmin: User[] /* | User */; // Asegúrate de que User esté importado correctamente
+    GetUsersToUser: User[] /* | User */; // Asegúrate de que User esté importado correctamente
+    indexCurrent: number;
+    setIndexCurrent: React.Dispatch<React.SetStateAction<number>>;
+    filters: UsersFilterBy;
+    setFilters: React.Dispatch<React.SetStateAction<UsersFilterBy>>
+    PrevRegister: () => void;
+    FirstRegister: () => void;
+    NextRegister: () => void;
+    LastRegister: () => void;
+    numero: number;
+    /*     
+        idUser_I0: any;
+        tipoUserId_I0: any;
+        nameUser_I0: any;
+        lastNameUser_I0: any;
+        emailUser_I0: any;
+        dniUser_I0: any;
+        passUser_I0: any; */
 };
 
 export const UsersFiltersContext = createContext({} as UsersFiltersContextType);
+/* export const UsersFiltersContext = createContext({} as any); */
+const RandomCont = createContext({} as any);
 
 export const UserFiltersContextProvider = ({ children }: UsersFiltersContextProviderProps) => {
+
+    const mostrarMensaje = () => alert("mostrarMensaje() Console");
 
     const [indexCurrent, setIndexCurrent] = useState(0);
     const [filters, setFilters] = useState<UsersFilterBy>({
@@ -31,7 +58,7 @@ export const UserFiltersContextProvider = ({ children }: UsersFiltersContextProv
         dniUserFilter: 0,
         emailUserFilter: "",
     });
-
+    const numero = 10
     const handelControlChangeFilters = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         const valor = name === "idUserFilter" || name === "tipoUserIdFilter" || name === "dniUserFilter" ? Number(value) : value;
@@ -46,6 +73,9 @@ export const UserFiltersContextProvider = ({ children }: UsersFiltersContextProv
 
     const GetUsersToAdmin: User[] = GetATbUsers(true);
     const GetUsersToUser: User[] = GetATbUsers(false);
+
+
+
 
     const GetUsersFiltered = GetUsersByFilter.filter(user =>
         (filters.idUserFilter === 0 || user.idUser === filters.idUserFilter) &&
@@ -69,10 +99,12 @@ export const UserFiltersContextProvider = ({ children }: UsersFiltersContextProv
     return (
         <UsersFiltersContext.Provider
             value={{
-                handelControlChangeFilters,
                 normalizeString,
+                handelControlChangeFilters,
                 GetUsersByFilter,
                 GetUsersFiltered,
+                GetUsersToAdmin,
+                GetUsersToUser,
                 FirstRegister,
                 PrevRegister,
                 NextRegister,
@@ -81,8 +113,8 @@ export const UserFiltersContextProvider = ({ children }: UsersFiltersContextProv
                 setIndexCurrent,
                 filters,
                 setFilters,
-                GetUsersToAdmin,
-                GetUsersToUser,
+                mostrarMensaje,
+                numero,
 
             }}
         >

@@ -8,7 +8,7 @@ export const UserFilterComponent: React.FC = () => {
         indexCurrent: indiceActual,
         filters: filtros,
         manejarCambioFiltro,
-        GetUsersFiltrados,
+        GetUsersFiltered: GetUsersFiltrados,
         PrevRegister,
         NextRegister
     } = UserFilter();

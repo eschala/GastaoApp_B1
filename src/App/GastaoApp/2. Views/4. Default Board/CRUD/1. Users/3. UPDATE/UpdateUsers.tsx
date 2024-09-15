@@ -1,8 +1,8 @@
 
-import { FindUserByID } from '../../../../../1. Models/Functions/API Responses/UserComponentOnTestFind';
+/* import { FindUserByID } from '../../../../../1. Models/Functions/API Responses/UserComponentOnTestFind'; */
 import { FormUpdateUsersBORRADOR } from './FormUpdateBorrador';
 
-import { FormUpdateUsers } from './FormUpdateUsers';
+
 import './UpdateUsersStyles.css';
 
 /* import UserTypeControl from '../TypeUsers/UserTypeControl'; */
@@ -16,7 +16,7 @@ export function UpdateUsers() {
             <FormUpdateUsers /> */}
             {ContextTittle}
             {/* <FormUpdateUsers /> */}
-            <h1>samir</h1>
+            <p>UserContext</p>
             <FormUpdateUsersBORRADOR />
             {/* <FindUserByID /> */}
 

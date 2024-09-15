@@ -50,7 +50,7 @@ import { UserFilter } from '../../../../../3. Contexts/UsersFilter';
 
 
 export function FormUpdateUsersBORRADOR() {
-    const { indexCurrent: indiceActual, GetUsersFiltrados, PrevRegister, NextRegister } = UserFilter();
+    const { indexCurrent: indiceActual, GetUsersFiltered: GetUsersFiltrados, PrevRegister, NextRegister } = UserFilter();
 
     const [currentData, setCurrentData] = useState({
         nameUser: '',

@@ -16,18 +16,10 @@ import { UsersFiltersContext } from '../../../../../3. Contexts/UsersFiltersCont
 
 let firstRegister: boolean
 
-export function FormUpdateUsersBORRADOR() {
+function FormUpdateUsersBORRADOR() {
 
     /* const { indexCurrent: indexCurrent, GetUsersFiltered, PrevRegister, NextRegister, FirstRegister, LastRegister } = UserFilter(); */
-    const {
-        indexCurrent,
-        GetUsersFiltered,
-        PrevRegister,
-        NextRegister,
-        FirstRegister,
-        LastRegister,
-
-    } = useContext(UsersFiltersContext)
+    const { indexCurrent, GetUsersFiltered, PrevRegister, NextRegister, FirstRegister, LastRegister } = useContext(UsersFiltersContext)
     const [showPassword, setShowPassword] = React.useState(false);
 
 
@@ -102,7 +94,7 @@ export function FormUpdateUsersBORRADOR() {
         let numV: any = 0
 
         if (firstRegister == false) {
-            numV = 0
+            numV = GetUsersFiltered[0].idUser
 
         }
         else {
@@ -120,27 +112,8 @@ export function FormUpdateUsersBORRADOR() {
         }, 1000)
 
     }, [])
-    /* 
-    GetUsersToAdmin[0].idUser => IdUser_Current
-    GetUsersToAdmin[0].tipoUserId => TipoUserId_Current
-    GetUsersToAdmin[0].tipoUserId => TipoUserId_Current
-    GetUsersToAdmin[0].nameUser => NameUser_Current
-    GetUsersToAdmin[0].lastNameUser => LastNameUser_Current
-    GetUsersToAdmin[0].emailUser => EmailUser_Current
-    GetUsersToAdmin[0].dniUser => DniUser_Current
-    GetUsersToAdmin[0].passUser => PassUser_Current
-     */
 
 
-    /* 
-        let IdUser_Current: any = GetUsersToAdmin[0].idUser
-        let TipoUserId_Current: any = GetUsersToAdmin[0].tipoUserId
-        let NameUser_Current: any = GetUsersToAdmin[0].nameUser
-        let LastNameUser_Current: any = GetUsersToAdmin[0].lastNameUser
-        let EmailUser_Current: any = GetUsersToAdmin[0].emailUser
-        let DniUser_Current: any = GetUsersToAdmin[0].dniUser
-        let PassUser_Current: any = GetUsersToAdmin[0].passUser
-     */
     return (
         <>
             {GetUsersFiltered.length > 0 && (
@@ -157,8 +130,8 @@ export function FormUpdateUsersBORRADOR() {
                         border: "1px lightblue solid"
                     }}>
                     <h2 style={{ color: "white", opacity: 0.8 }}>Registro {indexCurrent + 1} de {GetUsersFiltered.length}</h2>
-                    <h1>ID: {firstRegister == false ? 0 : currentData.idUserFilter}</h1>
-
+                    <h1>ID: {firstRegister == false ? GetUsersFiltered[0].idUser : currentData.idUserFilter}</h1>
+                    <h2>{firstRegister == false ? GetUsersFiltered[0].tipoUserId : currentData.tipoUserIdFilter + " " + typeof (currentData.tipoUserIdFilter)}</h2>
                     <div className="section-form">
 
 
@@ -173,7 +146,7 @@ export function FormUpdateUsersBORRADOR() {
                                 Tipo de Usuario:
                             </label>
                             <div className="" style={{ width: "100%", }}>
-                                <GetUserTypeControl nameField={'tipoUserId'} valueTypeIdUser={firstRegister == false ? 0 : currentData.tipoUserIdFilter} />
+                                <GetUserTypeControl nameField={'tipoUserId'} valueTypeIdUser={firstRegister == false ? GetUsersFiltered[0].tipoUserId : currentData.tipoUserIdFilter} />
 
                             </div>
                         </div>
@@ -186,7 +159,7 @@ export function FormUpdateUsersBORRADOR() {
                                 Nombre:
                             </label>
                             <NameControl
-                                valorControl={firstRegister == false ? 0 : currentData.nameUserFilter}
+                                valorControl={firstRegister == false ? GetUsersFiltered[0].nameUser : currentData.nameUserFilter}
                                 nameField={"nameUser"}
                                 handleEvent={(e) => handleChangeValue('nameUser', e.target.value)}
 
@@ -202,7 +175,7 @@ export function FormUpdateUsersBORRADOR() {
                             </label>
 
                             <LastNameControl
-                                valorControl={firstRegister == false ? 0 : currentData.lastNameUserFilter}
+                                valorControl={firstRegister == false ? GetUsersFiltered[0].lastNameUser : currentData.lastNameUserFilter}
                                 nameField={"lastNameUser"}
                                 handleEvent={(e) => handleChangeValue('lastNameUser', e.target.value)}
                             />
@@ -216,7 +189,7 @@ export function FormUpdateUsersBORRADOR() {
                                 Correo Electrónico:
                             </label>
                             <EmailControl
-                                valorControl={firstRegister == false ? 0 : currentData.emailUserFilter}
+                                valorControl={firstRegister == false ? GetUsersFiltered[0].emailUser : currentData.emailUserFilter}
                                 nameField={"emailUser"}
                                 handleEvent={(e) => handleChangeValue('emailUser', e.target.value)}
                             />
@@ -246,7 +219,7 @@ export function FormUpdateUsersBORRADOR() {
                             </label>
 
                             <PasswordControl
-                                valorControl={firstRegister == false ? 0 : currentData.passUserFilter}
+                                valorControl={firstRegister == false ? GetUsersFiltered[0].passUser : currentData.passUserFilter}
                                 nameField={"passUser"}
                                 handleEvent={(e) => handleChangeValue('passUser', e.target.value)}
                                 showPassword={showPassword}
@@ -261,7 +234,9 @@ export function FormUpdateUsersBORRADOR() {
                         <Button className='btn-register' style={{ border: "white solid 1px", padding: "0.5rem", margin: "1rem" }} variant='outlined' onClick={testingLog} >
                             Log
                         </Button>
-
+                        {/*                         <Button className='btn-register' style={{ border: "white solid 1px", padding: "0.5rem", margin: "1rem" }} variant='outlined' onClick={handleOpenClick} >
+                            Editar
+                        </Button> */}
                         <DialogFormUpdate />
                     </div>
                     <div className="sections-buttons-navigation" style={{ marginTop: "20px", display: "flex", flexWrap: "wrap", justifyContent: "space-between", width: "100%", height: "auto", }}>
@@ -287,3 +262,4 @@ export function FormUpdateUsersBORRADOR() {
         </>
     );
 }
+export { FormUpdateUsersBORRADOR as Random }
