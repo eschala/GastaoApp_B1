@@ -15,8 +15,8 @@ import { GetATbUsers, User } from '../../../../../1. Models/Functions/API Respon
 import { UsersFiltersContext } from '../../../../../3. Contexts/UsersFiltersContext';
 import './DialogFormUpdateStyle.css';
 
+let valor_User: any
 export function DialogFormUpdate() {
-    let valor_User: any = 0
 
     const [idUserDialog, setIdUserDialog] = useState(0);
 
@@ -27,7 +27,7 @@ export function DialogFormUpdate() {
     const data: User[] = GetATbUsers(true)
 
     useEffect(() => {
-        valor_User = 1
+
         setIdUserDialog(GetUsersFiltered[indexCurrent].idUser)
         console.log("GetUsersFiltered[indexCurrent].idUser: " + GetUsersFiltered[indexCurrent].idUser)
         searchUserById(GetUsersFiltered[indexCurrent].idUser)
@@ -37,6 +37,8 @@ export function DialogFormUpdate() {
     const searchUserById = (id: number) => {
         const foundUser = data.find(user => user.idUser === id);
         setUserFound(foundUser);
+        valor_User = userFound;
+        valor_User = idUserDialog;
     };
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);

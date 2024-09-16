@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect } from 'react';
+import { createContext, useContext, } from 'react';
 import { useState } from "react";
 import { GetATbUsers, User } from "../1. Models/Functions/API Responses/GetATbUsers";
 import FormControl from '@mui/material/FormControl';
@@ -7,13 +7,14 @@ import Button from '@mui/material/Button';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
-interface UsersFilterBy {
+export interface UsersFilterBy {
     idUserFilter: number | any;
     tipoUserIdFilter: number | any;
     nameUserFilter: string | any;
     lastNameUserFilter: string | any;
     dniUserFilter: number | any;
     emailUserFilter: string | any;
+    passUserFilter: string | any;
 }
 type UsersFiltersContextProviderProps = {
     children: React.ReactNode;
@@ -61,6 +62,7 @@ export const UserFiltersContextProvider = ({ children }: UsersFiltersContextProv
         lastNameUserFilter: "",
         dniUserFilter: 0,
         emailUserFilter: "",
+        passUserFilter: "",
     });
 
     const numero = 10
@@ -187,7 +189,7 @@ export function FilterInput(handelControlChangeFilters: (e: React.ChangeEvent<HT
                         onChange={handelControlChangeFilters} // Función para manejar el cambio
                         style={{ flex: "80%" }}
                     />
-                    <Button style={{ flex: "20%" }} onClick={() => console.log(GetUsersFiltered)}>
+                    <Button variant='outlined' style={{ flex: "20%" }} onClick={() => { console.log(GetUsersFiltered); }}>
                         Filtrar
                     </Button>
                 </div>

@@ -12,14 +12,12 @@ function UsersView({ children }: Child | null | any) {
     const m = () => mostrarMensaje();
     return (
         <div style={{ backgroundColor: "", border: "solid 1px white", width: "100%" }} className="container-fluid h-100">
-            <button onClick={() => m()}>mostar</button>
-            <h1 className="text-dark">
+
+            <h3 className="text-dark">
                 {"<Users/> index: " + indexCurrent + " posición: "}{indexCurrent + 1}
 
-            </h1>
+            </h3>
             {children}
-
-
         </div>
     );
 }
