@@ -41,35 +41,49 @@
 
 }
 
-.section-dniUser {
-    flex: 50%;
 
-    order: 1;
+
+.section-idUser {
+    flex: 25%;
+
+
+}
+
+.section-tipoUserId {
+    flex: 25%;
+
+
+}
+
+.section-dniUser {
+    flex: 100%;
+
+
 }
 
 .section-nameUser {
     flex: 50%;
 
-    order: 2;
+
 }
 
 .section-lastNameUser {
     flex: 50%;
 
-    order: 3;
+
 }
 
 
 .section-emailUser {
-    flex: 50%;
+    flex: 100%;
 
-    order: 4;
+
 }
 
 .section-passUser {
     flex: 100%;
 
-    order: 5;
+
 }
 
 .btn-first-register:hover {}
@@ -92,6 +106,24 @@
     font-weight: 700;
 }
 
+@media screen and (width<=855px) {
+    .btn-first-register {
+        flex: 100%;
+    }
+
+    .btn-prev-register {
+        flex: 50%;
+    }
+
+    .btn-next-register {
+        flex: 50%;
+    }
+
+    .btn-last-register {
+        flex: 100%;
+    }
+}
+
 @media screen and (width<=340px) {
     .section-control {
 
@@ -112,21 +144,7 @@
         flex-direction: column;
     }
 
-    .btn-first-register {
-        flex: 100%;
-    }
 
-    .btn-prev-register {
-        flex: 50%;
-    }
-
-    .btn-next-register {
-        flex: 50%;
-    }
-
-    .btn-last-register {
-        flex: 100%;
-    }
 }
 
 @media screen and (width>=640px) {

@@ -8,12 +8,7 @@ function App() {
 
   return (
     <>
-      {/* <BrowserRouter> */}
-
-
       <GastaoApp />
-
-      {/* </BrowserRouter> */}
     </>
   )
 }

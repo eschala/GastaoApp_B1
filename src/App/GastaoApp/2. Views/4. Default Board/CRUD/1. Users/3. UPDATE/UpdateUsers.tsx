@@ -1,5 +1,6 @@
 
 /* import { FindUserByID } from '../../../../../1. Models/Functions/API Responses/UserComponentOnTestFind'; */
+import { FormUpdateUsersBORRADOR_2 } from './Borrardor/FormBorrador';
 import { FormUpdateUsersBORRADOR } from './FormUpdateBorrador';
 
 import './UpdateUsersStyles.css';
@@ -12,7 +13,7 @@ export function UpdateUsers() {
 
             {ContextTittle}
             {/* <FormUpdateUsers /> */}
-            <FormUpdateUsersBORRADOR />
+            <FormUpdateUsersBORRADOR_2 />
             {/* <FindUserByID /> */}
         </div>
     </>);

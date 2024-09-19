@@ -1,22 +1,28 @@
 import React, { useContext } from "react";
 
-import { UsersFiltersContext } from "../../../../3. Contexts/UsersFiltersContext";
+import { UsersContext } from "../../../../3. Contexts/UsersFiltersContext";
 import { Child } from "../../../../1. Models/Types/Types";
-
-
 
 function UsersView({ children }: Child | null | any) {
 
-    const { mostrarMensaje, indexCurrent, } = useContext(UsersFiltersContext)
+    const { mostrarMensaje, indexCurrent, GetUsersFiltered, countChangesFilterInput, totalUsersLength } = useContext(UsersContext)
 
     const m = () => mostrarMensaje();
     return (
-        <div style={{ backgroundColor: "", border: "solid 1px white", width: "100%" }} className="container-fluid h-100">
+        <div className="container-fluid h-100">
+            <div className="" style={{ backgroundColor: "", border: "solid 1px white", flex: "100%", flexWrap: "wrap", display: "flex" }}>
 
-            <h3 className="text-dark">
-                {"<Users/> index: " + indexCurrent + " posición: "}{indexCurrent + 1}
+                <div style={{ border: "solid 1px white", flex: "content", flexWrap: "wrap", display: "flex", textAlign: "center", }} className="text-dark">
 
-            </h3>
+                    <div style={{ fontSize: "1.5rem", flex: "content", border: "lightblue 1px solid" }}>Index: {indexCurrent}</div>
+                    <div style={{ fontSize: "1.5rem", flex: "content", border: "lightblue 1px solid" }}>N°: {indexCurrent + 1}</div>
+                    <div style={{ fontSize: "1.5rem", flex: "content", border: "lightblue 1px solid" }}>Total: {GetUsersFiltered.length}</div>
+                    <div style={{ fontSize: "1.5rem", flex: "content", border: "lightblue 1px solid" }}></div>
+
+                </div>
+                <h4 style={{ border: "0.5pt solid gray", flex: "content" }}>{"countChangesFilterInput: " + countChangesFilterInput}</h4>
+                <h4 style={{ border: "0.5pt solid gray", flex: "content" }}>{"totalUsersLength: " + totalUsersLength}</h4>
+            </div>
             {children}
         </div>
     );

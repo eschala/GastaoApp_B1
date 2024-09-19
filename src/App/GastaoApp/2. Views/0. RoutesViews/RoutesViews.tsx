@@ -21,7 +21,7 @@ import { UpdateUsers } from "../4. Default Board/CRUD/1. Users/3. UPDATE/UpdateU
 import { DeleteUsers } from "../4. Default Board/CRUD/1. Users/4. DELETE/DeleteUsers"
 import { ReportUsers } from "../4. Default Board/CRUD/1. Users/ReportUsers"
 import { Users } from "../4. Default Board/CRUD/1. Users/Users"
-import { UserFiltersContextProvider } from "../../3. Contexts/UsersFiltersContext"
+import { UsersContextProvider } from "../../3. Contexts/UsersFiltersContext"
 
 
 
@@ -38,13 +38,11 @@ export function RoutesViews() {
             <Route path={RegisterRoute.Path} element={<Register />} />
             <Route path={DefaultGastaoRoute.Path} element={<DefaultGastao />}>
                 <Route path="Users" element={
-                    < UserFiltersContextProvider>
+                    < UsersContextProvider>
                         <Users>
-
-                            {/* <h1>Samir</h1> */}
                             <Outlet></Outlet>
                         </Users>
-                    </UserFiltersContextProvider>
+                    </UsersContextProvider>
                 }>
                     <Route path={"Create"} element={<CreateUsers />} />
                     <Route path={"Read"} element={<ReadUsers />} />

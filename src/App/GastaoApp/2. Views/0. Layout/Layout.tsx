@@ -25,6 +25,7 @@ import AccordionUsage from '../../../../Components/Accordion/Accordion';
 
 /* styles */
 import './Layout.css';
+import { Child } from '../../1. Models/Types/Types';
 
 const drawerWidth = 210;
 
@@ -91,7 +92,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 
-export default function Layout() {
+export default function Layout({ children }: Child | any) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 

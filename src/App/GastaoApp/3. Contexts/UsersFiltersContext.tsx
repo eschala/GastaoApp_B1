@@ -1,28 +1,29 @@
-import { createContext, useContext, } from 'react';
+import React, { createContext, SetStateAction, useContext, useEffect, } from 'react';
 import { useState } from "react";
 import { GetATbUsers, User } from "../1. Models/Functions/API Responses/GetATbUsers";
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import { GetAzTbTipoUsers, TipoUser } from '../1. Models/Functions/API Responses/GetAzTbTipoUsers';
 
 export interface UsersFilterBy {
-    idUserFilter: number | any;
-    tipoUserIdFilter: number | any;
-    nameUserFilter: string | any;
-    lastNameUserFilter: string | any;
-    dniUserFilter: number | any;
-    emailUserFilter: string | any;
-    passUserFilter: string | any;
+    idUserF?: number | any;
+    tipoUserIdF?: number | any;
+    nameUserF?: string | any;
+    lastNameUserF?: string | any;
+    dniUserF?: number | any;
+    emailUserF?: string | any;
+    passUserF?: string | any;
 }
-type UsersFiltersContextProviderProps = {
+type UsersChildrenComponents = {
     children: React.ReactNode;
 };
 
-type UsersFiltersContextType = {
+type UsersContextType = {
     mostrarMensaje: () => void;
     handelControlChangeFilters: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handelControlChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     normalizeString: (convertNormalString: string) => string;
     GetUsersByFilter: User[] /* | User */; // Asegúrate de que User esté importado correctamente
     GetUsersFiltered: User[] /* | User */; // Asegúrate de que User esté importado correctamente
@@ -37,6 +38,25 @@ type UsersFiltersContextType = {
     NextRegister: () => void;
     LastRegister: () => void;
     numero: number;
+    dataTypeUser: TipoUser[];
+    setDataTypeUser: React.Dispatch<React.SetStateAction<TipoUser[]>>;
+    currentUserU: User | undefined;
+    setCurrentUserU: React.Dispatch<React.SetStateAction<User>> | any;
+    userCurrentUpdate: (data: User | any) => void;
+    GetFirstUserFiltered: User | undefined;
+    GetFirstUser: User | undefined;
+    countChangesFilterInput: number;
+    setCountChangesFilterInput: React.Dispatch<React.SetStateAction<number>> | any;
+    ChangeCountFilterHandle: () => void;
+    countNavigateButtons: number;
+    setCountNavigateButtons: React.Dispatch<React.SetStateAction<number>> | any;
+    ChangeCountNavigateButtons: () => void;
+    setTotalUsersLength: React.Dispatch<SetStateAction<boolean>> | any;
+    totalUsersLength: boolean;
+
+
+
+    /* GetTypeUser: () => TipoUser | any; */
     /*     
         idUser_I0: any;
         tipoUserId_I0: any;
@@ -47,49 +67,89 @@ type UsersFiltersContextType = {
         passUser_I0: any; */
 };
 
-export const UsersFiltersContext = createContext({} as UsersFiltersContextType);
+export const UsersContext = createContext({} as UsersContextType);
 /* export const UsersFiltersContext = createContext({} as any); */
-const RandomCont = createContext({} as any);
 
-export const UserFiltersContextProvider = ({ children }: UsersFiltersContextProviderProps) => {
+export const UsersContextProvider = ({ children }: UsersChildrenComponents) => {
 
     const mostrarMensaje = () => alert("mostrarMensaje() Console");
+    const [countChangesFilterInput, setCountChangesFilterInput] = useState(0);
+
+    const ChangeCountFilterHandle = () => { setCountChangesFilterInput(countChangesFilterInput + 1) }
+    const [totalUsersLength, setTotalUsersLength] = useState<boolean>(true);
+
     const [indexCurrent, setIndexCurrent] = useState(0);
     const [filters, setFilters] = useState<UsersFilterBy>({
-        idUserFilter: 0,
-        tipoUserIdFilter: 0,
-        nameUserFilter: "",
-        lastNameUserFilter: "",
-        dniUserFilter: 0,
-        emailUserFilter: "",
-        passUserFilter: "",
+        idUserF: 0,
+        tipoUserIdF: 0,
+        nameUserF: "",
+        lastNameUserF: "",
+        dniUserF: 0,
+        emailUserF: "",
+        passUserF: "",
     });
+
+    const [dataTypeUser, setDataTypeUser] = useState<TipoUser[]>([])
+
+    useEffect(() => {
+        const GetTypeUser = async () => {
+            try {
+                const dataTypeUser_ = await GetAzTbTipoUsers();
+                setDataTypeUser(dataTypeUser_);
+            }
+            catch (error) {
+                console.log("Error:", error)
+            }
+            finally {
+
+            }
+        }
+        GetTypeUser();
+    }, [])
+
 
     const numero = 10
     const handelControlChangeFilters = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        const valor = name === "idUserFilter" || name === "tipoUserIdFilter" || name === "dniUserFilter" ? Number(value) : value;
+        /* const valor = name === "idUserFilter" || name === "tipoUserIdFilter" || name === "dniUserFilter" ? Number(value) : value; */
+        const valor = name === "idUserF" || name === "tipoUserIdF" || name === "dniUserF" ? Number(value) : value;
         setFilters({ ...filters, [name]: valor });
-        if (GetUsersFiltered.length > 0) {
+        ChangeCountFilterHandle()
 
-        }
+    };
+
+    const handelControlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        const valor = name === "idUserF" || name === "tipoUserIdF" || name === "dniUserF" ? Number(value) : value;
+        setFilters({ ...filters, [name]: valor });
+        console.log("valor: " + valor)
+        console.log("name: " + name)
+        console.log("filters", filters)
+        ChangeCountFilterHandle()
+
+
     };
 
     const normalizeString = (convertNormalString: string) => {
         return convertNormalString.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
     };
 
-    const GetUsersByFilter = GetATbUsers(true);
+    const [countNavigateButtons, setCountNavigateButtons] = useState(0)
+    const ChangeCountNavigateButtons = () => setCountNavigateButtons(countNavigateButtons + 1);
+
     const GetUsersToAdmin: User[] = GetATbUsers(true);
     const GetUsersToUser: User[] = GetATbUsers(false);
+    const GetUsersByFilter = GetATbUsers(true);
     const GetUsersFiltered = GetUsersByFilter.filter(user =>
-        (filters.idUserFilter === 0 || user.idUser === filters.idUserFilter) &&
-        (filters.tipoUserIdFilter === 0 || user.tipoUserId === filters.tipoUserIdFilter) &&
-        (filters.nameUserFilter === '' || normalizeString(user.nameUser || '').includes(normalizeString(filters.nameUserFilter))) &&
-        (filters.lastNameUserFilter === '' || normalizeString(user.lastNameUser || '').includes(normalizeString(filters.lastNameUserFilter))) &&
-        (filters.dniUserFilter === 0 || user.dniUser?.toString() === filters.dniUserFilter?.toString()) &&
-        (filters.emailUserFilter === '' || normalizeString(user.emailUser || '').includes(normalizeString(filters.emailUserFilter)))
+        (filters.idUserF === 0 || user.idUser === filters.idUserF) &&
+        (filters.tipoUserIdF === 0 || user.tipoUserId === filters.tipoUserIdF) &&
+        (filters.nameUserF === '' || normalizeString(user.nameUser || '').includes(normalizeString(filters.nameUserF))) &&
+        (filters.lastNameUserF === '' || normalizeString(user.lastNameUser || '').includes(normalizeString(filters.lastNameUserF))) &&
+        (filters.dniUserF === 0 || user.dniUser?.toString() === filters.dniUserF?.toString()) &&
+        (filters.emailUserF === '' || normalizeString(user.emailUser || '').includes(normalizeString(filters.emailUserF)))
     );
+    const GetFirstUserFiltered = GetUsersFiltered.find(user => user);
+    const GetFirstUser = GetUsersFiltered.find(user => user);
 
     const PrevRegister = () => {
         if (indexCurrent > 0) { setIndexCurrent(indexCurrent - 1); }
@@ -99,10 +159,55 @@ export const UserFiltersContextProvider = ({ children }: UsersFiltersContextProv
     const NextRegister = () => {
         if (indexCurrent < GetUsersFiltered.length - 1) { setIndexCurrent(indexCurrent + 1); }
     };
-    const LastRegister = () => setIndexCurrent(GetUsersFiltered.length - 1);
 
+    let length_: number = GetUsersFiltered.length
+    let countC: number = countChangesFilterInput
+    useEffect(() => {
+        if (GetUsersFiltered.length !== GetUsersToAdmin.length) {
+            setTotalUsersLength(false)
+            FirstRegister()
+        }
+        else {
+            setTotalUsersLength(true)
+
+        }
+
+    }, [length_, countC])
+
+
+    const LastRegister = () => setIndexCurrent(GetUsersFiltered.length - 1);
+    const [currentUserU, setCurrentUserU] = useState<User>()
+
+    const userCurrentUpdate = (data: User) => {
+
+        setCurrentUserU({
+            idUser: data.idUser,
+            tipoUserId: data.tipoUserId,
+            nameUser: data.nameUser,
+            lastNameUser: data.lastNameUser,
+            dniUser: data.dniUser,
+            emailUser: data.emailUser,
+            passUser: data.passUser,
+        })
+
+        console.log("currentUserU", currentUserU)
+    }
+    /*     useEffect(() => {
+     
+            if (currentUserU === null || currentUserU === undefined)
+                setCurrentUserU({
+                    idUser: 0,
+                    tipoUserId: 0,
+                    nameUser: "",
+                    lastNameUser: "",
+                    dniUser: 0,
+                    emailUser: "",
+                    passUser: "",
+                })
+        }, [])
+     */
     return (
-        <UsersFiltersContext.Provider
+        <UsersContext.Provider
             value={{
                 normalizeString,
                 handelControlChangeFilters,
@@ -120,16 +225,31 @@ export const UserFiltersContextProvider = ({ children }: UsersFiltersContextProv
                 setFilters,
                 mostrarMensaje,
                 numero,
-
+                dataTypeUser,
+                setDataTypeUser,
+                setCurrentUserU,
+                currentUserU,
+                userCurrentUpdate,
+                GetFirstUserFiltered,
+                GetFirstUser,
+                handelControlChange,
+                countChangesFilterInput,
+                setCountChangesFilterInput,
+                ChangeCountFilterHandle,
+                countNavigateButtons,
+                ChangeCountNavigateButtons,
+                setCountNavigateButtons,
+                totalUsersLength,
+                setTotalUsersLength,
             }}
         >
             {children}
-        </UsersFiltersContext.Provider>
+        </UsersContext.Provider>
     );
 };
 
-export function FilterInput(handelControlChangeFilters: (e: React.ChangeEvent<HTMLInputElement>) => void) {
-    const { GetUsersFiltered } = useContext(UsersFiltersContext);
+export function FilterInput(handelControlChange: (e: React.ChangeEvent<HTMLInputElement>) => void, activate: boolean) {
+    const { GetUsersFiltered } = useContext(UsersContext);
 
     const fieldNames = [
         "ID",
@@ -141,12 +261,13 @@ export function FilterInput(handelControlChangeFilters: (e: React.ChangeEvent<HT
     ];
 
     const fieldFiltersNames = [
-        "idUserFilter",
-        "tipoUserIdFilter",
-        "nameUserFilter",
-        "lastNameUserFilter",
-        "dniUserFilter",
-        "emailUserFilter",
+        "idUserF",
+        "tipoUserIdF",
+        "nameUserF",
+        "lastNameUserF",
+        "dniUserF",
+        "emailUserF",
+        /*         "passUserF", */
     ];
 
     const [fieldName, setFielName] = useState(fieldNames[0]); // Cambia esto a un índice válido
@@ -158,12 +279,16 @@ export function FilterInput(handelControlChangeFilters: (e: React.ChangeEvent<HT
         setFielName(fieldNames[selectedIndex]);
         setNameUserFilter(fieldFiltersNames[selectedIndex]);
         setIndex_(selectedIndex);
+
+        console.log("handleChangeSelect fieldName:" + fieldName)
+        console.log("handleChangeSelect fieldName:" + selectedIndex)
+        console.log("handleChangeSelect fieldName:" + nameUserFilter)
     };
 
     return (
         <>
 
-            <FormControl style={{ margin: 0, padding: 1, width: "100%" }} >
+            <FormControl style={{ margin: "0rem 0", padding: 0, flex: "content" }} >
                 <label htmlFor="">Seleccionar búsqueda por:</label>
                 <Select
                     name="selectFilterBy"
@@ -180,21 +305,19 @@ export function FilterInput(handelControlChangeFilters: (e: React.ChangeEvent<HT
                 </Select>
             </FormControl>
 
-            <FormControl style={{ margin: "1rem 0", padding: 1, width: "100%", display: "flex" }}>
+            <FormControl style={{ margin: "0rem 0", padding: 0, width: "100%", display: "flex", flex: "content" }}>
                 <div style={{ display: "flex", flexWrap: "wrap" }}>
+
                     <TextField
                         name={nameUserFilter} // Corrige aquí
                         placeholder={`Filtrar por ${fieldNames[index_]}`}
                         type="text"
-                        onChange={handelControlChangeFilters} // Función para manejar el cambio
+                        onChange={handelControlChange} // Función para manejar el cambio
                         style={{ flex: "80%" }}
+                        disabled={activate}
                     />
-                    <Button variant='outlined' style={{ flex: "20%" }} onClick={() => { console.log(GetUsersFiltered); }}>
-                        Filtrar
-                    </Button>
                 </div>
             </FormControl>
         </>
     );
 }
-/* ¿Por qué no me funciona, me corriges? */

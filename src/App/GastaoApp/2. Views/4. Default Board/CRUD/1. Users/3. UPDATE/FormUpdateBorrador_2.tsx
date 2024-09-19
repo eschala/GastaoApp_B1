@@ -8,7 +8,7 @@ import { GetUserTypeControl } from '../TypeUsers/UserTypeControl';
 
 import { DialogFormUpdate } from './DialogFormUpdate';
 import { FindUserByID } from '../../../../../1. Models/Functions/API Responses/UserComponentOnTestFind';
-import { UsersFiltersContext } from '../../../../../3. Contexts/UsersFiltersContext';
+import { UsersContext } from '../../../../../3. Contexts/UsersFiltersContext';
 
 
 
@@ -19,7 +19,7 @@ let firstRegister: boolean
 function FormUpdateUsersBORRADOR() {
 
     /* const { indexCurrent: indexCurrent, GetUsersFiltered, PrevRegister, NextRegister, FirstRegister, LastRegister } = UserFilter(); */
-    const { indexCurrent, GetUsersFiltered, PrevRegister, NextRegister, FirstRegister, LastRegister } = useContext(UsersFiltersContext)
+    const { indexCurrent, GetUsersFiltered, PrevRegister, NextRegister, FirstRegister, LastRegister } = useContext(UsersContext)
     const [showPassword, setShowPassword] = React.useState(false);
 
 
@@ -146,7 +146,7 @@ function FormUpdateUsersBORRADOR() {
                                 Tipo de Usuario:
                             </label>
                             <div className="" style={{ width: "100%", }}>
-                                <GetUserTypeControl nameField={'tipoUserId'} valueTypeIdUser={firstRegister == false ? GetUsersFiltered[0].tipoUserId : currentData.tipoUserIdFilter} />
+                                < nameField={'tipoUserId'} valueTypeIdUser={firstRegister == false ? GetUsersFiltered[0].tipoUserId : currentData.tipoUserIdFilter} />
 
                             </div>
                         </div>

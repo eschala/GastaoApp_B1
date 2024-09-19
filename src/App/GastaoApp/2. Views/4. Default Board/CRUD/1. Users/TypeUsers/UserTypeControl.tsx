@@ -113,7 +113,7 @@ export function GetUserTypeControl({ valueTypeIdUser }: any, { nameField }: any 
 
     return (
         <Box sx={{ width: "1fr", display: "flex" }}>
-            <FormControl style={{ margin: 0, padding: 1, width: "100%" }} sx={{ p: 1 }}>
+            <FormControl style={{ margin: 0, padding: 1, width: "100%" }} >
                 {/* <InputLabel id="demo-simple-select-label"></InputLabel> */}
                 <Select
                     type='number'
@@ -134,3 +134,4 @@ export function GetUserTypeControl({ valueTypeIdUser }: any, { nameField }: any 
         </Box>
     );
 }
+/* Ingeniero de Sistemas, con 1 año en experiencia desarrollo de software, he realizado proyectos con VBA for Ms Office, C#(.NET Core, .Net Core Web API), TypeScript, JavaScript y actualmente sigo capacitándome y fortaleciendo mis habilidades para desarrollar aplicaciones dinámicas con React para FrontEnd y .NET Core Api para el BackEnd. */
