@@ -10,9 +10,9 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Child } from '../../../../../../1. Models/Types/Types';
-import { useContext, useEffect, useState } from 'react';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { FilterInput, UsersContext } from '../../../../../../3. Contexts/UsersFiltersContext';
-import { DialogBorrador, } from '../DialogFormUpdate';
+import { UpdateDialogForm, } from '../DialogFormUpdate';
 import { TipoUser } from '../../../../../../1. Models/Functions/API Responses/GetAzTbTipoUsers';
 import { User } from '../../../../../../1. Models/Functions/API Responses/GetATbUsers';
 
@@ -64,6 +64,8 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
     }
     let myBool: boolean
     let myBool2: boolean
+
+
 
     useEffect(() => {
         if (IsNullfirstRegister()) {
@@ -125,13 +127,15 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
     let nuloIndefinidoUsersFil: boolean = Expression(UsuariosFiltrados === undefined || UsuariosFiltrados === null)
     let nuloIndefinidoCurrentUserU: boolean = Expression((currentUserU === null || currentUserU === undefined))
 
-    const handleChangeValue = (fieldName: keyof User, fieldValue: any) => {
+    const handleChangeValueUpdate = (fieldName: keyof User, fieldValue: any) => {
         if (usuarioDatoFiltradoActual && fieldName in usuarioDatoFiltradoActual) {
             setUsuarioDatoFiltradoActual({
                 ...usuarioDatoFiltradoActual,
                 [fieldName]: fieldValue,
             });
-        } else {
+
+        }
+        else {
             console.error("El campo no es válido o usuarioDatoFiltrado es undefined");
         }
 
@@ -143,12 +147,18 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
         if (temp !== null || temp !== undefined)
             setDataTypeUser(temp)
     }
-
+    let displayCSS: string = "none";
 
     return (
         <>
             <div className="" style={{ width: "65%", flexDirection: "column", display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
-                <div className="" style={{ backgroundColor: "grey" }}>
+                {/* {FilterInput(handelControlChange, false)} */}
+                < FilterInput handelControlChangeEvent={handelControlChange} disableInput={false}>
+                </FilterInput>
+
+                <div className="" style={{
+                    backgroundColor: "grey", display: displayCSS,
+                }}>
 
                     <div className="" style={{ flexWrap: "wrap", display: "flex", backgroundColor: " #303f9f " }}>
                         <div style={{ fontSize: "1rem", border: "1px solid white", flex: "50%" }}>{"currentUserU ID: " + currentUserU?.idUser + " Nombre: " + currentUserU?.nameUser + " " + currentUserU?.lastNameUser}</div>
@@ -182,10 +192,9 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
                             <div style={{ flex: "50%", border: "1px solid gray" }}>{usuarioDatoFiltradoActual?.emailUser + " "}</div>
                         </div>
                     </div>
-                </div>
-                {FilterInput(handelControlChange, false)}
+                </div >
 
-                <DialogBorrador />
+                < UpdateDialogForm />
 
                 <Button className='btn-register' style={{ flexWrap: "wrap", }} variant='outlined' onClick={() => console.clear()} disabled={false}>
                     Limpiar consola
@@ -208,11 +217,9 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
                     </Button>
 
                 </div>
-                <Button className='btn-register' style={{ flexWrap: "wrap", }} variant='outlined' onClick={() => console.log("Expression", Expression(GetUsersFiltered.length > 1))} >
-                    Validar
-                </Button >
+
                 <h3>{"Registros encontrados: " + GetUsersFiltered.length}</h3>
-                <div className="" style={{ flexDirection: "row", display: "flex" }}>
+                <div className="" style={{ flexDirection: "row", display: displayCSS, }}>
 
                     <div className="">
                         <h3>usarioDatoFiltrado------------</h3>
@@ -274,7 +281,7 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
                                     <FormControl style={{ margin: 0, padding: 1, width: "100%" }}>
                                         <label htmlFor="" style={{ margin: "2pt 1rem" }}>ID:</label>
                                         <TextField
-                                            onChange={(e: any) => handleChangeValue("idUser", e.target.value)}
+                                            onChange={(e: any) => handleChangeValueUpdate("idUser", e.target.value)}
                                             type='number'
                                             name={"idUser"}
                                             placeholder='ID'
@@ -289,14 +296,17 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
                                         <label htmlFor="" style={{ margin: "2pt 1rem" }}>Tipo: {`(ID: ${firstRegNotNULL === false ? GetFirstUser?.tipoUserId : usuarioDatoFiltradoActual?.tipoUserId})`}</label>
 
                                         <Select
-                                            onChange={(e: any) => handleChangeValue("tipoUserId", e.target.value)}
-                                            /* onChange={(e: any) => handleChangeTypeUser(e)} */
+                                            /* onChange={(e: any) => handleChangeValue("tipoUserId", e.target.value)} */
+                                            onChange={(e: any) => handleChangeValueUpdate("tipoUserId", e.target.value)}
+                                            /* onChange={(e: any) => e.target.value} */
                                             type='number'
                                             name={"tipoUserId"}
                                             labelId="demo-simple-select-label"
                                             id="demo-simple-select"
                                             /* value={1} */
-                                            value={usuarioDatoFiltradoActual?.tipoUserId}
+                                            value={usuarioDatoFiltradoActual?.tipoUserId || null}
+                                        /* value={currentUserU?.tipoUserId} */
+                                        /* value={firstRegNotNULL === false ? GetFirstUser?.tipoUserId || GetFirstUserFiltered?.tipoUserId : usuarioDatoFiltradoActual?.tipoUserId || currentUserU?.tipoUserId} */
                                         >
                                             {dataTypeUser.map((userType: TipoUser) => (
                                                 <MenuItem key={userType.idTipoUser} value={userType.idTipoUser}>
@@ -312,7 +322,7 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
                                     <FormControl style={{ margin: 0, padding: 1, width: "100%" }}>
                                         <label htmlFor="" style={{ margin: "2pt 1rem" }}>Nombre:</label>
                                         <TextField
-                                            onChange={(e: any) => handleChangeValue("nameUser", e.target.value)}
+                                            onChange={(e: any) => handleChangeValueUpdate("nameUser", e.target.value)}
                                             type='text'
                                             name={"nameUser"}
                                             placeholder='Nombre'
@@ -326,7 +336,7 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
                                     <FormControl style={{ margin: 0, padding: 1, width: "100%" }}>
                                         <label htmlFor="" style={{ margin: "2pt 1rem" }}>Apellido:</label>
                                         <TextField
-                                            onChange={(e: any) => handleChangeValue("lastNameUser", e.target.value)}
+                                            onChange={(e: any) => handleChangeValueUpdate("lastNameUser", e.target.value)}
                                             type='text'
                                             name={"lastNameUser"}
                                             placeholder='Apellido'
@@ -341,7 +351,7 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
                                         <label htmlFor="" style={{ margin: "2pt 1rem" }}>DNI / Cedula:</label>
 
                                         <TextField
-                                            onChange={(e: any) => handleChangeValue("dniUser", e.target.value)}
+                                            onChange={(e: any) => handleChangeValueUpdate("dniUser", e.target.value)}
                                             type='number'
                                             name={"dniUser"}
                                             placeholder='DNI / Cedula'
@@ -355,7 +365,7 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
                                     <FormControl style={{ margin: 0, padding: 1, width: "100%" }}>
                                         <label htmlFor="" style={{ margin: "2pt 1rem" }}>Correo:</label>
                                         <TextField
-                                            onChange={(e: any) => handleChangeValue("emailUser", e.target.value)}
+                                            onChange={(e: any) => handleChangeValueUpdate("emailUser", e.target.value)}
                                             type='email'
                                             name={"emailUser"}
                                             placeholder='Correo'
@@ -368,10 +378,8 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
                                 <div className="section-control section-passUser">
                                     <FormControl style={{ margin: 0, padding: 1, width: "100%" }}>
                                         <label htmlFor="" style={{ margin: "2pt 1rem" }}>Contraseña:</label>
-
-                                        <InputLabel htmlFor="outlined-adornment-password">{""}</InputLabel>
                                         <OutlinedInput
-                                            onChange={(e: any) => handleChangeValue("passUser", e.target.value)}
+                                            onChange={(e: any) => handleChangeValueUpdate("passUser", e.target.value)}
                                             name={"passUser"}
                                             value={firstRegNotNULL === false ? GetFirstUser?.passUser : usuarioDatoFiltradoActual?.passUser}
                                             type={showPassword ? 'text' : 'password'}
@@ -420,7 +428,7 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
 
 
 
-            </div>
+            </div >
 
             <div style={{ marginTop: "20px" }}>
             </div>

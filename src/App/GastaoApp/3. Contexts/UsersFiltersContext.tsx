@@ -248,9 +248,12 @@ export const UsersContextProvider = ({ children }: UsersChildrenComponents) => {
     );
 };
 
-export function FilterInput(handelControlChange: (e: React.ChangeEvent<HTMLInputElement>) => void, activate: boolean) {
+interface FilterInputProps {
+    handelControlChangeEvent: (e: React.ChangeEvent<HTMLInputElement>) => void
+    disableInput: boolean
+}
+export function FilterInput({ handelControlChangeEvent, disableInput }: FilterInputProps) {
     const { GetUsersFiltered } = useContext(UsersContext);
-
     const fieldNames = [
         "ID",
         "Tipo de Usuario",
@@ -267,28 +270,24 @@ export function FilterInput(handelControlChange: (e: React.ChangeEvent<HTMLInput
         "lastNameUserF",
         "dniUserF",
         "emailUserF",
-        /*         "passUserF", */
+
     ];
 
     const [fieldName, setFielName] = useState(fieldNames[0]); // Cambia esto a un índice válido
     const [nameUserFilter, setNameUserFilter] = useState(fieldFiltersNames[0]); // Cambia esto a un índice válido
     const [index_, setIndex_] = useState(0);
-
     const handleChangeSelect = (e: React.ChangeEvent<{ value: unknown }>) => {
         const selectedIndex = e.target.value as number; // Asegúrate de que sea un número
         setFielName(fieldNames[selectedIndex]);
         setNameUserFilter(fieldFiltersNames[selectedIndex]);
         setIndex_(selectedIndex);
-
         console.log("handleChangeSelect fieldName:" + fieldName)
         console.log("handleChangeSelect fieldName:" + selectedIndex)
         console.log("handleChangeSelect fieldName:" + nameUserFilter)
     };
-
     return (
         <>
-
-            <FormControl style={{ margin: "0rem 0", padding: 0, flex: "content" }} >
+            <FormControl style={{ margin: "0rem 0", padding: 0, flex: "content", width: "100%", }} >
                 <label htmlFor="">Seleccionar búsqueda por:</label>
                 <Select
                     name="selectFilterBy"
@@ -304,17 +303,15 @@ export function FilterInput(handelControlChange: (e: React.ChangeEvent<HTMLInput
                     ))}
                 </Select>
             </FormControl>
-
             <FormControl style={{ margin: "0rem 0", padding: 0, width: "100%", display: "flex", flex: "content" }}>
                 <div style={{ display: "flex", flexWrap: "wrap" }}>
-
                     <TextField
                         name={nameUserFilter} // Corrige aquí
                         placeholder={`Filtrar por ${fieldNames[index_]}`}
                         type="text"
-                        onChange={handelControlChange} // Función para manejar el cambio
+                        onChange={handelControlChangeEvent} // FError
                         style={{ flex: "80%" }}
-                        disabled={activate}
+                        disabled={disableInput}//Error
                     />
                 </div>
             </FormControl>

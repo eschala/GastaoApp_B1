@@ -4,7 +4,6 @@
 
 .section-form-dialog {
 
-
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -22,7 +21,6 @@
     flex: 50%;
     order: 0;
 }
-
 
 .section-dniUser-dialog-form {
 

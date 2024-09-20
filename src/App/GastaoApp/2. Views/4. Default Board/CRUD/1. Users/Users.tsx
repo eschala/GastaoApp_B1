@@ -10,6 +10,7 @@ function UsersView({ children }: Child | null | any) {
     const m = () => mostrarMensaje();
     return (
         <div className="container-fluid h-100">
+            {children}
             <div className="" style={{ backgroundColor: "", border: "solid 1px white", flex: "100%", flexWrap: "wrap", display: "flex" }}>
 
                 <div style={{ border: "solid 1px white", flex: "content", flexWrap: "wrap", display: "flex", textAlign: "center", }} className="text-dark">
@@ -23,7 +24,6 @@ function UsersView({ children }: Child | null | any) {
                 <h4 style={{ border: "0.5pt solid gray", flex: "content" }}>{"countChangesFilterInput: " + countChangesFilterInput}</h4>
                 <h4 style={{ border: "0.5pt solid gray", flex: "content" }}>{"totalUsersLength: " + totalUsersLength}</h4>
             </div>
-            {children}
         </div>
     );
 }
