@@ -16,8 +16,8 @@ export interface User {
 let getUsers = new API_Url()
 
 export function GetATbUsers(AdminLogged: boolean | any) {
-    let UrlApiUsers: string = getUsers.GetUrl("192.168.101.77", "7190", "/api/ATbUsers")
-    let UrlApiUser: string = getUsers.GetUrlByID("192.168.101.77", "7190", "/api/ATbUsers", 12)
+    let UrlApiUsers: string = getUsers.GetUrl("http", "192.168.101.77", "7190", "/api/ATbUsers")
+    let UrlApiUser: string = getUsers.GetUrlByID("http", "192.168.101.77", "7190", "/api/ATbUsers", 12)
 
     const [ATbUsers, setATbUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState<boolean>(true);

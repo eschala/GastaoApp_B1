@@ -1,12 +1,12 @@
 export class API_Url {
-    GetUrl(AddressIP: string, Port: string, ApiContext: string) {
+    GetUrl(Protocol: string | null = "http", AddressIP: string, Port: string, ApiContext: string) {
 
-        return (`https://${AddressIP}:${Port}${ApiContext}`)
+        return (`${Protocol}://${AddressIP}:${Port}${ApiContext}`)
 
     }
-    GetUrlByID(AddressIP: string, Port: string, ApiContext: string, id: null | undefined | any | number | string) {
+    GetUrlByID(Protocol: string | null = "http", AddressIP: string, Port: string, ApiContext: string, id: null | undefined | any | number | string) {
 
-        return (`https://${AddressIP}:${Port}${ApiContext}/${id}`)
+        return (`${Protocol}://${AddressIP}:${Port}${ApiContext}/${id}`)
     }
 }
 export class GastaoAPI {

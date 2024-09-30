@@ -16,6 +16,11 @@ class ApiAzTbTipoUsers {
     static UrlGetById = (id: number) => {
         return (this.Url + "/" + id)
     }
+    GetUrl(Protocol: string | null = "http", AddressIP: string, Port: string, ApiContext: string) {
+
+        return (`${Protocol}://${AddressIP}:${Port}${ApiContext}`)
+
+    }
 }
 
 
@@ -23,9 +28,14 @@ export interface TipoUser {
     idTipoUser: number;
     tipoUser: string;
 }
-export function GetAzTbTipoUsers(): Promise<TipoUser[]> { // Asegúrate de especificar el tipo de retorno
+export function GetAzTbTipoUsers(): Promise<TipoUser[]> {
+    let getAzTbTipoUsers = new ApiAzTbTipoUsers()
+
+    let apiUrl: any
+    apiUrl = getAzTbTipoUsers.GetUrl("http", "192.168.101.77", "7190", ApiAzTbTipoUsers.api)
+    // Asegúrate de especificar el tipo de retorno
     return new Promise((resolve, reject) => {
-        fetch(ApiAzTbTipoUsers.Url)
+        fetch(apiUrl)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
