@@ -5,7 +5,10 @@ import "./QrStyles.css";
 
 // Qr Scanner
 import QrScanner from "qr-scanner";
-import QrFrame from "../assets/qr-frame.svg";
+/* import QrFrame from "../assets/qr-frame.svg"; */
+
+import QrFrame from "../../../assets/qr-frame.svg"
+
 
 const QrReader = () => {
     // QR States
@@ -75,10 +78,26 @@ const QrReader = () => {
 
     return (
         <>
-            <h1>Scanear</h1>
+
             <div className="qr-reader">
+                <div className="conext-result" style={{
+                    backgroundColor: "blue",
+                    zIndex: "auto",
+                    position: "relative",
+                    top: 0,
+                    left: 0,
+                }}>
+                    {scannedResult && (
+                        <h4>
+                            {scannedResult}
+                        </h4>
+                    )}
+                </div>
                 {/* QR */}
-                <video ref={videoEl}></video>
+                <video ref={videoEl} >
+
+                </video>
+
                 <div ref={qrBoxEl} className="qr-box">
                     <img
                         src={QrFrame}
@@ -89,20 +108,7 @@ const QrReader = () => {
                     />
                 </div>
 
-                {/* Show Data Result if scan is success */}
-                {scannedResult && (
-                    <p
-                        style={{
-                            position: "absolute",
-                            top: 0,
-                            left: 0,
-                            zIndex: 99999,
-                            color: "white",
-                        }}
-                    >
-                        Scanned Result: {scannedResult}
-                    </p>
-                )}
+
             </div>
         </>
     );

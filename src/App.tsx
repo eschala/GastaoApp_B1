@@ -1,7 +1,7 @@
 /* App.tsx */
 
 import './App.css'
-import { GastaoApp } from './App/GastaoApp';
+import { GastaoApp } from './App/Extensions/GastaoApp';
 
 
 function App() {

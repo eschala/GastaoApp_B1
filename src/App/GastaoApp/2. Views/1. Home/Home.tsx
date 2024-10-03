@@ -1,9 +1,6 @@
 /* import { QR_Reader } from "../../../scannerQR"; */
 
-import QrReader from "../../../scannerQR";
-
-
-
+import QrReader from "../../../Extensions/QRCode/QrScannerComponent";
 
 export const Home = () => {
     return (<>
@@ -12,9 +9,13 @@ export const Home = () => {
             <h3>
                 {"<Home/>"}
             </h3>
-            <div className="" style={{ backgroundColor: "gray" }}>
+            <div className="" style={{ backgroundColor: "lightblue" }}>
                 {/* <QR_Reader /> */}
-                <QrReader />
+                <div className="">
+
+                    <QrReader />
+                </div>
+
             </div>
 
         </div>
