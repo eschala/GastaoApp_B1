@@ -16,6 +16,7 @@
     "@mui/icons-material": "^6.0.1",
     "@mui/material": "^6.0.1",
     "@mui/x-date-pickers": "^7.15.0",
+    "@uides/react-qr-reader": "^3.0.1-rc.18",
     "axios": "^1.7.7",
     "html5-qrcode": "^2.3.8",
     "jspdf": "^2.5.1",

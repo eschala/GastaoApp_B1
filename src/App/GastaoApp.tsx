@@ -9,6 +9,7 @@ import Layout from "./GastaoApp/2. Views/0. Layout/Layout";
 import { darkTheme } from './GastaoApp/1. Models/Themes/Themes';
 
 
+
 export function GastaoApp() {
   return (
     <>
@@ -17,8 +18,8 @@ export function GastaoApp() {
           <>
             <CssBaseline />
             <Layout >
-
             </Layout>
+
           </>
         </ThemeProvider>
       </BrowserRouter>
