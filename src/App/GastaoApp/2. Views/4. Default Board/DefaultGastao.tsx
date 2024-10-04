@@ -1,10 +1,6 @@
-
-/* import './DefaultGastao.css'; */
-
 import { Outlet } from 'react-router';
-import { Child } from '../../1. Models/Types/Types';
 
-export function DefaultGastao({ children }: Child | any) {
+export function DefaultGastao() {
 
     return (<>
         <div style={{}} className="DefaultGastao">
@@ -14,7 +10,7 @@ export function DefaultGastao({ children }: Child | any) {
     </>);
 }
 
-function Board({ children }: Child | any) {
+function Board() {
     return (
         <div className="DefaultGastao-sub-2 DefaultGastao-sub">
             <div className="DefaultGastao-sub-2-1">

@@ -1,14 +1,11 @@
-//mock data - strongly typed if you are using TypeScript (optional, but recommended)
 
-/* Api: https://localhost:44318/api/ATbUsers Modelo de Usuarios de la tabla "ATbUsers" */
 import { MaterialReactTable, MRT_ColumnDef, useMaterialReactTable } from "material-react-table";
 import { useMemo } from "react";
 import { GetATbUsers, User } from "../../1. Models/Functions/API Responses/GetATbUsers";
 
-
 export function UsersTable() {
-    //column definitions - strongly typed if you are using TypeScript (optional, but recommended)
-    const data = GetATbUsers()
+
+    const data = GetATbUsers(true)
     let sam = data.keys
     console.log(sam.toString)
 
@@ -70,10 +67,6 @@ export function UsersTable() {
         enableGlobalFilter: true, //turn off a feature
     });
 
-    //note: you can also pass table options as props directly to <MaterialReactTable /> instead of using useMaterialReactTable
-    //but the useMaterialReactTable hook will be the most recommended way to define table options
     return <MaterialReactTable table={table} />;
 
 }
-
-/* ¿Cómo hago para convertir los datos traidos por una peticion GET a la Api: https://localhost:44318/api/ATbUsers Modelo de Usuarios de la tabla "ATbUsers la variable "data" ?" */

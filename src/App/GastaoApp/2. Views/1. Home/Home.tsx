@@ -1,6 +1,4 @@
-/* import { QR_Reader } from "../../../scannerQR"; */
-
-import QrReader from "../../../Extensions/QRCode/QrScannerComponent";
+import { ScanQRComponent } from "../../../Extensions/QRCode/QrScannerComponent";
 
 export const Home = () => {
     return (<>
@@ -9,13 +7,22 @@ export const Home = () => {
             <h3>
                 {"<Home/>"}
             </h3>
-            <div className="" style={{ backgroundColor: "lightblue" }}>
+            <div className="" style={{ backgroundColor: "transparent" }}>
                 {/* <QR_Reader /> */}
                 <div className="">
 
-                    <QrReader />
+                    <ScanQRComponent />
                 </div>
+                <div className="">
+                    <h1>Samir QR</h1>
+                    <img src="/src/assets/SAMIR_QR.png" alt="QR code" />
 
+                </div>
+                <div className="">
+                    <h1>TEST QR</h1>
+                    <img style={{ width: "200px", height: "200px" }} src="https://www.qrcode-monkey.com/img/default-preview-qr.svg" alt="QR code" />
+
+                </div>
             </div>
 
         </div>

@@ -1,10 +1,10 @@
 export class API_Url {
-    GetUrl(Protocol: string | null = "http", AddressIP: string, Port: string, ApiContext: string) {
+    GetUrl(Protocol: string | any | null, AddressIP: string, Port: string, ApiContext: string) {
 
         return (`${Protocol}://${AddressIP}:${Port}${ApiContext}`)
 
     }
-    GetUrlByID(Protocol: string | null = "http", AddressIP: string, Port: string, ApiContext: string, id: null | undefined | any | number | string) {
+    GetUrlByID(Protocol: string | any | null, AddressIP: string, Port: string, ApiContext: string, id: null | undefined | any | number | string) {
 
         return (`${Protocol}://${AddressIP}:${Port}${ApiContext}/${id}`)
     }
@@ -15,7 +15,7 @@ export class GastaoAPI {
     static portSecondarr: number = 7190
     static portTertiary: number = 7190
     static localhost: string = "localhost"
-    static host: string = "192.168.1.111"
+    static host: string = "192.168.101.77"
     /* static host: string = "192.168.101.78" */
 
 }

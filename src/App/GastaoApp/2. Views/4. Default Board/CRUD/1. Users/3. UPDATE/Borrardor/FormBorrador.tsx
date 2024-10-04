@@ -4,24 +4,22 @@ import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import InputLabel from '@mui/material/InputLabel';
+
 import OutlinedInput from '@mui/material/OutlinedInput';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { Child } from '../../../../../../1. Models/Types/Types';
-import { ChangeEvent, useContext, useEffect, useState } from 'react';
+
+import { useContext, useEffect, useState } from 'react';
 import { FilterInput, UsersContext } from '../../../../../../3. Contexts/UsersFiltersContext';
 import { UpdateDialogForm, } from '../DialogFormUpdate';
 import { TipoUser } from '../../../../../../1. Models/Functions/API Responses/GetAzTbTipoUsers';
 import { User } from '../../../../../../1. Models/Functions/API Responses/GetATbUsers';
 
 let data: User | undefined
-export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
+export function FormUpdateUsersBORRADOR_2() {
 
-    let GetUsersFiltered_Var: User[] | undefined
-
-    const { GetFirstUserFiltered, dataTypeUser, setDataTypeUser, GetUsersFiltered, GetFirstUser, indexCurrent, setIndexCurrent, handelControlChange, userCurrentUpdate,
+    const { GetFirstUserFiltered, dataTypeUser, GetUsersFiltered, GetFirstUser, indexCurrent, setIndexCurrent, handelControlChange,
         currentUserU,
         setCurrentUserU,
         countChangesFilterInput,
@@ -31,44 +29,22 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
 
     } = useContext(UsersContext)
 
-    GetUsersFiltered_Var = GetUsersFiltered
-
     /* console.log("GetUsersFiltered_Var[0]", [GetUsersFiltered_Var[0]]) */
 
     const [usuarioDatoFiltradoActual, setUsuarioDatoFiltradoActual] = useState<User | undefined>()
-    const [usuariosDatosFiltrados, setUsuariosDatosFiltrados] = useState<User[] | undefined>(GetUsersFiltered_Var)
+    /* const [usuariosDatosFiltrados, setUsuariosDatosFiltrados] = useState<User[] | undefined>(GetUsersFiltered_Var) */
     const [firstRegNotNULL, setFirstRegNotNULL] = useState(usuarioDatoFiltradoActual === null || usuarioDatoFiltradoActual === undefined)
-    const [viewCountRender, setViewCountRender] = useState(0)
-    const [viewCountUseEffect, setViewCountUseEffect] = useState(0)
-    const [showPassword, setShowPassword] = useState(false);
-
-    let IsfirstRegisterFiltered = (): boolean => {
-        let arg: boolean = ((usuarioDatoFiltradoActual === GetFirstUserFiltered) && ((usuarioDatoFiltradoActual !== null || usuarioDatoFiltradoActual !== undefined) || (GetFirstUserFiltered !== null || GetFirstUserFiltered !== undefined)))
-        console.log("IsfirstRegisterFiltered: " + arg)
-        return (arg)
-    }
-    let IsfirstRegister = (): boolean => {
-        let arg: boolean = ((usuarioDatoFiltradoActual === GetFirstUser) && ((usuarioDatoFiltradoActual !== null || usuarioDatoFiltradoActual !== undefined) || (GetFirstUser !== null || GetFirstUser !== undefined)))
-        console.log("IsfirstRegister: " + arg)
-        return (arg)
-    }
-    let IsNullfirstRegisterFiltered = (): boolean => {
-        let arg: boolean = ((usuarioDatoFiltradoActual === (null || undefined)))
-        console.log("IsNullfirstRegisterFiltered: " + arg)
-        return (arg)
-    }
-    let IsNullfirstRegister = (): boolean => {
-        let arg: boolean = ((usuarioDatoFiltradoActual === (null || undefined)))
-        console.log("IsNullfirstRegister: " + arg)
-        return (arg)
-    }
-    let myBool: boolean
-    let myBool2: boolean
-
-
 
     useEffect(() => {
-        if (IsNullfirstRegister()) {
+        if (firstRegNotNULL) {
+            setFirstRegNotNULL(usuarioDatoFiltradoActual == null)
+        }
+    })
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    useEffect(() => {
+        if (GetUsersFiltered[0] == null || GetUsersFiltered[0] == undefined) {
 
             console.log("useEffect [indexCurrent]", `[${indexCurrent}]`)
 
@@ -80,7 +56,6 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
             /* userCurrentUpdate(data) */
             console.log("data", data)
         }
-
 
     })
 
@@ -98,34 +73,10 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
 
     }, [indexCurrent, countChangesFilterInput])
 
-
-    let Expression = (argument: any) => {
-        let result: boolean
-        result = argument
-        return result
-    }
-
-    let nuloUsuarioDatoFiltrado = Expression(false)
-
     const handleFirst = () => { setIndexCurrent(0); ChangeCountNavigateButtons() };
     const handlePrevious = () => { setIndexCurrent(prevIndex => Math.max(prevIndex - 1, 0)); ChangeCountNavigateButtons() };
     const handleNext = () => { setIndexCurrent(prevIndex => Math.min(prevIndex + 1, GetUsersFiltered.length - 1)); ChangeCountNavigateButtons() };
     const handleLast = () => { setIndexCurrent(GetUsersFiltered.length - 1); ChangeCountNavigateButtons() };
-    const [activate, setActivate] = useState(false)
-    const runActivate = () => { setActivate(true) }
-    const runDesctivate = () => { setActivate(false) }
-
-    let UsuariosFiltrados: User[] | undefined;
-    let UsuarioFiltrado: User | undefined;
-
-    UsuariosFiltrados = GetUsersFiltered;
-    UsuarioFiltrado = GetFirstUserFiltered;
-
-    let condicion = Expression(GetUsersFiltered.length > 0)
-
-    let nuloIndefinidoUserFil: boolean = Expression(UsuarioFiltrado === undefined || UsuarioFiltrado === null)
-    let nuloIndefinidoUsersFil: boolean = Expression(UsuariosFiltrados === undefined || UsuariosFiltrados === null)
-    let nuloIndefinidoCurrentUserU: boolean = Expression((currentUserU === null || currentUserU === undefined))
 
     const handleChangeValueUpdate = (fieldName: keyof User, fieldValue: any) => {
         if (usuarioDatoFiltradoActual && fieldName in usuarioDatoFiltradoActual) {
@@ -142,11 +93,7 @@ export function FormUpdateUsersBORRADOR_2({ children }: Child | any,) {
         console.log("Select Type", [fieldName], fieldValue)
     };
 
-    const OnSetDataTypeUser = () => {
-        let temp: any = usuarioDatoFiltradoActual?.tipoUserId
-        if (temp !== null || temp !== undefined)
-            setDataTypeUser(temp)
-    }
+
     let displayCSS: string = "none";
 
     return (

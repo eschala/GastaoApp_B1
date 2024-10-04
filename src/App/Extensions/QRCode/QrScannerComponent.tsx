@@ -8,9 +8,28 @@ import QrScanner from "qr-scanner";
 /* import QrFrame from "../assets/qr-frame.svg"; */
 
 import QrFrame from "../../../assets/qr-frame.svg"
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import { IsLink } from "../../GastaoApp/1. Models/Functions/IsUrlOrLink";
+import { DialogMsg } from "../Test/DialgoTestMessage";
+
+let resultScan: any
+let link: any
 
 
 const QrReader = () => {
+
+    const [isOpen, setIsOpen] = useState(false)
+    const [tittle, setTittle] = useState("")
+    const [description, setDescription] = useState("")
+
+    const SetOnIsOpen = () => setIsOpen(true);
+    /* const SetOnIsClosed = () => setIsOpen(false); */
+    const SetOnTittle = (tittleSet: any) => setTittle(tittleSet);
+    const SetOnDescription = (descriptionSet: any) => setDescription(descriptionSet);
+
     // QR States
     const scanner = useRef<QrScanner>();
     const videoEl = useRef<HTMLVideoElement>(null);
@@ -27,6 +46,15 @@ const QrReader = () => {
         // ✅ Handle success.
         // 😎 You can do whatever you want with the scanned result.
         setScannedResult(result?.data);
+        resultScan = scannedResult
+        if (IsLink(scannedResult)) {
+            link = <a href={scannedResult}>{scannedResult}</a>
+            alert(link + " " + scannedResult)
+
+        }
+        else {
+
+        }
     };
 
     // Fail
@@ -76,6 +104,31 @@ const QrReader = () => {
             );
     }, [qrOn]);
 
+    useEffect(() => {
+
+        if (scannedResult == "") {
+            alert("isOpen = " + isOpen)
+            SetOnTittle("NOT result")
+            SetOnDescription("NOT FOUND")
+            SetOnIsOpen()
+
+        }
+        else {
+            alert("resultado = " + scannedResult + " isOpen = " + isOpen)
+        }
+    }, [scannedResult])
+    useEffect(() => {
+        if (scannedResult !== "") {
+
+
+
+            SetOnTittle("RESULT")
+            SetOnDescription(scannedResult)
+            SetOnIsOpen()
+
+        }
+    })
+
     return (
         <>
 
@@ -88,9 +141,21 @@ const QrReader = () => {
                     left: 0,
                 }}>
                     {scannedResult && (
-                        <h4>
-                            {scannedResult}
-                        </h4>
+                        <>
+                            <h4>
+                                {IsLink(scannedResult) ?
+                                    <a style={{ color: "whitesmoke" }} href={scannedResult}>
+                                        {scannedResult}
+                                    </a>
+                                    :
+                                    <p style={{ color: "whitesmoke" }} >
+                                        {scannedResult}
+                                    </p>
+                                }
+
+                            </h4>
+                            <h5> {"IsLink " + IsLink(scannedResult)}</h5>
+                        </>
                     )}
                 </div>
                 {/* QR */}
@@ -107,7 +172,7 @@ const QrReader = () => {
                         className="qr-frame"
                     />
                 </div>
-
+                {DialogMsg(isOpen, tittle, description)}
 
             </div>
         </>
@@ -115,3 +180,37 @@ const QrReader = () => {
 };
 
 export default QrReader;
+
+
+function ScanQR() {
+    const [IsOpen, SetIsOpen] = useState<boolean>(false)
+
+    const openDialog = () => {
+        SetIsOpen(true)
+    }
+    const closeDialog = () => {
+        SetIsOpen(false)
+    }
+    return (
+        <>
+            <Button onClick={openDialog}>Scanear Codigo QR</Button>
+            <Dialog fullScreen open={IsOpen}>
+                <DialogContent>
+                    <QrReader />
+                </DialogContent>
+                <DialogActions>
+                    <>
+                        <div className="result">
+                            {resultScan}
+                        </div>
+                        <Button onClick={closeDialog}>Cerrar</Button>
+                    </>
+
+                </DialogActions>
+
+            </Dialog>
+        </>
+    )
+}
+
+export { ScanQR as ScanQRComponent } 

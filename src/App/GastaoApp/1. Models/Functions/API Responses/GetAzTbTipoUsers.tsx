@@ -1,28 +1,21 @@
 class ApiAzTbTipoUsers {
-    /* https://localhost:7190/api/AzTbTipoUsers */
-    /* 'https://localhost:7190/api/AzTbTipoUsers' */
-    /* https://localhost:7190/api/AzTbTipoUsers */
-    /* 5187 */
-    /* 7210 */
-    /* 5000 */
-    /* 5098 */
+
     /* 7190 */
 
     static api: string = "/api/AzTbTipoUsers"
     static port: number = 7190
     static localhost: string = "localhost"
     static host: string = "192.168.101.77"
-    static Url: string = (`https://${this.host}:${this.port}${this.api}`)
+    static Url: string = (`http://${this.host}:${this.port}${this.api}`)
     static UrlGetById = (id: number) => {
         return (this.Url + "/" + id)
     }
-    GetUrl(Protocol: string | null = "http", AddressIP: string, Port: string, ApiContext: string) {
+    GetUrl(Protocol: string | any | null, AddressIP: string, Port: string, ApiContext: string) {
 
         return (`${Protocol}://${AddressIP}:${Port}${ApiContext}`)
 
     }
 }
-
 
 export interface TipoUser {
     idTipoUser: number;

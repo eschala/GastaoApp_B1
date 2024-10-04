@@ -1,8 +1,5 @@
 import * as React from 'react';
 
-
-
-
 import { Button } from '@mui/material';
 import { DniControl, EmailControl, LastNameControl, NameControl, PasswordControl } from '../FormControls/Controls';
 import { UserTypeControl } from '../TypeUsers/UserTypeControl';
@@ -56,7 +53,7 @@ export function FormUpdateUsers() {
                         handleMouseUpPassword={handleMouseUpPassword} />
 
                 </div>) :
-                null || undefined
+                ""
             }
             <div className="sections-buttons">
                 <Button variant='outlined' onClick={PrevRegister} disabled={indiceActual === 0}>
@@ -70,26 +67,3 @@ export function FormUpdateUsers() {
 
     )
 }
-{/* 
-                    <NameControl getName={GetUsersFiltrados[indiceActual].nameUser} />
-                    <LastNameControl getLastName={GetUsersFiltrados[indiceActual].lastNameUser} />
-                    <EmailControl getEmail={GetUsersFiltrados[indiceActual].emailUser} />
-                    <DniControl getCedula={GetUsersFiltrados[indiceActual].dniUser} />
-
-                    <PasswordControl
-                        getPass={GetUsersFiltrados[indiceActual].passUser}
-                        showPassword={showPassword}
-                        handleClickShowPassword={handleClickShowPassword}
-                        handleMouseDownPassword={handleMouseDownPassword}
-                        handleMouseUpPassword={handleMouseUpPassword} />
-
-*/}
-/* 
-value={GetUsersFiltrados[indiceActual].idUser}
-value={GetUsersFiltrados[indiceActual].tipoUserId}
-value={GetUsersFiltrados[indiceActual].nameUser}
-value={GetUsersFiltrados[indiceActual].lastNameUser}
-value={GetUsersFiltrados[indiceActual].dniUser}
-value={GetUsersFiltrados[indiceActual].emailUser}
-value={GetUsersFiltrados[indiceActual].passUser}
-*/

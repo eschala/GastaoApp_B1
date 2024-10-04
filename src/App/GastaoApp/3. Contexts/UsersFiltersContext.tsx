@@ -1,4 +1,4 @@
-import React, { createContext, SetStateAction, useContext, useEffect, } from 'react';
+import React, { createContext, SetStateAction, useEffect, } from 'react';
 import { useState } from "react";
 import { GetATbUsers, User } from "../1. Models/Functions/API Responses/GetATbUsers";
 import FormControl from '@mui/material/FormControl';
@@ -253,7 +253,7 @@ interface FilterInputProps {
     disableInput: boolean
 }
 export function FilterInput({ handelControlChangeEvent, disableInput }: FilterInputProps) {
-    const { GetUsersFiltered } = useContext(UsersContext);
+
     const fieldNames = [
         "ID",
         "Tipo de Usuario",

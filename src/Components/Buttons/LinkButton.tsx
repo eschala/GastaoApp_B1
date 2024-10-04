@@ -7,8 +7,8 @@ interface ILinkButton {
     to?: string
     target?: string
     rel?: string
-    onClick?: () => {}
-    onMouseOver?: () => {}
+    onClick?: () => void
+    onMouseOver?: () => void
     type?: string
     dataBsToggle?: string
     context?: string

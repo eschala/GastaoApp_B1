@@ -1,5 +1,6 @@
+import Button from "@mui/material/Button";
 import { useState } from "react";
-import { Button, Collapse } from "react-bootstrap";
+
 
 export function CollapseGastaoSidebar() {
     const [open, setOpen] = useState(false);
@@ -13,13 +14,7 @@ export function CollapseGastaoSidebar() {
             >
                 click
             </Button>
-            <Collapse in={open}>
-                <div id="example-collapse-text">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                    terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-                    labore wes anderson cred nesciunt sapiente ea proident.
-                </div>
-            </Collapse>
+
         </>
     );
 }

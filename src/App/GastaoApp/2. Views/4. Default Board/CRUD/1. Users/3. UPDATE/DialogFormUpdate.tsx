@@ -8,9 +8,6 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import { GetUserTypeControl } from '../TypeUsers/UserTypeControl';
-import { DniControl, EmailControl, LastNameControl, NameControl, PasswordControl, } from './BorradorControlV2';
-
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
@@ -61,7 +58,7 @@ Necesito extraer el resto de los datos por el campo "idUser"
 export function UpdateDialogForm() {
 
     const {
-        userCurrentUpdate, currentUserU, dataTypeUser, setCurrentUserU
+        currentUserU, dataTypeUser, setCurrentUserU
 
     } = useContext(UsersContext)
 

@@ -17,7 +17,7 @@ let getUsers = new API_Url()
 
 export function GetATbUsers(AdminLogged: boolean | any) {
     let UrlApiUsers: string = getUsers.GetUrl("http", "192.168.101.77", "7190", "/api/ATbUsers")
-    let UrlApiUser: string = getUsers.GetUrlByID("http", "192.168.101.77", "7190", "/api/ATbUsers", 12)
+    /* let UrlApiUser: string = getUsers.GetUrlByID("http", "192.168.101.77", "7190", "/api/ATbUsers", 12) */
 
     const [ATbUsers, setATbUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
@@ -30,6 +30,7 @@ export function GetATbUsers(AdminLogged: boolean | any) {
         const fetchUsers = async () => {
             try {
                 const response = await fetch(UrlApiUsers);
+                alert("response " + response)
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
