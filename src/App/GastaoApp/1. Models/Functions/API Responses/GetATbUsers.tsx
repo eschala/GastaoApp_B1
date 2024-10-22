@@ -30,7 +30,7 @@ export function GetATbUsers(AdminLogged: boolean | any) {
         const fetchUsers = async () => {
             try {
                 const response = await fetch(UrlApiUsers);
-                alert("response " + response)
+
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

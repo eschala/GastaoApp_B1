@@ -33,11 +33,12 @@ export function FormUpdateUsersBORRADOR_2() {
 
     const [usuarioDatoFiltradoActual, setUsuarioDatoFiltradoActual] = useState<User | undefined>()
     /* const [usuariosDatosFiltrados, setUsuariosDatosFiltrados] = useState<User[] | undefined>(GetUsersFiltered_Var) */
-    const [firstRegNotNULL, setFirstRegNotNULL] = useState(usuarioDatoFiltradoActual === null || usuarioDatoFiltradoActual === undefined)
+    /* const [firstRegNotNULL, setFirstRegNotNULL] = useState(usuarioDatoFiltradoActual === null || usuarioDatoFiltradoActual === undefined) */
+    /* const [firstRegNotNULL, setFirstRegNotNULL] = useState(true) */
 
     useEffect(() => {
-        if (firstRegNotNULL) {
-            setFirstRegNotNULL(usuarioDatoFiltradoActual == null)
+        if (usuarioDatoFiltradoActual == null) {
+            /* setFirstRegNotNULL(false) */
         }
     })
 
@@ -67,6 +68,7 @@ export function FormUpdateUsersBORRADOR_2() {
         data = GetUsersFiltered[indexCurrent]
         setUsuarioDatoFiltradoActual(data)
         setCurrentUserU(data)
+        /* setFirstRegNotNULL(true) */
         /* userCurrentUpdate(data) */
         console.log("data", data)
 
@@ -232,7 +234,9 @@ export function FormUpdateUsersBORRADOR_2() {
                                             type='number'
                                             name={"idUser"}
                                             placeholder='ID'
-                                            value={firstRegNotNULL === false ? GetFirstUser?.idUser : usuarioDatoFiltradoActual?.idUser}
+                                            /* value={firstRegNotNULL === false ? GetFirstUser?.idUser : usuarioDatoFiltradoActual?.idUser} */
+                                            /* value={firstRegNotNULL === false ? GetFirstUser?.idUser : usuarioDatoFiltradoActual?.idUser} */
+                                            value={usuarioDatoFiltradoActual?.idUser === null || usuarioDatoFiltradoActual?.idUser == undefined ? null : usuarioDatoFiltradoActual?.idUser}
                                         >
 
                                         </TextField>
@@ -240,7 +244,7 @@ export function FormUpdateUsersBORRADOR_2() {
                                 </div>
                                 <div className="section-control section-tipoUserId">
                                     <FormControl style={{ margin: 0, padding: 1, width: "100%" }}>
-                                        <label htmlFor="" style={{ margin: "2pt 1rem" }}>Tipo: {`(ID: ${firstRegNotNULL === false ? GetFirstUser?.tipoUserId : usuarioDatoFiltradoActual?.tipoUserId})`}</label>
+                                        <label htmlFor="" style={{ margin: "2pt 1rem" }}>Tipo: {`(ID: ${/* firstRegNotNULL === false ?  */ usuarioDatoFiltradoActual?.tipoUserId})`}</label>
 
                                         <Select
                                             /* onChange={(e: any) => handleChangeValue("tipoUserId", e.target.value)} */
@@ -251,9 +255,10 @@ export function FormUpdateUsersBORRADOR_2() {
                                             labelId="demo-simple-select-label"
                                             id="demo-simple-select"
                                             /* value={1} */
-                                            value={usuarioDatoFiltradoActual?.tipoUserId || null}
+                                            value={usuarioDatoFiltradoActual?.tipoUserId === null || usuarioDatoFiltradoActual?.tipoUserId == undefined ? null : usuarioDatoFiltradoActual?.tipoUserId}
                                         /* value={currentUserU?.tipoUserId} */
-                                        /* value={firstRegNotNULL === false ? GetFirstUser?.tipoUserId || GetFirstUserFiltered?.tipoUserId : usuarioDatoFiltradoActual?.tipoUserId || currentUserU?.tipoUserId} */
+
+                                        /* value={firstRegNotNULL === false ? GetFirstUser?.tipoUserId || GetFirstUser?.tipoUserId : usuarioDatoFiltradoActual?.tipoUserId || currentUserU?.tipoUserId} */
                                         >
                                             {dataTypeUser.map((userType: TipoUser) => (
                                                 <MenuItem key={userType.idTipoUser} value={userType.idTipoUser}>
@@ -273,7 +278,8 @@ export function FormUpdateUsersBORRADOR_2() {
                                             type='text'
                                             name={"nameUser"}
                                             placeholder='Nombre'
-                                            value={firstRegNotNULL === false ? GetFirstUser?.nameUser : usuarioDatoFiltradoActual?.nameUser}
+                                            /* value={firstRegNotNULL === false ? GetFirstUser?.nameUser || null : usuarioDatoFiltradoActual?.nameUser} */
+                                            value={usuarioDatoFiltradoActual?.nameUser === null || usuarioDatoFiltradoActual?.nameUser == "" ? null : usuarioDatoFiltradoActual?.nameUser}
                                         >
 
                                         </TextField>
@@ -287,7 +293,8 @@ export function FormUpdateUsersBORRADOR_2() {
                                             type='text'
                                             name={"lastNameUser"}
                                             placeholder='Apellido'
-                                            value={firstRegNotNULL === false ? GetFirstUser?.lastNameUser : usuarioDatoFiltradoActual?.lastNameUser}
+                                            /* value={firstRegNotNULL === false ? GetFirstUser?.lastNameUser || null : usuarioDatoFiltradoActual?.lastNameUser} */
+                                            value={usuarioDatoFiltradoActual?.lastNameUser === null || usuarioDatoFiltradoActual?.lastNameUser == "" ? null : usuarioDatoFiltradoActual?.lastNameUser}
                                         >
 
                                         </TextField>
@@ -302,7 +309,8 @@ export function FormUpdateUsersBORRADOR_2() {
                                             type='number'
                                             name={"dniUser"}
                                             placeholder='DNI / Cedula'
-                                            value={firstRegNotNULL === false ? GetFirstUser?.dniUser : usuarioDatoFiltradoActual?.dniUser}
+                                            /* value={firstRegNotNULL === false ? GetFirstUser?.dniUser || null : usuarioDatoFiltradoActual?.dniUser} */
+                                            value={usuarioDatoFiltradoActual?.dniUser === null || usuarioDatoFiltradoActual?.dniUser == undefined ? null : usuarioDatoFiltradoActual?.dniUser}
                                         >
 
                                         </TextField>
@@ -316,7 +324,8 @@ export function FormUpdateUsersBORRADOR_2() {
                                             type='email'
                                             name={"emailUser"}
                                             placeholder='Correo'
-                                            value={firstRegNotNULL === false ? GetFirstUser?.emailUser : usuarioDatoFiltradoActual?.emailUser}
+                                            /* value={firstRegNotNULL === false ? GetFirstUser?.emailUser || null : usuarioDatoFiltradoActual?.emailUser} */
+                                            value={usuarioDatoFiltradoActual?.emailUser === null || usuarioDatoFiltradoActual?.emailUser == "" ? null : usuarioDatoFiltradoActual?.emailUser}
                                         >
 
                                         </TextField>
@@ -328,7 +337,8 @@ export function FormUpdateUsersBORRADOR_2() {
                                         <OutlinedInput
                                             onChange={(e: any) => handleChangeValueUpdate("passUser", e.target.value)}
                                             name={"passUser"}
-                                            value={firstRegNotNULL === false ? GetFirstUser?.passUser : usuarioDatoFiltradoActual?.passUser}
+                                            /* value={firstRegNotNULL === false ? GetFirstUser?.passUser || null : usuarioDatoFiltradoActual?.passUser} */
+                                            value={usuarioDatoFiltradoActual?.passUser === null || usuarioDatoFiltradoActual?.passUser == "" ? null : usuarioDatoFiltradoActual?.passUser}
                                             type={showPassword ? 'text' : 'password'}
                                             placeholder='Contraseña'
                                             endAdornment=
