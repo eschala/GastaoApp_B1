@@ -5,7 +5,7 @@ class ApiAzTbTipoUsers {
     static api: string = "/api/AzTbTipoUsers"
     static port: number = 7190
     static localhost: string = "localhost"
-    static host: string = "192.168.101.77"
+    static host: string = "192.168.101.78"
     static Url: string = (`http://${this.host}:${this.port}${this.api}`)
     static UrlGetById = (id: number) => {
         return (this.Url + "/" + id)
@@ -19,13 +19,20 @@ class ApiAzTbTipoUsers {
 
 export interface TipoUser {
     idTipoUser: number;
-    tipoUser: string;
+    tipoUser?: string | null;
 }
+
+/* let apiStr: string = "/api/ATbUsers" */
+
 export function GetAzTbTipoUsers(): Promise<TipoUser[]> {
     let getAzTbTipoUsers = new ApiAzTbTipoUsers()
 
-    let apiUrl: any
-    apiUrl = getAzTbTipoUsers.GetUrl("http", "192.168.101.77", "7190", ApiAzTbTipoUsers.api)
+    let host: string = "192.168.101.78"
+    let port: string = "5202"/* 7190 */
+    let hd: string = "http"
+
+    let apiUrl: string
+    apiUrl = getAzTbTipoUsers.GetUrl(hd, host, port, ApiAzTbTipoUsers.api)
     // Asegúrate de especificar el tipo de retorno
     return new Promise((resolve, reject) => {
         fetch(apiUrl)
