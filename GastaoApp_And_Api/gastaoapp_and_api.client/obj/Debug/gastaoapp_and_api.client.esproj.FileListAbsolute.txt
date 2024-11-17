@@ -1,0 +1,1 @@
+C:\Users\Samir\Documents\Developing SW\REACT\2. TypeScript\2.Dev\practica-gastao-1\GastaoApp_B1\GastaoApp_And_Api\gastaoapp_and_api.client\obj\Debug\gastaoapp_and_api.client.esproj.CoreCompileInputs.cache

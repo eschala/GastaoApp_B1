@@ -21,7 +21,7 @@ namespace Gastao_B2.Controllers
         }
 
         // GET: api/ATbUsers
-        [EnableCors("AllowAll")]
+        //[EnableCors("AllowAll")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ATbUser>>> GetATbUsers()
         {
@@ -29,7 +29,7 @@ namespace Gastao_B2.Controllers
         }
 
         // GET: api/ATbUsers/5
-        [EnableCors("AllowAll")]
+        //[EnableCors("AllowAll")]
         [HttpGet("{id}")]
         public async Task<ActionResult<ATbUser>> GetATbUser(ulong id)
         {
@@ -109,7 +109,7 @@ namespace Gastao_B2.Controllers
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         // Busqueda
         // GET: api/ATbUsers/Search?filter={valor}
-        [EnableCors("AllowAll")]
+        //[EnableCors("AllowAll")]
         [HttpGet("Search")]
         public async Task<ActionResult<IEnumerable<ATbUser>>> SearchUsers(string filter)
         {

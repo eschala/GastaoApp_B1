@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Samir\\Documents\\Developing SW\\REACT\\2. TypeScript\\2.Dev\\practica-gastao-1\\GastaoApp_B1\\src\\Dotnet\\API\\Gastao_B2\\Gastao_B2.csproj": {}
+    "C:\\Users\\Samir\\Documents\\Developing SW\\REACT\\2. TypeScript\\2.Dev\\practica-gastao-1\\GastaoApp_B1\\Gastao_Beta1\\src\\Dotnet\\API\\Gastao_B2\\Gastao_B2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Samir\\Documents\\Developing SW\\REACT\\2. TypeScript\\2.Dev\\practica-gastao-1\\GastaoApp_B1\\src\\Dotnet\\API\\Gastao_B2\\Gastao_B2.csproj": {
+    "C:\\Users\\Samir\\Documents\\Developing SW\\REACT\\2. TypeScript\\2.Dev\\practica-gastao-1\\GastaoApp_B1\\Gastao_Beta1\\src\\Dotnet\\API\\Gastao_B2\\Gastao_B2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Samir\\Documents\\Developing SW\\REACT\\2. TypeScript\\2.Dev\\practica-gastao-1\\GastaoApp_B1\\src\\Dotnet\\API\\Gastao_B2\\Gastao_B2.csproj",
+        "projectUniqueName": "C:\\Users\\Samir\\Documents\\Developing SW\\REACT\\2. TypeScript\\2.Dev\\practica-gastao-1\\GastaoApp_B1\\Gastao_Beta1\\src\\Dotnet\\API\\Gastao_B2\\Gastao_B2.csproj",
         "projectName": "Gastao_B2",
-        "projectPath": "C:\\Users\\Samir\\Documents\\Developing SW\\REACT\\2. TypeScript\\2.Dev\\practica-gastao-1\\GastaoApp_B1\\src\\Dotnet\\API\\Gastao_B2\\Gastao_B2.csproj",
+        "projectPath": "C:\\Users\\Samir\\Documents\\Developing SW\\REACT\\2. TypeScript\\2.Dev\\practica-gastao-1\\GastaoApp_B1\\Gastao_Beta1\\src\\Dotnet\\API\\Gastao_B2\\Gastao_B2.csproj",
         "packagesPath": "C:\\Users\\Samir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Samir\\Documents\\Developing SW\\REACT\\2. TypeScript\\2.Dev\\practica-gastao-1\\GastaoApp_B1\\src\\Dotnet\\API\\Gastao_B2\\obj\\",
+        "outputPath": "C:\\Users\\Samir\\Documents\\Developing SW\\REACT\\2. TypeScript\\2.Dev\\practica-gastao-1\\GastaoApp_B1\\Gastao_Beta1\\src\\Dotnet\\API\\Gastao_B2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -54,13 +54,21 @@
               "target": "Package",
               "version": "[6.5.1, )"
             },
+            "Microsoft.AspNet.Cors": {
+              "target": "Package",
+              "version": "[5.3.0, )"
+            },
+            "Microsoft.AspNet.WebApi.Cors": {
+              "target": "Package",
+              "version": "[5.3.0, )"
+            },
             "Microsoft.AspNetCore.Cors": {
               "target": "Package",
-              "version": "[2.1.1, )"
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Mvc.Cors": {
               "target": "Package",
-              "version": "[2.1.1, )"
+              "version": "[2.2.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

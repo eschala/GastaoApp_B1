@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:5173",
+"RedirectUrl": "",
+"LaunchCommand": "npm run dev",
+"WorkingDirectory": "C:\\Users\\Samir\\Documents\\Developing SW\\REACT\\2. TypeScript\\2.Dev\\practica-gastao-1\\GastaoApp_B1\\GastaoApp_And_Api\\GastaoApp_And_Api.Server\\..\\gastaoapp_and_api.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}

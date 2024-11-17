@@ -1,16 +1,12 @@
 
 import './App.css'
-import Home from './Components/Home'
-
+import Borrador2 from './Components/Views/Borrador/Borrador2.tsx';
 
 function App() {
 
   return (
     <>
-      <div>
-        <h1>Test</h1>
-        <Home />
-      </div >
+      <Borrador2 />
     </>
   )
 }

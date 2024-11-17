@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "mjxdfDHeDSYxg8sEBWH1R4mwS01nc+psnzYFY8ifBtI=",
+  "Source": "GastaoApp_And_Api.Server",
+  "BasePath": "_content/GastaoApp_And_Api.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\Samir\\Documents\\Developing SW\\REACT\\2. TypeScript\\2.Dev\\practica-gastao-1\\GastaoApp_B1\\GastaoApp_And_Api\\gastaoapp_and_api.client\\gastaoapp_and_api.client.esproj",
+      "Version": 2,
+      "Source": "gastaoapp_and_api.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

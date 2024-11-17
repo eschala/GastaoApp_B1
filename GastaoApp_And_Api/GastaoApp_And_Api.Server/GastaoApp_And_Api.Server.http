@@ -1,0 +1,6 @@
+@GastaoApp_And_Api.Server_HostAddress = http://localhost:5018
+
+GET {{GastaoApp_And_Api.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

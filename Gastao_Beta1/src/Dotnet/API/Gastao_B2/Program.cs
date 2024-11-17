@@ -7,15 +7,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
-    serverOptions.Listen(IPAddress.Loopback, 5000); // Escucha en localhost:5000
-    serverOptions.Listen(IPAddress.Parse("192.168.101.78"), 5202); // Escucha en la dirección IP deseada
-    serverOptions.Listen(IPAddress.Parse("192.168.101.78"), 7190); // Escucha en la dirección IP deseada
-    serverOptions.Listen(IPAddress.Parse("192.168.101.78"), 5188); // Escucha en la dirección IP deseada
-    serverOptions.Listen(IPAddress.Loopback, 5188); // Escucha en la dirección IP deseada
-    serverOptions.Listen(IPAddress.Parse("192.168.101.78"), 7245); // Escucha en la dirección IP deseada
-    serverOptions.Listen(IPAddress.Loopback, 7245); // Escucha en la dirección IP deseada
-    serverOptions.Listen(IPAddress.Loopback, 5202); // Escucha en la dirección IP deseada
-    serverOptions.Listen(IPAddress.Loopback, 7190); // Escucha en la dirección IP deseada
+
+    serverOptions.Listen(IPAddress.Parse("192.168.101.78"), 5000);
+    serverOptions.Listen(IPAddress.Parse("192.168.101.78"), 5202);
+    serverOptions.Listen(IPAddress.Parse("192.168.101.78"), 7190);
+    serverOptions.Listen(IPAddress.Parse("192.168.101.78"), 5188);
+    serverOptions.Listen(IPAddress.Parse("192.168.101.78"), 7245);
+    serverOptions.Listen(IPAddress.Loopback, 5000);
+    serverOptions.Listen(IPAddress.Loopback, 5202);
+    serverOptions.Listen(IPAddress.Loopback, 7190);
+    serverOptions.Listen(IPAddress.Loopback, 5188);
+    serverOptions.Listen(IPAddress.Loopback, 7245);
 });
 // Configuración de la cadena de conexión desde appsettings.json
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
@@ -38,6 +40,7 @@ builder.Services.AddCors(options =>
             builder.AllowAnyOrigin() // Permitir cualquier origen
                    .AllowAnyMethod() // Permitir cualquier método (GET, POST, etc.)
                    .AllowAnyHeader(); // Permitir cualquier encabezado
+            /* Content-Type */
         });
 });
 
