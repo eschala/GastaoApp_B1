@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Gastao_B2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f71687a915e9a014fb4273129d17e9edb79cfc08")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d93b09da9d79317cd5c915982a7dde0d6d3fcd63")]
 [assembly: System.Reflection.AssemblyProductAttribute("Gastao_B2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Gastao_B2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

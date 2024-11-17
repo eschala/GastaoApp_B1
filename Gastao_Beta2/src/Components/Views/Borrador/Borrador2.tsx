@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
+import { ThemeProvider } from '@mui/material/styles';
 import UseFetchUsers, { User } from "../../../Data/FromApi/GetData_API_V2";
-
+import { darkTheme } from "../../Styles/ModeTheme";
 
 export const normalizeString = (convertNormalString: string) => {
     return convertNormalString.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
-
-let v: any = 0
 
 function Borrador2() {
 
@@ -37,12 +37,6 @@ function Borrador2() {
         console.log("Probando")
         console.log("Usuarios", usuarios)
 
-        console.log("includes('amir')")
-        console.log(
-            usuarios.filter(f =>
-                (f.nameUser?.includes(/* normalizeString */("amir")))
-            )
-        )
     }/* , [] */);
 
     const usersFiltered = usuarios.filter((Filtrando: User) =>
@@ -88,17 +82,7 @@ function Borrador2() {
         console.log("usuarioFiltrar", usuarioFiltrar)
         console.log("usersFiltered", usersFiltered)
         console.log("usuariosFiltrados", usuariosFiltrados)
-        /*         setUsuarioFiltrar(
-                    {
-                        idUser: e.target.value,
-                        dniUser: e.target.value,
-                        nameUser: e.target.value,
-                        lastNameUser: e.target.value,
-                        emailUser: e.target.value,
-                        passUser: e.target.value,
-                        tipoUserId: e.target.value,
-                    }
-                ) */
+
     }
     const onChangeInputRandomText = (e: React.ChangeEvent<HTMLInputElement> | any) => {
         setRandomInputText(e.target.value);
@@ -123,134 +107,143 @@ function Borrador2() {
             );
         });
 
+        setUsuariosFiltrados(foundUsers)
+
         if ((foundUsers.length == 0 && randomInputText !== "")) {
             setRandomText("NO se ha encontrado ningun registro con ese nombre");
         }
         else {
-            setRandomText(`Se ha encontrado ${foundUsers.length} ${foundUsers.length > 1 ? "registros" : "registro"} con ese nombre. ${foundUsers.map((u: User, i: any) =>
-                "\n" + i + 1 + ". " + "DNI: " + u.dniUser + " " + "nombre y apellido: " + u.nameUser + " " + u.lastNameUser
-            )} `);
+            setRandomText(`
+                Se ha encontrado ${foundUsers.length} ${foundUsers.length > 1 ? "registros" : "registro"} 
+            `);
         }
     };
 
     useEffect(() => {
         setRandomTextOnChange()
+
     }, [randomInputText])
 
     return (
         <>
-            <div style={{ backgroundColor: "white", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+            <ThemeProvider theme={darkTheme}>
+                <Box style={{ backgroundColor: "black" }}>
 
-                <Typography variant="h2" gutterBottom>
-                    {"<Filtros/>"}
-                </Typography>
+                    <Box style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
 
-                <>
-                    <div style={{ border: "1px solid blue", margin: "5px", padding: "15px" }}>
-                        <Typography variant="h5" gutterBottom>
-                            Usuario
-                        </Typography>
-                        <Typography variant="h6" gutterBottom>
-                            ID
+                        <Typography variant="h2" gutterBottom color="white">
+                            {"Filtrar"}
                         </Typography>
 
-                        <TextField type="number" id="filled-basic" label="DNI" variant="filled"
-                            name="dniUser"
-                            onChange={OnChangeInputText}
-                        /* onChange={setUsuarioFiltrarOnChange} */
-                        /*                             onChange={(e: React.ChangeEvent<HTMLInputElement> | any) =>
-                                                        AlCambiarTextoEnInput(e)} */
+                        <>
+                            <Box style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", border: "1px solid white", margin: "5px", padding: "15px" }}>
+                                <Typography variant="h5" color="white">
+                                    Usuario
+                                </Typography>
+                                <Typography variant="h6" color="white">
+                                    ID
+                                </Typography>
 
-                        />
-                        <TextField type="text" id="filled-basic" label="Nombre" variant="filled"
-                            name="nameUser"
-                            onChange={OnChangeInputText}
-                        /* onChange={setUsuarioFiltrarOnChange} */
+                                <TextField type="number" id="filled-basic" label="DNI" variant="filled"
+                                    name="dniUser"
+                                    onChange={OnChangeInputText}
+                                /* onChange={setUsuarioFiltrarOnChange} */
+                                /*                             onChange={(e: React.ChangeEvent<HTMLInputElement> | any) =>
+                                                                AlCambiarTextoEnInput(e)} */
 
-                        />
-                        <TextField type="text" id="filled-basic" label="Apellido" variant="filled"
-                            name="lastNameUser"
-                            onChange={OnChangeInputText}
-                        /* onChange={setUsuarioFiltrarOnChange} */
+                                />
+                                <TextField type="text" id="filled-basic" label="Nombre" variant="filled"
+                                    name="nameUser"
+                                    onChange={OnChangeInputText}
+                                /* onChange={setUsuarioFiltrarOnChange} */
 
-                        />
-                        <TextField type="text" id="filled-basic" label="Email" variant="filled"
-                            name="emailUser"
-                            onChange={OnChangeInputText}
-                        /* onChange={setUsuarioFiltrarOnChange} */
+                                />
+                                <TextField type="text" id="filled-basic" label="Apellido" variant="filled"
+                                    name="lastNameUser"
+                                    onChange={OnChangeInputText}
+                                /* onChange={setUsuarioFiltrarOnChange} */
 
-                        />
+                                />
+                                <TextField type="text" id="filled-basic" label="Email" variant="filled"
+                                    name="emailUser"
+                                    onChange={OnChangeInputText}
+                                /* onChange={setUsuarioFiltrarOnChange} */
 
-                        <TextField type="number" id="filled-basic" label="Rol" variant="filled"
-                            name="tipoUserId"
-                            onChange={OnChangeInputText}
-                        /* onChange={setUsuarioFiltrarOnChange} */
+                                />
 
-                        />
+                                <TextField type="number" id="filled-basic" label="Rol" variant="filled"
+                                    name="tipoUserId"
+                                    onChange={OnChangeInputText}
+                                /* onChange={setUsuarioFiltrarOnChange} */
 
-                    </div>
-                    <div style={{ maxWidth: "800px", backgroundColor: "white", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                        <TextField style={{ minWidth: "500px" }} type="text" id="filled-basic" label="Random" variant="filled"
-                            name="Random"
-                            onChange={onChangeInputRandomText}
-                            value={randomInputText}
-                        />
-                        <Typography variant="h4" color="initial">
-                            {randomText}
-                        </Typography>
-                        <Typography variant="h6" color="initial">
-                            Test {randomInputText}
-                        </Typography>
+                                />
 
-                        <button onClick={OnChangeInputText}>
-                            Click
-                        </button>
+                            </Box>
+                            <Box style={{ maxWidth: "800px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                                <TextField style={{ minWidth: "500px" }} type="text" id="filled-basic" label="Filtrar" variant="filled"
+                                    name="Random"
+                                    onChange={onChangeInputRandomText}
+                                    value={randomInputText}
+                                />
 
-                    </div>
-                </>
+                                <Typography variant="h6" color="white">
+                                    Test {randomInputText}
+                                </Typography>
+                                <div className="" style={{ display: "flex", flex: "100%", textAlign: "center", width: "100%" }}>
 
-            </div >
-            <div style={{ backgroundColor: "white", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                                    <Typography variant="h3" color="white">
+                                        {randomText}
+                                    </Typography>
+                                </div>
+                                <button onClick={OnChangeInputText} style={{ display: "none" }}>
+                                    Click
+                                </button>
 
-                <Typography variant="h2" gutterBottom>
-                    {"<Resultados/>"}
-                </Typography>
-                {usersFiltered.map((U: User, i: number) => (
-                    <>
-                        <div style={{ border: "1px solid blue", margin: "5px", padding: "15px" }}>
-                            <Typography variant="h5" gutterBottom>
-                                Usuario {i + 1}
-                            </Typography>
-                            <Typography variant="h6" gutterBottom>
-                                ID {U.idUser}
-                            </Typography>
+                            </Box>
+                        </>
 
-                            <TextField id="filled-basic" label="DNI" variant="filled"
-                                value={U.dniUser}
-                            />
-                            <TextField id="filled-basic" label="Nombre" variant="filled"
-                                value={U.nameUser}
-                            />
-                            <TextField id="filled-basic" label="Apellido" variant="filled"
-                                value={U.lastNameUser}
-                            />
-                            <TextField id="filled-basic" label="Email" variant="filled"
-                                value={U.emailUser}
-                            />
-                            <TextField id="filled-basic" label="Contraseña" variant="filled" type="password"
-                                value={U.passUser}
-                            />
-                            <TextField id="filled-basic" label="Rol" variant="filled"
-                                value={U.tipoUserId}
-                            />
+                    </Box >
 
-                        </div>
-                    </>
-                )
-                )}
+                    <Box style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
 
-            </div >
+                        {usuariosFiltrados.map((U: User, i: number) => (
+                            <>
+                                <Box style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", border: "1px solid white", margin: "5px", padding: "15px" }}>
+                                    <Typography variant="h5" color="white">
+                                        Usuario {i + 1}
+                                    </Typography>
+                                    <Typography variant="h6" color="white">
+                                        ID {U.idUser}
+                                    </Typography>
 
+                                    <TextField id="filled-basic" label="DNI" variant="filled"
+                                        value={U.dniUser}
+                                    />
+                                    <TextField id="filled-basic" label="Nombre" variant="filled"
+                                        value={U.nameUser}
+                                    />
+                                    <TextField id="filled-basic" label="Apellido" variant="filled"
+                                        value={U.lastNameUser}
+                                    />
+                                    <TextField id="filled-basic" label="Email" variant="filled"
+                                        value={U.emailUser}
+                                    />
+                                    <TextField id="filled-basic" label="Contraseña" variant="filled" type="password"
+                                        value={U.passUser}
+                                    />
+                                    <TextField id="filled-basic" label="Rol" variant="filled"
+                                        value={U.tipoUserId}
+                                    />
+
+                                </Box>
+                            </>
+                        )
+                        )}
+
+                    </Box >
+
+                </Box>
+            </ThemeProvider >
         </>
     );
 }
