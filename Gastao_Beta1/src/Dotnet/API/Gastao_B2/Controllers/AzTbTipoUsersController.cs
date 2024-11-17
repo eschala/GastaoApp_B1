@@ -20,7 +20,7 @@ namespace Gastao_B2.Controllers
         }
 
         // GET: api/<AzTbTipoUser>
-        [EnableCors("AllowAll")]
+        /* [EnableCors("AllowAll")] */
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AzTbTipoUser>>> GetAzTbTipoUsers()
         {
@@ -28,7 +28,7 @@ namespace Gastao_B2.Controllers
         }
 
         // GET api/<AzTbTipoUser>/5
-        [EnableCors("AllowAll")]
+        /* [EnableCors("AllowAll")] */
         [HttpGet("{id}")]
         public async Task<ActionResult<AzTbTipoUser>> GetAzTbTipoUser(ulong id)
         {

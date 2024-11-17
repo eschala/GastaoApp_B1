@@ -1,48 +1,33 @@
-const [usuarios, setUsuarios] = useState<User[]>([]);
-const [usuariosFiltrados, setUsuariosFiltrados] = useState<User[]>([]);
+/* 
+export function TipoUsersBorrador2({ ValueDefault }: { ValueDefault: number }) {
+    const [nuevoValor, setNuevoValor] = useState<number>(ValueDefault);
+    const [tipoUsuarios, setTipoUsuarios] = useState<TipoUser[]>([]);
+    const tipoUsers = UseFetchTipoUsers();
 
-const users = UseFetchUsers(); // Suponiendo que tienes una función UseFetchUsers()
+    useEffect(() => {
+        setTipoUsuarios(tipoUsers);
+    }, [tipoUsers]);
 
-const [usuarioFiltrar, setUsuarioFiltrar] = useState<User>({
-    idUser: 0,
-    dniUser: 0,
-    nameUser: "",
-    lastNameUser: "",
-    emailUser: "",
-    passUser: "",
-    tipoUserId: 0,
-});
+    const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
+        setNuevoValor(e.target.value as number); // Ensure type safety
+    };
 
-const usersFiltered = usuarios.filter((usuario) => {
-    // Combine all filter conditions using logical AND (&&)
     return (
-        // ID filter (only filter if `idUser` in `usuarioFiltrar` is not 0)
-        (usuarioFiltrar.idUser !== 0 && usuario.idUser === usuarioFiltrar.idUser) ||
-        // DNI filter (same logic as ID)
-        (usuarioFiltrar.dniUser !== 0 && usuario.dniUser === usuarioFiltrar.dniUser) ||
-        // Name filter (includes case-insensitive search and empty string handling)
-        (usuarioFiltrar.nameUser !== "" &&
-            normalizeString(usuario.nameUser).toLowerCase().includes(
-                normalizeString(usuarioFiltrar.nameUser).toLowerCase()
-            )) ||
-        // Last name filter (same logic as name)
-        (usuarioFiltrar.lastNameUser !== "" &&
-            normalizeString(usuario.lastNameUser).toLowerCase().includes(
-                normalizeString(usuarioFiltrar.lastNameUser).toLowerCase()
-            )) ||
-        // Email filter (same logic as name)
-        (usuarioFiltrar.emailUser !== "" &&
-            normalizeString(usuario.emailUser).toLowerCase().includes(
-                normalizeString(usuarioFiltrar.emailUser).toLowerCase()
-            )) ||
-        // User type filter (only filter if `tipoUserId` in `usuarioFiltrar` is not 0)
-        (usuarioFiltrar.tipoUserId !== 0 && usuario.tipoUserId === usuarioFiltrar.tipoUserId)
+        <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+            <InputLabel id="demo-simple-select-filled-label">Rol</InputLabel>
+            <Select
+                labelId="demo-simple-select-filled-label"
+                id="demo-simple-select-filled"
+                value={nuevoValor}
+                onChange={handleChange}
+            >
+                {tipoUsuarios.map((t) => (
+                    <MenuItem key={t.idTipoUser} value={t.idTipoUser}>
+                        {t.tipoUser}
+                    </MenuItem>
+                ))}
+            </Select>
+        </FormControl>
     );
-});
-
-const setUsuarioFiltrarOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    const valor = name === "idUser" || name === "tipoUserId" || name === "dniUser" ? Number(value) : value;
-    setUsuarioFiltrar({ ...usuarioFiltrar, [name]: valor });
-    console.log("Test desde 'setUsuarioFiltrarOnChange' ");
-};
+}
+ */
