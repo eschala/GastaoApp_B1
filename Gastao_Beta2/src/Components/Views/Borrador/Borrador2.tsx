@@ -5,15 +5,12 @@ import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { ThemeProvider } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import Select /*, { SelectChangeEvent } */ from '@mui/material/Select';
 
-import { darkTheme } from "../../Styles/ModeTheme";
 import UseFetchUsers, { User } from "../../../Data/FromApi/GetATbUsers";
 import UseFetchTipoUsers, { TipoUser } from "../../../Data/FromApi/GetAzTbTipoUsers";
 import { OnChangeET } from "../../Types/GeneralTypes";
-
-
 
 export const normalizeString = (convertNormalString: string) => {
     return convertNormalString.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
@@ -27,25 +24,59 @@ countC2 = 0
 let countChangeFiltered: number
 countChangeFiltered = 0
 
+let countUseEffect: number
+countUseEffect = 0
+
+let countRenderCp: number
+countRenderCp = 0
+
+
 function Borrador2() {
+    countRenderCp++
+    console.log("countRenderCp", countRenderCp)
 
     const [nuevoValorTipoIdU, setNuevoValorTipoIdU] = useState<number>(0);
     const [tipoUsuariosData, setTipoUsuariosData] = useState<TipoUser[]>([]);
+    const [usuarios, setUsuarios] = useState<User[]>([]);
+    const [usuariosFiltrados, setUsuariosFiltrados] = useState<User[]>([]);
     const tipoUsersData = UseFetchTipoUsers();
+    const users = UseFetchUsers();
 
     useEffect(() => {
+
+        setNuevoValorTipoIdU(0)
+
+
         setTipoUsuariosData(tipoUsersData);
-    }, [tipoUsersData]);
+        countUseEffect++
+        console.log("countUseEffect", countUseEffect)
+        if (countUseEffect <= 5) {
+
+            setUsuariosFiltrados(users)
+
+            setRandomText(`
+                ${usuariosFiltrados.length > 1 ? "Total de registros " + usuariosFiltrados.length + "" : ""} 
+            `)
+        }
+
+    });
+
+    useEffect(() => {
+        setUsuarios(users)
+
+        console.log("Usuarios", usuarios)
+
+    }/* , [] */);
+    useEffect(() => {
+        setUsuariosFiltrados(users)
+
+        console.log("usuariosFiltrados", usuariosFiltrados)
+
+    }, []);
 
     const [randomText, setRandomText] = useState<string>("")
 
     const [randomInputText, setRandomInputText] = useState<string>("")
-
-    const [usuarios, setUsuarios] = useState<User[]>([]);
-
-    const [usuariosFiltrados, setUsuariosFiltrados] = useState<User[]>([]);
-
-    const users = UseFetchUsers(); // Suponiendo que tienes una función UseFetchUsers()
 
     const [usuarioFiltrar, setUsuarioFiltrar] = useState<User>({
         idUser: 0,
@@ -57,13 +88,7 @@ function Borrador2() {
         tipoUserId: 0,
     });
 
-    useEffect(() => {
-        setUsuarios(users)
-        console.log("Probando")
-        console.log("Usuarios", usuarios)
-
-    }/* , [] */);
-    const usersFiltered = usuarios.filter((usuario: User) => {
+    const filteredUsers = usuarios.filter((usuario: User) => {
         return (
             (usuarioFiltrar.idUser === 0 || usuario.idUser === usuarioFiltrar.idUser) &&
             (usuarioFiltrar.dniUser === 0 || usuario.dniUser === usuarioFiltrar.dniUser) &&
@@ -107,6 +132,7 @@ function Borrador2() {
         setUsuarioFiltrar({ ...usuarioFiltrar, [name]: valor });
         console.log("Test desde 'setUsuarioFiltrarOnChange' ");
 
+
     };
     const OnChangeInputText = (e: OnChangeET) => {
         setUsuarioFiltrarOnChange(e)
@@ -133,19 +159,19 @@ function Borrador2() {
     }
     const setTextOnChange = () => {
         setUsuariosFiltrados(users)
-        setUsuariosFiltrados(usersFiltered)
+        setUsuariosFiltrados(filteredUsers)
 
-        if ((usersFiltered.length == 0 && randomInputText !== "")) {
+        if ((filteredUsers.length == 0 && randomInputText !== "")) {
             setRandomText("NO se ha encontrado ningun registro con ese nombre");
         }
         else {
             setRandomText(`
-                        Se ha encontrado ${usersFiltered.length} ${usersFiltered.length > 1 ? "registros" : "registro"} 
+                        Se ha encontrado ${filteredUsers.length} ${filteredUsers.length > 1 ? "registros" : "registro"} 
                     `);
         }
 
         console.log("usuarioFiltrar", usuarioFiltrar)
-        console.log("usersFiltered", usersFiltered)
+        console.log("usersFiltered", filteredUsers)
         console.log("usuariosFiltrados", usuariosFiltrados)
     }
 
@@ -180,15 +206,147 @@ function Borrador2() {
 
     return (
         <>
-            <ThemeProvider theme={darkTheme}>
-                <Box style={{ backgroundColor: "black" }}>
 
-                    <Box style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+            <Box style={{ backgroundColor: "black" }}>
 
-                        <Typography variant="h2" gutterBottom color="white">
-                            {"Filtrar"}
+                <Box style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+
+                    <>
+                        <Typography variant="h4" gutterBottom color="white">
+                            {"Filtrado especifico"}
 
                         </Typography>
+                        <Box style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", borderRadius: "1rem", border: "1px solid white", margin: "5px", padding: "15px" }}>
+                            <Typography variant="h5" color="white">
+                                Usuario
+                            </Typography>
+                            <Typography variant="h6" color="white">
+                                ID
+                            </Typography>
+
+                            <TextField type="number" id="filled-basic" label="DNI" variant="filled"
+                                name="dniUser"
+                                onChange={OnChangeInputText}
+                            />
+                            <TextField type="text" id="filled-basic" label="Nombre" variant="filled"
+                                name="nameUser"
+                                onChange={OnChangeInputText}
+                            /* onChange={setUsuarioFiltrarOnChange} */
+
+                            />
+                            <TextField type="text" id="filled-basic" label="Apellido" variant="filled"
+                                name="lastNameUser"
+                                onChange={OnChangeInputText}
+                            /* onChange={setUsuarioFiltrarOnChange} */
+
+                            />
+                            <TextField type="text" id="filled-basic" label="Email" variant="filled"
+                                name="emailUser"
+                                onChange={OnChangeInputText}
+                            /* onChange={setUsuarioFiltrarOnChange} */
+
+                            />
+
+                            <TextField type="number" id="filled-basic" label="Rol" variant="filled"
+                                name="tipoUserId"
+                                onChange={OnChangeInputText}
+                                style={{ display: "none" }}
+                            /* onChange={setUsuarioFiltrarOnChange} */
+
+                            />
+                            <FormControl variant="filled" sx={{ m: 1, width: "100%" }}>
+                                <InputLabel id="demo-simple-select-filled-label">Rol</InputLabel>
+                                <Select
+                                    name="tipoUserId"
+                                    labelId="demo-simple-select-filled-label"
+                                    id="demo-simple-select-filled"
+
+                                    onChange={OnChangeSelectInputText}
+                                >
+                                    <MenuItem value={0}>
+                                        (Elegir)
+                                    </MenuItem>
+                                    {tipoUsuariosData.map((t) => (
+                                        <MenuItem key={t.idTipoUser} value={t.idTipoUser}>
+                                            {t.tipoUser}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                            <Box>
+                                <Button variant="outlined" onClick={() => console.clear()}>
+                                    Limpiar Consola
+                                </Button>
+                            </Box>
+                            {/* <TipoUsersTemplateSelectInputText ValueDefault={0} /> */}
+
+                        </Box>
+
+                        {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
+                        {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
+
+                        <Box style={{ maxWidth: "800px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                            <Box style={{ margin: "1rem" }}>
+
+                                <TextField style={{ flex: 1 }} type="text" id="filled-basic" label="Filtrar" variant="filled"
+                                    name="Filtrar"
+                                    onChange={onChangeInputRandomText}
+                                    value={randomInputText}
+                                />
+                            </Box>
+
+                            <Typography variant="h6" color="white" style={{ margin: "0.5rem" }}>
+                                Test {randomInputText}
+                            </Typography>
+                            <div className="" style={{ display: "flex", flex: "100%", textAlign: "center", width: "100%" }}>
+
+                                <Typography variant="h6" color="white" style={{ margin: "1rem" }}>
+                                    {randomText}
+                                </Typography>
+                            </div>
+
+                        </Box>
+                    </>
+                </Box >
+
+                <Box style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
+
+                    {usuariosFiltrados.map((U: User, i: number) => (
+                        <>
+                            <Box style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", borderRadius: "1rem", border: "1px solid white", margin: "5px", padding: "15px" }}>
+                                <Typography variant="h5" color="white">
+                                    Usuario {i + 1}
+                                </Typography>
+                                <Typography variant="h6" color="white">
+                                    ID {U.idUser}
+                                </Typography>
+
+                                <TextField id="filled-basic" label="DNI" variant="filled"
+                                    value={U.dniUser}
+                                />
+                                <TextField id="filled-basic" label="Nombre" variant="filled"
+                                    value={U.nameUser}
+                                />
+                                <TextField id="filled-basic" label="Apellido" variant="filled"
+                                    value={U.lastNameUser}
+                                />
+                                <TextField id="filled-basic" label="Email" variant="filled"
+                                    value={U.emailUser}
+                                />
+                                <TextField id="filled-basic" label="Contraseña" variant="filled" type="password"
+                                    value={U.passUser}
+                                />
+                                <TextField id="filled-basic" label="Rol" variant="filled"
+                                    value={U.tipoUserId}
+                                    style={{ display: "none" }}
+                                />
+                                <TipoUsersTemplateSelectInputText ValueDefault={U.tipoUserId} allowEdit={false} />
+                            </Box>
+                        </>
+                    )
+                    )}
+                    <Box style={{ margin: "1rem", padding: "1rem" }}>
+
                         <Typography variant="h5" gutterBottom color="white">
                             N° Cambios Especificos: {countC1}
                         </Typography>
@@ -198,146 +356,26 @@ function Borrador2() {
                         <Typography variant="h5" gutterBottom color="white">
                             N° Veces Filtrado: {countChangeFiltered}
                         </Typography>
+                    </Box>
 
-                        <>
-                            <Box style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", border: "1px solid white", margin: "5px", padding: "15px" }}>
-                                <Typography variant="h5" color="white">
-                                    Usuario
-                                </Typography>
-                                <Typography variant="h6" color="white">
-                                    ID
-                                </Typography>
+                </Box >
 
-                                <TextField type="number" id="filled-basic" label="DNI" variant="filled"
-                                    name="dniUser"
-                                    onChange={OnChangeInputText}
-                                /* onChange={setUsuarioFiltrarOnChange} */
-                                /*                             onChange={(e: OnChangeET) =>
-                                                                AlCambiarTextoEnInput(e)} */
+            </Box >
 
-                                />
-                                <TextField type="text" id="filled-basic" label="Nombre" variant="filled"
-                                    name="nameUser"
-                                    onChange={OnChangeInputText}
-                                /* onChange={setUsuarioFiltrarOnChange} */
-
-                                />
-                                <TextField type="text" id="filled-basic" label="Apellido" variant="filled"
-                                    name="lastNameUser"
-                                    onChange={OnChangeInputText}
-                                /* onChange={setUsuarioFiltrarOnChange} */
-
-                                />
-                                <TextField type="text" id="filled-basic" label="Email" variant="filled"
-                                    name="emailUser"
-                                    onChange={OnChangeInputText}
-                                /* onChange={setUsuarioFiltrarOnChange} */
-
-                                />
-
-                                <TextField type="number" id="filled-basic" label="Rol" variant="filled"
-                                    name="tipoUserId"
-                                    onChange={OnChangeInputText}
-                                /* onChange={setUsuarioFiltrarOnChange} */
-
-                                />
-                                <FormControl variant="filled" sx={{ m: 1, width: "100%" }}>
-                                    <InputLabel id="demo-simple-select-filled-label">Rol</InputLabel>
-                                    <Select
-                                        name="tipoUserId"
-                                        labelId="demo-simple-select-filled-label"
-                                        id="demo-simple-select-filled"
-
-                                        onChange={OnChangeSelectInputText}
-                                    >
-                                        <MenuItem value={0}>
-                                            (Elegir)
-                                        </MenuItem>
-                                        {tipoUsuariosData.map((t) => (
-                                            <MenuItem key={t.idTipoUser} value={t.idTipoUser}>
-                                                {t.tipoUser}
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </FormControl>
-                                {/* <TipoUsersTemplateSelectInputText ValueDefault={0} /> */}
-
-                            </Box>
-
-                            {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
-                            {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
-
-                            <Box style={{ maxWidth: "800px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                                <TextField style={{ minWidth: "500px" }} type="text" id="filled-basic" label="Filtrar" variant="filled"
-                                    name="Random"
-                                    onChange={onChangeInputRandomText}
-                                    value={randomInputText}
-                                />
-
-                                <Typography variant="h6" color="white">
-                                    Test {randomInputText}
-                                </Typography>
-                                <div className="" style={{ display: "flex", flex: "100%", textAlign: "center", width: "100%" }}>
-
-                                    <Typography variant="h3" color="white">
-                                        {randomText}
-                                    </Typography>
-                                </div>
-                                <button onClick={OnChangeInputText} style={{ display: "none" }}>
-                                    Click
-                                </button>
-                            </Box>
-                        </>
-                    </Box >
-
-                    <Box style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
-
-                        {usuariosFiltrados.map((U: User, i: number) => (
-                            <>
-                                <Box style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", border: "1px solid white", margin: "5px", padding: "15px" }}>
-                                    <Typography variant="h5" color="white">
-                                        Usuario {i + 1}
-                                    </Typography>
-                                    <Typography variant="h6" color="white">
-                                        ID {U.idUser}
-                                    </Typography>
-
-                                    <TextField id="filled-basic" label="DNI" variant="filled"
-                                        value={U.dniUser}
-                                    />
-                                    <TextField id="filled-basic" label="Nombre" variant="filled"
-                                        value={U.nameUser}
-                                    />
-                                    <TextField id="filled-basic" label="Apellido" variant="filled"
-                                        value={U.lastNameUser}
-                                    />
-                                    <TextField id="filled-basic" label="Email" variant="filled"
-                                        value={U.emailUser}
-                                    />
-                                    <TextField id="filled-basic" label="Contraseña" variant="filled" type="password"
-                                        value={U.passUser}
-                                    />
-                                    <TextField id="filled-basic" label="Rol" variant="filled"
-                                        value={U.tipoUserId}
-                                    />
-
-                                </Box>
-                            </>
-                        )
-                        )}
-
-                    </Box >
-
-                </Box>
-            </ThemeProvider >
         </>
     );
 }
 
 export default Borrador2;
+export interface TipoUsersTemplateSelectInputTextProps {
+    ValueDefault: number;
+    allowEdit: boolean;
+}
 
-export function TipoUsersTemplateSelectInputText(ValueDefault: number | any,) {
-    const [nuevoValor, setNuevoValor] = useState<number>(ValueDefault);
+export function TipoUsersTemplateSelectInputText(
+    props: TipoUsersTemplateSelectInputTextProps,
+) {
+    const [nuevoValor, setNuevoValor] = useState<number>(props.ValueDefault);
     const [tipoUsuarios, setTipoUsuarios] = useState<TipoUser[]>([]);
     const tipoUsers = UseFetchTipoUsers();
 
@@ -348,23 +386,43 @@ export function TipoUsersTemplateSelectInputText(ValueDefault: number | any,) {
     const handleChange = (e: OnChangeET) => {
         setNuevoValor(e.target.value as number); // Ensure type safety
     };
+    useEffect(() => {
+        if (props.allowEdit == false)
+            setNuevoValor(props.ValueDefault)
+    }, [props.ValueDefault])
 
     return (
         <FormControl variant="filled" sx={{ m: 1,/*  minWidth: 120  */ width: "100%" }}>
             <InputLabel id="demo-simple-select-filled-label">Rol</InputLabel>
-            <Select
-                name="tipoUserId"
-                labelId="demo-simple-select-filled-label"
-                id="demo-simple-select-filled"
-                value={nuevoValor === 0 || nuevoValor === undefined ? null : nuevoValor}
-                onChange={(e: OnChangeET) => handleChange(e)}
-            >
-                {tipoUsuarios.map((t) => (
-                    <MenuItem key={t.idTipoUser} value={t.idTipoUser}>
-                        {t.tipoUser}
-                    </MenuItem>
-                ))}
-            </Select>
+            {props.allowEdit === true ?
+                <Select
+                    name="tipoUserId"
+                    labelId="demo-simple-select-filled-label"
+                    id="demo-simple-select-filled"
+                    value={nuevoValor === 0 || nuevoValor === undefined ? null : nuevoValor}
+                    onChange={(e: OnChangeET) =>
+                        handleChange(e)
+                    }
+                >
+                    {tipoUsuarios.map((t) => (
+                        <MenuItem key={t.idTipoUser} value={t.idTipoUser}>
+                            {t.tipoUser}
+                        </MenuItem>
+                    ))}
+                </Select> :
+                <Select
+                    /* name="tipoUserId" */
+                    labelId="demo-simple-select-filled-label"
+                    id="demo-simple-select-filled"
+                    value={props.ValueDefault}
+                >
+                    {tipoUsuarios.map((t) => (
+                        <MenuItem key={t.idTipoUser} value={t.idTipoUser}>
+                            {t.tipoUser}
+                        </MenuItem>
+                    ))}
+                </Select>
+            }
         </FormControl>
     );
 }

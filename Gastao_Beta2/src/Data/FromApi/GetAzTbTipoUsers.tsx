@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 /* /api/AzTbTipoUsers */
+
 /* IdTipoUser */
 /* TipoUser */
 
@@ -24,7 +25,7 @@ function UseFetchTipoUsers() {
         Port = "5000"
         ApiName = "/api/AzTbTipoUsers"
         url = `${Https}://${Hostname}:${Port}${ApiName}`
-        console.log("url", url)
+        /* console.log("url", url) */
     }, [])
 
     const [tipoUsers, setTipoUsers] = useState<TipoUser[]>([]);
@@ -35,12 +36,10 @@ function UseFetchTipoUsers() {
                 const response = await axios.get(url);
                 setTipoUsers(response.data);
             } catch (error) {
-                /* console.error('Error fetching users:', error); */
-                console.log("No se logró nada HDP")
-                console.log(":v")
-                console.log(":v")
-                console.log(":v")
-                console.log(":v")
+
+                console.error("No se logró nada HDP al buscar los Tipos de Usuarios")
+                console.error(":v")
+
             }
         };
 

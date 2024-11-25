@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 /* /api/ATbUsers */
+
 /* IdUser */
 /* DniUser */
 /* NameUser */
@@ -37,7 +38,7 @@ function UseFetchUsers() {
         Port = "5000"
         ApiName = "/api/ATbUsers"
         url = `${Https}://${Hostname}:${Port}${ApiName}`
-        console.log("url", url)
+        /* console.log("url", url) */
     }, [])
 
     const [users, setUsers] = useState<User[]>([]);
@@ -49,11 +50,9 @@ function UseFetchUsers() {
                 setUsers(response.data);
             } catch (error) {
                 /* console.error('Error fetching users:', error); */
-                console.log("No se logró nada HDP")
-                console.log(":v")
-                console.log(":v")
-                console.log(":v")
-                console.log(":v")
+                console.error("No se errorró nada HDP al buscar los Usuarios")
+                console.error(":v")
+
             }
         };
 
