@@ -1,0 +1,24 @@
+{
+  "Version": 1,
+  "Hash": "QdAOcwZ3oohDZIKZxa9dHSCoDjCWym3MElj4dW09O7M=",
+  "Source": "Gastao_React_Dotnet_T1.Server",
+  "BasePath": "_content/Gastao_React_Dotnet_T1.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\Samir_LTP\\Documents\\Developing\\Web Develop\\React\\My Git-Hub Imports\\GastaoApp_B1\\Gastao_React_Dotnet_T1\\gastao_react_dotnet_t1.client\\gastao_react_dotnet_t1.client.esproj",
+      "Version": 2,
+      "Source": "gastao_react_dotnet_t1.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

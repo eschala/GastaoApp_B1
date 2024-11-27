@@ -1,0 +1,6 @@
+@Gastao_React_Dotnet_T1.Server_HostAddress = http://localhost:5156
+
+GET {{Gastao_React_Dotnet_T1.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

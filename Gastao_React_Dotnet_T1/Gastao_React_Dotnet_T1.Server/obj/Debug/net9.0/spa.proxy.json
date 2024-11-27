@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:55194",
+"RedirectUrl": "",
+"LaunchCommand": "npm run dev",
+"WorkingDirectory": "C:\\Users\\Samir_LTP\\Documents\\Developing\\Web Develop\\React\\My Git-Hub Imports\\GastaoApp_B1\\Gastao_React_Dotnet_T1\\Gastao_React_Dotnet_T1.Server\\..\\gastao_react_dotnet_t1.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}

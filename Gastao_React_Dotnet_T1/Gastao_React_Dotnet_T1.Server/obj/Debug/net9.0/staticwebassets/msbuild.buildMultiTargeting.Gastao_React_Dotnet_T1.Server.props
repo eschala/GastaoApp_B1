@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Gastao_React_Dotnet_T1.Server.props" />
+</Project>
