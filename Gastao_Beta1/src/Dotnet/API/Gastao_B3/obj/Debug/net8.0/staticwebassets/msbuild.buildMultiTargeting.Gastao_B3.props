@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\Gastao_B3.props" />
-</Project>

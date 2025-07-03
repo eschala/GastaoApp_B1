@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\GastaoApp_And_Api.Server.props" />
-</Project>

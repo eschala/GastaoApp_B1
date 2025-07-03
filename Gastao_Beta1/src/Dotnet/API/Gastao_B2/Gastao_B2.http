@@ -1,6 +1,0 @@
-@Gastao_B2_HostAddress = http://*:5050
-
-GET {{Gastao_B2_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

@@ -1,0 +1,2 @@
+CREATE DATABASE Gastao_Db;
+USE Gastao_Db;
