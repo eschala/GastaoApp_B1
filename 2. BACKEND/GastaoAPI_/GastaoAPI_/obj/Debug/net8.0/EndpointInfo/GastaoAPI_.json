@@ -1,0 +1,651 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "GastaoAPI_",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/RolDeUsuarios": {
+      "get": {
+        "tags": [
+          "RolDeUsuarios"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RolDeUsuario"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RolDeUsuario"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RolDeUsuario"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "RolDeUsuarios"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RolDeUsuario"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RolDeUsuario"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RolDeUsuario"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RolDeUsuario"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RolDeUsuario"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RolDeUsuario"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/RolDeUsuarios/{id}": {
+      "get": {
+        "tags": [
+          "RolDeUsuarios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RolDeUsuario"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RolDeUsuario"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RolDeUsuario"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "RolDeUsuarios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RolDeUsuario"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RolDeUsuario"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RolDeUsuario"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "RolDeUsuarios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Usuarios": {
+      "get": {
+        "tags": [
+          "Usuarios"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Usuario"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Usuario"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Usuario"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Usuarios"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Usuarios/{id}": {
+      "get": {
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "GetWeatherForecast",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Egreso": {
+        "type": "object",
+        "properties": {
+          "idEgreso": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "regDateEgreso": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "tittleEgreso": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionEgreso": {
+            "type": "string",
+            "nullable": true
+          },
+          "amountEgreso": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "valueEgreso": {
+            "type": "number",
+            "format": "double"
+          },
+          "typeEgresoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "usuarioIdE": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "typeEgreso": {
+            "$ref": "#/components/schemas/TypeEgreso"
+          },
+          "usuarioIdENavigation": {
+            "$ref": "#/components/schemas/Usuario"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Ingreso": {
+        "type": "object",
+        "properties": {
+          "idIngreso": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "regDateIngreso": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "tittleIngreso": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptionIngreso": {
+            "type": "string",
+            "nullable": true
+          },
+          "amountIngreso": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "valueIngreso": {
+            "type": "number",
+            "format": "double"
+          },
+          "typeIngresoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "usuarioIdI": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "typeIngreso": {
+            "$ref": "#/components/schemas/TypeIngreso"
+          },
+          "usuarioIdINavigation": {
+            "$ref": "#/components/schemas/Usuario"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RolDeUsuario": {
+        "type": "object",
+        "properties": {
+          "idRolUsuario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rolDeUsuario1": {
+            "type": "string",
+            "nullable": true
+          },
+          "usuarios": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Usuario"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TypeEgreso": {
+        "type": "object",
+        "properties": {
+          "idTypeEgreso": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "typeEgreso1": {
+            "type": "string",
+            "nullable": true
+          },
+          "egresos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Egreso"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TypeIngreso": {
+        "type": "object",
+        "properties": {
+          "idTypeIngreso": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "typeIngreso1": {
+            "type": "string",
+            "nullable": true
+          },
+          "ingresos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Ingreso"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "idUsuario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dniUsuario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nameUsuario": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastNameUsuario": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailUsuario": {
+            "type": "string",
+            "nullable": true
+          },
+          "passUsuario": {
+            "type": "string",
+            "nullable": true
+          },
+          "rolUsuarioId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "egresos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Egreso"
+            },
+            "nullable": true
+          },
+          "ingresos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Ingreso"
+            },
+            "nullable": true
+          },
+          "rolUsuario": {
+            "$ref": "#/components/schemas/RolDeUsuario"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
