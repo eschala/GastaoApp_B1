@@ -3,8 +3,8 @@ export function GastaoApp() {
 
     return (<>
         <div>
-            <h1>Welcome to Gastao App</h1>
-            <p>This is the main application component.</p>
+            <h1>Gastao App</h1>
+            <p>Esta aplicación es para controlar los gastos.</p>
         </div>
     </>
     )
