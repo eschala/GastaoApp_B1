@@ -14,6 +14,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import NestedList from './1.ListBarOptions/ListBar';
+import { Home } from '../Pages/Home/Home';
+import { Outlet } from 'react-router-dom';
 
 
 const drawerWidth = 240;
@@ -140,12 +142,11 @@ export default function PersistentDrawerLeft() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <Typography sx={{ marginBottom: 2 }}>
-          Nada xD
-        </Typography>
-        <Typography sx={{ marginBottom: 2 }}>
-          Nada xD x2
-        </Typography>
+        <div style={{ backgroundColor: 'lightgray', padding: '20px', borderRadius: '8px' }}>
+          
+          <Outlet/>
+        </div>
+
       </Main>
     </Box>
   );

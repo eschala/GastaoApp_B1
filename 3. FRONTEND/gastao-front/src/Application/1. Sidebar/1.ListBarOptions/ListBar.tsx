@@ -17,6 +17,7 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
+import { Link } from 'react-router-dom';
 
 
 export default function NestedList() {
@@ -38,22 +39,52 @@ export default function NestedList() {
       }
     >
       {/* - - - - - - - Usuarios - - - - - - - - - - */}
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <PersonIcon />
-        </ListItemIcon>
-        <ListItemText primary="Usuarios" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
+      <Link to={"/usuarios"} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <ListItemButton onClick={handleClick}>
+          <ListItemIcon>
+            <PersonIcon />
+          </ListItemIcon>
+          <ListItemText primary="Usuarios" />
+          {open ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+      </Link>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4, fontSize: '5px' }}>
-            <ListItemIcon>
-              <SearchOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText sx={{ fontSize: '5px' }} primary="Buscar" />
-          </ListItemButton>
-
+          <Link to={"/usuarios/search"} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <ListItemButton sx={{ pl: 4, fontSize: '5px' }}>
+              <ListItemIcon>
+                <SearchOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText sx={{ fontSize: '5px' }} primary="Buscar" />
+            </ListItemButton>
+          </Link>
+          {/*  */}
+          <Link to={"/usuarios/create"} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <ListItemButton sx={{ pl: 4, fontSize: '5px' }}>
+              <ListItemIcon>
+                <AddCircleOutlineOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText sx={{ fontSize: '5px' }} primary="Crear" />
+            </ListItemButton>
+          </Link>
+          {/*  */}
+          <Link to={"/usuarios/edit"} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <ListItemButton sx={{ pl: 4, fontSize: '5px' }}>
+              <ListItemIcon>
+                <EditOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText sx={{ fontSize: '5px' }} primary="Editar" />
+            </ListItemButton>
+          </Link>
+          {/*  */}
+          <Link to={"/usuarios/delete"} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <ListItemButton sx={{ pl: 4, fontSize: '5px' }}>
+              <ListItemIcon>
+                <DeleteOutlineOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText sx={{ fontSize: '5px' }} primary="Eliminar" />
+            </ListItemButton>
+          </Link>
         </List>
       </Collapse>
       {/* - - - - - - - Egresos - - - - - - - - */}
