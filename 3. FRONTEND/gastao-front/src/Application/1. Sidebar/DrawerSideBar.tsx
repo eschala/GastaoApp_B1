@@ -14,7 +14,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import NestedList from './1.ListBarOptions/ListBar';
-import { Home } from '../Pages/Home/Home';
+
 import { Outlet } from 'react-router-dom';
 
 
@@ -92,8 +92,8 @@ export default function PersistentDrawerLeft() {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
+    <Box sx={{ display: 'flex', backgroundColor: 'blue', height: '100%',width: '100%' }}>
+      {<CssBaseline />}
       <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
@@ -141,12 +141,19 @@ export default function PersistentDrawerLeft() {
 
       </Drawer>
       <Main open={open}>
-        <DrawerHeader />
-        <div style={{ backgroundColor: 'lightgray', padding: '20px', borderRadius: '8px' }}>
-          
-          <Outlet/>
+        {/* <DrawerHeader /> */}
+        <div style={{
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'lightgray',
+          padding: '20px',
+          borderRadius: '8px',
+          flexGrow: 1, // Esto es clave para que el div ocupe el espacio restante
+          display: 'flex', // Asegura que el contenido del Outlet también pueda flex
+          flexDirection: 'column', // O 'row' dependiendo de cómo quieras el layout interno
+        }}>
         </div>
-
+          <Outlet />
       </Main>
     </Box>
   );

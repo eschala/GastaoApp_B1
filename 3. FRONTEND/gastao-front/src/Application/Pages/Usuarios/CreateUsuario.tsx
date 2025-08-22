@@ -2,7 +2,7 @@
 
 export function CreateUsuario () {
   return (
-    <div>
+    <div style={{ width: '100%', height: '100%', overflow: 'auto' }}>
       <h1>Create Usuario</h1>
       <p style={{backgroundColor:"yellow"}}>This is the Create Usuario page.</p>
       
