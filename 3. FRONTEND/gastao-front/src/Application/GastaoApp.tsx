@@ -9,6 +9,11 @@ import { HomeUsuarios } from "./Pages/Usuarios/HomeUsuarios";
 import { Board } from "./Pages/Board/Board"; // Asumimos que Board es tu layout principal o un componente de página.
 import { About } from "./Pages/About/About";
 import { useState } from "react";
+import { HomeRolDeUsuarios } from "./Pages/RolDeUsuarios/HomeRolDeUsuarios";
+import { CreateRolDeUsuarios } from "./Pages/RolDeUsuarios/CreateRolDeUsuarios";
+import { EditRolDeUsuarios } from "./Pages/RolDeUsuarios/EditRolDeUsuarios";
+import { DeleteRolDeUsuarios } from "./Pages/RolDeUsuarios/DeleteRolDeUsuarios";
+import { SearchRolDeUsuarios } from "./Pages/RolDeUsuarios/SearchRolDeUsuarios";
 // MainLayout.jsx - Versión con transición suave
 function MainLayout() {
     const [isSidebarVisible, setIsSidebarVisible] = useState(false);
@@ -20,7 +25,7 @@ function MainLayout() {
     const containerStyle: React.CSSProperties = {
         display: "flex",
         flexDirection: "row" as React.CSSProperties["flexDirection"],
-        height: '85vh',
+        height: '90vh',
     };
 
     // Estilo para deslizar la barra lateral
@@ -37,7 +42,7 @@ function MainLayout() {
     const mainContentStyle = {
         padding: '20px',
         border: '1px solid gray',
-        backgroundColor: 'lightpink',
+        backgroundColor: 'white',
         flex: 1, // Esto hace que el contenedor ocupe el espacio restante
         transition: 'margin-left 0.5s ease',
         marginLeft: isSidebarVisible ? '0px' : '0px', // No se necesita, pero lo dejo aquí
@@ -56,13 +61,16 @@ function MainLayout() {
             </header>
             <div style={containerStyle}>
                 <aside className="mainAside" style={sidebarStyle}>
-                    <button 
-                    className="toggleButton"
-                    style={{ width: '100%', padding: '10px', cursor: 'pointer' }}
-                    onClick={handleToggleSidebar}>
+                    <button
+                        className="toggleButton"
+                        style={{ width: '100%', padding: '10px', cursor: 'pointer' }}
+                        onClick={handleToggleSidebar}>
                         {isSidebarVisible ? "O" : "M"}
                     </button>
                     {/* Contenido de la barra lateral */}
+
+                    <Link style={{ margin: "0.5rem", display: "block" }} to="/usuarios">Usuarios</Link>
+                    <Link style={{ margin: "0.5rem", display: "block" }} to="/rol-de-usuarios">Rol de Usuarios</Link>
                 </aside>
                 <div className="mainContainer" style={mainContentStyle}>
                     <Outlet />
@@ -71,7 +79,6 @@ function MainLayout() {
         </>
     );
 }
-
 export function GastaoApp() {
     return (
         <BrowserRouter>
@@ -82,14 +89,22 @@ export function GastaoApp() {
                     <Route index element={<Board />} /> {/* Ruta por defecto para "/" */}
                     <Route path="home" element={<Home />} />
                     <Route path="about" element={<About />} />
-                    <Route path="usuarios" element={<HomeUsuarios />} >
+                    <Route path="usuarios" element={<HomeUsuarios />}>
                         {/* Puedes poner un elemento por defecto para /usuarios si quieres */}
                         <Route index element={<div>Selecciona una opción de usuario</div>} />
-                        <Route path="create" element={<CreateUsuario />}></Route>
-                        <Route path="edit" element={<EditUsuario />}></Route>
-                        <Route path="delete" element={<DeleteUsuario />}></Route>
-                        <Route path="search" element={<SearchUsuario />}></Route>
+                        <Route path="create" element={<CreateUsuario />} />
+                        <Route path="edit" element={<EditUsuario />} />
+                        <Route path="delete" element={<DeleteUsuario />} />
+                        <Route path="search" element={<SearchUsuario />} />
                     </Route>
+                        <Route path="rol-de-usuarios" element={<HomeRolDeUsuarios />}>
+                            <Route index element={<div>Selecciona una opción de rol de usuario</div>} />
+                            {/* Aquí puedes agregar rutas anidadas para rol de usuarios si es necesario */}
+                            <Route path="create" element={<CreateRolDeUsuarios />} />
+                            <Route path="edit" element={<EditRolDeUsuarios />} />
+                            <Route path="delete" element={<DeleteRolDeUsuarios />} />
+                            <Route path="search" element={<SearchRolDeUsuarios />} />
+                        </Route>
                 </Route>
             </Routes>
         </BrowserRouter>
