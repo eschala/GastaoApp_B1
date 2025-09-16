@@ -30,7 +30,7 @@ builder.Services.AddCors(options =>
             // Especifica los orígenes permitidos. Para desarrollo con React,
             // generalmente será tu puerto de desarrollo de React.
             // Puedes añadir múltiples orígenes separados por coma si es necesario.
-            builder.WithOrigins("http://localhost:3000") // Reemplaza con la URL de tu app React
+            builder.WithOrigins("http://localhost:5173") // Reemplaza con la URL de tu app React
                    .AllowAnyHeader()    // Permite cualquier encabezado en las solicitudes
                    .AllowAnyMethod()    // Permite cualquier método HTTP (GET, POST, PUT, DELETE, etc.)
                    .AllowCredentials(); // Permite el envío de credenciales (cookies, encabezados de autorización)

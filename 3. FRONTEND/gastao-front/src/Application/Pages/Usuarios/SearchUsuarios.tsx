@@ -1,11 +1,15 @@
+import { ListaDeUsuarios } from "../../DataContext/Usuarios/useUsuarios";
 
-export function SearchUsuario () {
+export function SearchUsuario() {
 
   return (
     <div>
       <h1>Search Usuario</h1>
-      <p style={{backgroundColor:"gray",color:"white"}}>This is the Search Usuario page.</p>
+      
+      <p style={{ backgroundColor: "gray", color: "white" }}>This is the Search Usuario page.</p>
+      <ListaDeUsuarios>
 
+      </ListaDeUsuarios>
 
     </div>
   );

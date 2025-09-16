@@ -15,22 +15,8 @@ export class getDataUsuariosFromAPI {
         this.urlWithId = `http://localhost:5045/api/Usuarios/${this.id}`;
     }
 }
-/* 
- {
-    "idUsuario": 2,
-    "dniUsuario": 1000,
-    "nameUsuario": "Samir",
-    "lastNameUsuario": "Chalá",
-    "emailUsuario": "eduar.chala28@gmail.com",
-    "passUsuario": "1234",
-    "rolUsuarioId": 1,
-    "egresos": [],
-    "ingresos": [],
-    "rolUsuario": null
-  }
-*/
 
-interface Usuario {
+export interface Usuario {
     idUsuario: number;
     dniUsuario: number;
     nameUsuario: string;

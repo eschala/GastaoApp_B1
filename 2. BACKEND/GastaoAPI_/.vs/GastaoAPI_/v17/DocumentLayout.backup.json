@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{1CF0D4D2-749D-42F6-88B1-E4953D79E636}|GastaoAPI_\\GastaoAPI_.csproj|d:\\dev\\proyects\\react\\gastaoapp_b1\\2. backend\\gastaoapi_\\gastaoapi_\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1CF0D4D2-749D-42F6-88B1-E4953D79E636}|GastaoAPI_\\GastaoAPI_.csproj|solutionrelative:gastaoapi_\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CF0D4D2-749D-42F6-88B1-E4953D79E636}|GastaoAPI_\\GastaoAPI_.csproj|d:\\dev\\proyects\\react\\gastaoapp_b1\\2. backend\\gastaoapi_\\gastaoapi_\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CF0D4D2-749D-42F6-88B1-E4953D79E636}|GastaoAPI_\\GastaoAPI_.csproj|solutionrelative:gastaoapi_\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,13 +34,26 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Dev\\Proyects\\React\\GastaoApp_B1\\2. BACKEND\\GastaoAPI_\\GastaoAPI_\\Program.cs",
+              "RelativeDocumentMoniker": "GastaoAPI_\\Program.cs",
+              "ToolTip": "D:\\Dev\\Proyects\\React\\GastaoApp_B1\\2. BACKEND\\GastaoAPI_\\GastaoAPI_\\Program.cs",
+              "RelativeToolTip": "GastaoAPI_\\Program.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACAAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-25T17:14:56.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "UsuariosController.cs",
               "DocumentMoniker": "D:\\Dev\\Proyects\\React\\GastaoApp_B1\\2. BACKEND\\GastaoAPI_\\GastaoAPI_\\Controllers\\UsuariosController.cs",
               "RelativeDocumentMoniker": "GastaoAPI_\\Controllers\\UsuariosController.cs",
               "ToolTip": "D:\\Dev\\Proyects\\React\\GastaoApp_B1\\2. BACKEND\\GastaoAPI_\\GastaoAPI_\\Controllers\\UsuariosController.cs",
               "RelativeToolTip": "GastaoAPI_\\Controllers\\UsuariosController.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAAIIAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-09T17:40:26.004Z",
               "EditorCaption": ""
