@@ -7,10 +7,10 @@ export function HomeUsuarios() {
             <h2>Gestión de Usuarios</h2>
             {/* Opcional: Navegación específica para usuarios */}
             <nav>
-                <Link to="create">Crear</Link> |
-                <Link to="edit">Editar</Link> |
-                <Link to="delete">Eliminar</Link> |
-                <Link to="search">Buscar</Link>
+                <Link className="btn btn-warning" to="create">Crear</Link>
+                <Link className="btn btn-primary" to="edit">Editar</Link>
+                <Link className="btn btn-danger" to="delete">Eliminar</Link>
+                <Link className="btn btn-secondary" to="search">Buscar</Link>
             </nav>
 
             {/* Este Outlet es crucial para que las rutas anidadas (create, edit, etc.) se rendericen aquí */}

@@ -1,19 +1,20 @@
 // GastaoApp.jsx
 import { BrowserRouter, Link, Outlet, Route, Routes } from "react-router-dom";
-import { Home } from "./Pages/Home/Home";
-import { CreateUsuario } from "./Pages/Usuarios/CreateUsuario";
-import { EditUsuario } from "./Pages/Usuarios/EditUsuarios";
-import { DeleteUsuario } from "./Pages/Usuarios/DeleteUsuarios";
-import { SearchUsuario } from "./Pages/Usuarios/SearchUsuarios";
-import { HomeUsuarios } from "./Pages/Usuarios/HomeUsuarios";
-import { Board } from "./Pages/Board/Board"; // Asumimos que Board es tu layout principal o un componente de página.
-import { About } from "./Pages/About/About";
+import { Board } from "./3.Views/1. Sidebar/Pages/Board/Board";
+import { Home } from "./3.Views/1. Sidebar/Pages/Home/Home";
+import { About } from "./3.Views/1. Sidebar/Pages/About/About";
+import { HomeUsuarios } from "./3.Views/1. Sidebar/Pages/Usuarios/HomeUsuarios";
+import { CreateUsuario } from "./3.Views/1. Sidebar/Pages/Usuarios/CreateUsuario";
+import { EditUsuario } from "./3.Views/1. Sidebar/Pages/Usuarios/EditUsuarios";
+import { DeleteUsuario } from "./3.Views/1. Sidebar/Pages/Usuarios/DeleteUsuarios";
+import { SearchUsuario } from "./3.Views/1. Sidebar/Pages/Usuarios/SearchUsuarios";
+import { HomeRolDeUsuarios } from "./3.Views/1. Sidebar/Pages/RolDeUsuarios/HomeRolDeUsuarios";
+import { CreateRolDeUsuarios } from "./3.Views/1. Sidebar/Pages/RolDeUsuarios/CreateRolDeUsuarios";
+import { EditRolDeUsuarios } from "./3.Views/1. Sidebar/Pages/RolDeUsuarios/EditRolDeUsuarios";
+import { DeleteRolDeUsuarios } from "./3.Views/1. Sidebar/Pages/RolDeUsuarios/DeleteRolDeUsuarios";
+import { SearchRolDeUsuarios } from "./3.Views/1. Sidebar/Pages/RolDeUsuarios/SearchRolDeUsuarios";
 import { useState } from "react";
-import { HomeRolDeUsuarios } from "./Pages/RolDeUsuarios/HomeRolDeUsuarios";
-import { CreateRolDeUsuarios } from "./Pages/RolDeUsuarios/CreateRolDeUsuarios";
-import { EditRolDeUsuarios } from "./Pages/RolDeUsuarios/EditRolDeUsuarios";
-import { DeleteRolDeUsuarios } from "./Pages/RolDeUsuarios/DeleteRolDeUsuarios";
-import { SearchRolDeUsuarios } from "./Pages/RolDeUsuarios/SearchRolDeUsuarios";
+
 // MainLayout.jsx - Versión con transición suave
 function MainLayout() {
     const [isSidebarVisible, setIsSidebarVisible] = useState(false);
@@ -52,10 +53,10 @@ function MainLayout() {
         <>
             <header style={{ backgroundColor: 'lightblue', padding: '10px', textAlign: 'center' }}>
                 <nav>Gastao App</nav>
-                <Link style={{ margin: "0.5rem" }} to={"/home"}>Home</Link>
-                <Link style={{ margin: "0.5rem" }} to={"/about"}>About</Link>
-                <Link style={{ margin: "0.5rem", display: "none" }} to="/usuarios">Usuarios</Link>
-                <Link style={{ margin: "0.5rem", display: "none" }} to={"/"}>Board</Link>
+                <Link className="btn btn-success" style={{ margin: "0.5rem" }} to={"/home"}>Home</Link>
+                <Link className="btn btn-success" style={{ margin: "0.5rem" }} to={"/about"}>About</Link>
+                <Link className="btn btn-success" style={{ margin: "0.5rem", display: "none" }} to="/usuarios">Usuarios</Link>
+                <Link className="btn btn-success" style={{ margin: "0.5rem", display: "none" }} to={"/"}>Board</Link>
 
 
             </header>
