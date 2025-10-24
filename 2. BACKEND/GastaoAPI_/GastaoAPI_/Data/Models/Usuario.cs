@@ -23,5 +23,5 @@ public partial class Usuario
 
     public virtual ICollection<Ingreso> Ingresos { get; set; } = new List<Ingreso>();
 
-    public virtual RolDeUsuario RolUsuario { get; set; } = null!;
+    public virtual RolDeUsuario? RolUsuario { get; set; }
 }

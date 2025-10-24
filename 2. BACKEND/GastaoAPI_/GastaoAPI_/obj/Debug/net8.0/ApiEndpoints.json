@@ -1,5 +1,223 @@
 [
   {
+    "ContainingType": "GastaoAPI_.Controllers.EgresosController",
+    "Method": "GetEgresos",
+    "RelativePath": "api/Egresos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[GastaoAPI_.Data.Models.Egreso, GastaoAPI_, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.EgresosController",
+    "Method": "PostEgreso",
+    "RelativePath": "api/Egresos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "egreso",
+        "Type": "GastaoAPI_.Data.Models.Egreso",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "GastaoAPI_.Data.Models.Egreso",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.EgresosController",
+    "Method": "GetEgreso",
+    "RelativePath": "api/Egresos/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "GastaoAPI_.Data.Models.Egreso",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.EgresosController",
+    "Method": "PutEgreso",
+    "RelativePath": "api/Egresos/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "egreso",
+        "Type": "GastaoAPI_.Data.Models.Egreso",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.EgresosController",
+    "Method": "DeleteEgreso",
+    "RelativePath": "api/Egresos/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.IngresosController",
+    "Method": "GetIngresos",
+    "RelativePath": "api/Ingresos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[GastaoAPI_.Data.Models.Ingreso, GastaoAPI_, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.IngresosController",
+    "Method": "PostIngreso",
+    "RelativePath": "api/Ingresos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ingreso",
+        "Type": "GastaoAPI_.Data.Models.Ingreso",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "GastaoAPI_.Data.Models.Ingreso",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.IngresosController",
+    "Method": "GetIngreso",
+    "RelativePath": "api/Ingresos/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "GastaoAPI_.Data.Models.Ingreso",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.IngresosController",
+    "Method": "PutIngreso",
+    "RelativePath": "api/Ingresos/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "ingreso",
+        "Type": "GastaoAPI_.Data.Models.Ingreso",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.IngresosController",
+    "Method": "DeleteIngreso",
+    "RelativePath": "api/Ingresos/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GastaoAPI_.Controllers.RolDeUsuariosController",
     "Method": "GetRolesDeUsuario",
     "RelativePath": "api/RolDeUsuarios",
@@ -109,6 +327,224 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GastaoAPI_.Controllers.TypeEgresosController",
+    "Method": "GetTypeEgresos",
+    "RelativePath": "api/TypeEgresos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[GastaoAPI_.Data.Models.TypeEgreso, GastaoAPI_, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.TypeEgresosController",
+    "Method": "PostTypeEgreso",
+    "RelativePath": "api/TypeEgresos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "typeEgreso",
+        "Type": "GastaoAPI_.Data.Models.TypeEgreso",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "GastaoAPI_.Data.Models.TypeEgreso",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.TypeEgresosController",
+    "Method": "GetTypeEgreso",
+    "RelativePath": "api/TypeEgresos/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "GastaoAPI_.Data.Models.TypeEgreso",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.TypeEgresosController",
+    "Method": "PutTypeEgreso",
+    "RelativePath": "api/TypeEgresos/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "typeEgreso",
+        "Type": "GastaoAPI_.Data.Models.TypeEgreso",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.TypeEgresosController",
+    "Method": "DeleteTypeEgreso",
+    "RelativePath": "api/TypeEgresos/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.TypeIngresosController",
+    "Method": "GetTypeIngresos",
+    "RelativePath": "api/TypeIngresos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[GastaoAPI_.Data.Models.TypeIngreso, GastaoAPI_, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.TypeIngresosController",
+    "Method": "PostTypeIngreso",
+    "RelativePath": "api/TypeIngresos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "typeIngreso",
+        "Type": "GastaoAPI_.Data.Models.TypeIngreso",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "GastaoAPI_.Data.Models.TypeIngreso",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.TypeIngresosController",
+    "Method": "GetTypeIngreso",
+    "RelativePath": "api/TypeIngresos/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "GastaoAPI_.Data.Models.TypeIngreso",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.TypeIngresosController",
+    "Method": "PutTypeIngreso",
+    "RelativePath": "api/TypeIngresos/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "typeIngreso",
+        "Type": "GastaoAPI_.Data.Models.TypeIngreso",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.TypeIngresosController",
+    "Method": "DeleteTypeIngreso",
+    "RelativePath": "api/TypeIngresos/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GastaoAPI_.Controllers.UsuariosController",
     "Method": "GetUsuarios",
     "RelativePath": "api/Usuarios",
@@ -196,6 +632,27 @@
       {
         "Name": "usuario",
         "Type": "GastaoAPI_.Data.Models.Usuario",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GastaoAPI_.Controllers.UsuariosController",
+    "Method": "PatchUsuario",
+    "RelativePath": "api/Usuarios/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "patchDoc",
+        "Type": "Microsoft.AspNetCore.JsonPatch.Operations.Operation[]",
         "IsRequired": true
       }
     ],

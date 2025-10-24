@@ -9,7 +9,7 @@ public partial class Ingreso
 
     public DateTime? RegDateIngreso { get; set; }
 
-    public string TittleIngreso { get; set; } = null!;
+    public string? TittleIngreso { get; set; }
 
     public string? DescriptionIngreso { get; set; }
 
@@ -21,7 +21,7 @@ public partial class Ingreso
 
     public int UsuarioIdI { get; set; }
 
-    public virtual TypeIngreso TypeIngreso { get; set; } = null!;
+    public virtual TypeIngreso? TypeIngreso { get; set; }
 
-    public virtual Usuario UsuarioIdINavigation { get; set; } = null!;
+    public virtual Usuario? UsuarioIdINavigation { get; set; }
 }

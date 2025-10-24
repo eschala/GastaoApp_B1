@@ -9,7 +9,7 @@ public partial class Egreso
 
     public DateTime? RegDateEgreso { get; set; }
 
-    public string TittleEgreso { get; set; } = null!;
+    public string? TittleEgreso { get; set; }
 
     public string? DescriptionEgreso { get; set; }
 
@@ -21,7 +21,7 @@ public partial class Egreso
 
     public int UsuarioIdE { get; set; }
 
-    public virtual TypeEgreso TypeEgreso { get; set; } = null!;
+    public virtual TypeEgreso? TypeEgreso { get; set; }
 
-    public virtual Usuario UsuarioIdENavigation { get; set; } = null!;
+    public virtual Usuario? UsuarioIdENavigation { get; set; }
 }

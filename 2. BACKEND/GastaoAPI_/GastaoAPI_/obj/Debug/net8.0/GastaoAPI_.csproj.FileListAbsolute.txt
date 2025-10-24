@@ -169,3 +169,8 @@ D:\Dev\Proyects\React\GastaoApp_B1\2. BACKEND\GastaoAPI_\GastaoAPI_\obj\Debug\ne
 D:\Dev\Proyects\React\GastaoApp_B1\2. BACKEND\GastaoAPI_\GastaoAPI_\obj\Debug\net8.0\GastaoAPI_.pdb
 D:\Dev\Proyects\React\GastaoApp_B1\2. BACKEND\GastaoAPI_\GastaoAPI_\obj\Debug\net8.0\GastaoAPI_.genruntimeconfig.cache
 D:\Dev\Proyects\React\GastaoApp_B1\2. BACKEND\GastaoAPI_\GastaoAPI_\obj\Debug\net8.0\ref\GastaoAPI_.dll
+D:\Dev\Proyects\React\GastaoApp_B1\2. BACKEND\GastaoAPI_\GastaoAPI_\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Dev\Proyects\React\GastaoApp_B1\2. BACKEND\GastaoAPI_\GastaoAPI_\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Dev\Proyects\React\GastaoApp_B1\2. BACKEND\GastaoAPI_\GastaoAPI_\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\Dev\Proyects\React\GastaoApp_B1\2. BACKEND\GastaoAPI_\GastaoAPI_\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Dev\Proyects\React\GastaoApp_B1\2. BACKEND\GastaoAPI_\GastaoAPI_\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

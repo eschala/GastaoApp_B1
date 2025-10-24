@@ -1,48 +1,63 @@
 using GastaoAPI_.Data.Models;
+using GastaoAPI_.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(); 
+
+// Dentro de Program.cs, en la secciÃ³n de configuraciÃ³n de servicios (builder.Services)
+
+builder.Services.AddScoped<EgresosService>();
+builder.Services.AddScoped<IngresosService>();
+builder.Services.AddScoped<RolDeUsuariosService>();
+builder.Services.AddScoped<TypeEgresosService>();
+builder.Services.AddScoped<TypeIngresosService>();
+builder.Services.AddScoped<UsuariosService>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // ******************************************************************************
-// PASO 1: Obtener la cadena de conexión desde la configuración
+// PASO 1: Obtener la cadena de conexiï¿½n desde la configuraciï¿½n
 var connectionString = builder.Configuration.GetConnectionString("GastaoDbConnection");
 
 // ******************************************************************************
-// PASO 2: Registrar el DbContext con la inyección de dependencias
-builder.Services.AddDbContext<GastaoDbContext>(options =>
-    options.UseSqlServer(connectionString));
+// PASO 2: Registrar el DbContext con la inyecciï¿½n de dependencias
+builder.Services.AddDbContext<GastaoDbContext>(options => options.UseSqlServer(connectionString));
+
 // ******************************************************************************
 
-// --- INICIO DE CONFIGURACIÓN CORS ---
-// Paso 3: Registrar el servicio CORS y definir una política
+// --- INICIO DE CONFIGURACIï¿½N CORS ---
+// Paso 3: Registrar el servicio CORS y definir una polï¿½tica
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin",
+    options.AddPolicy(
+        "AllowSpecificOrigin",
         builder =>
         {
-            // Especifica los orígenes permitidos. Para desarrollo con React,
-            // generalmente será tu puerto de desarrollo de React.
-            // Puedes añadir múltiples orígenes separados por coma si es necesario.
-            builder.WithOrigins("http://localhost:5173") // Reemplaza con la URL de tu app React
-                   .AllowAnyHeader()    // Permite cualquier encabezado en las solicitudes
-                   .AllowAnyMethod()    // Permite cualquier método HTTP (GET, POST, PUT, DELETE, etc.)
-                   .AllowCredentials(); // Permite el envío de credenciales (cookies, encabezados de autorización)
+            // Especifica los orï¿½genes permitidos. Para desarrollo con React,
+            // generalmente serï¿½ tu puerto de desarrollo de React.
+            // Puedes aï¿½adir mï¿½ltiples orï¿½genes separados por coma si es necesario.
+            builder
+                .WithOrigins("http://localhost:5173") // Reemplaza con la URL de tu app React
+                .AllowAnyHeader() // Permite cualquier encabezado en las solicitudes
+                .AllowAnyMethod() // Permite cualquier mï¿½todo HTTP (GET, POST, PUT, DELETE, etc.)
+                .AllowCredentials(); // Permite el envï¿½o de credenciales (cookies, encabezados de autorizaciï¿½n)
 
-            // Si quieres permitir cualquier origen (NO RECOMENDADO PARA PRODUCCIÓN):
+            // Si quieres permitir cualquier origen (NO RECOMENDADO PARA PRODUCCIï¿½N):
             // builder.AllowAnyOrigin()
             //        .AllowAnyHeader()
             //        .AllowAnyMethod();
-        });
+        }
+    );
 });
-// --- FIN DE CONFIGURACIÓN CORS ---
 
+// --- FIN DE CONFIGURACIï¿½N CORS ---
 
 var app = builder.Build();
 
@@ -59,8 +74,9 @@ app.UseAuthorization();
 
 // --- INICIO DE USO CORS ---
 // Paso 4: Habilitar CORS en el pipeline de la solicitud
-app.UseCors("AllowSpecificOrigin"); // Usa el nombre de la política que definiste
-// Este middleware debe ir DESPUÉS de UseRouting() (que se incluye implícitamente)
+app.UseCors("AllowSpecificOrigin"); // Usa el nombre de la polï¿½tica que definiste
+
+// Este middleware debe ir DESPUï¿½S de UseRouting() (que se incluye implï¿½citamente)
 // y ANTES de UseAuthorization() y MapControllers()
 // --- FIN DE USO CORS ---
 

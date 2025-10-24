@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GastaoAPI_")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+30fb8670da0b6323e363a27bf7bd4e190cc10bc4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+88c3f7f9507915594e5997369c66ebdd80643a18")]
 [assembly: System.Reflection.AssemblyProductAttribute("GastaoAPI_")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GastaoAPI_")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
