@@ -1,0 +1,312 @@
+import { useState } from "react";
+import { ListaDeUsuarios, ListaRolDeUsuarios, type RolDeUsuario, type Usuario } from "../../../../DataContext/Usuarios/DataUsuarios";
+import { Button, Form, InputGroup, Modal } from "react-bootstrap";
+import { FormUsuarios } from "./FormUsuarios";
+import { UsuariosAPI } from "../../../../DataContext/APIs/GastaoAPIs";
+import { ModalApiResponse } from "../../Modals/ModalApiResponse";
+
+export function EditUsuario() {
+  const [inputVal, setInputVal] = useState('');
+  const [onlyRead, setOnlyRead] = useState(true);
+  const [usuariosFiltrados, setUsuariosFiltrados] = useState<Usuario[] | null>(null);
+  const [userActive, setUserActive] = useState<Usuario>();
+  const [userEditable, setUserEditable] = useState<Usuario>({
+    idUsuario: null,
+    dniUsuario: null,
+    nameUsuario: null,
+    lastNameUsuario: null,
+    emailUsuario: null,
+    passUsuario: null,
+    rolUsuarioId: null
+  });
+  
+  const [showModal, setShowModal] = useState(false);
+  const handleCloseModal = () => setShowModal(false);
+
+  const getUsuarios = ListaDeUsuarios();
+  const usuariosData = getUsuarios.data;
+  const getRolDeUsuarios = ListaRolDeUsuarios();
+  const optionRolUsers = getRolDeUsuarios.data;
+  const seleccionarUsuario = (usuario: Usuario) => {
+    setUserActive(usuario);
+    setUserEditable(usuario);
+    setShowModal(true);
+    // setOnlyRead(true); 
+    // setUsuariosFiltrados(null); 
+    // setInputVal(''); 
+  };
+  const handleChangeForm = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    const isNumericField = name === 'dniUsuario' || name === 'rolUsuarioId';
+    const finalValue = isNumericField && value !== "" ? Number(value) : value;
+
+    setUserEditable((prevData) => ({
+      ...prevData,
+      [name]: finalValue,
+    }));
+  }
+  const api = new UsuariosAPI();
+
+  const handleUpdate = async (e: React.FormEvent) => {
+    console.log("Datos a actualizar:", userEditable);
+    e.preventDefault();
+
+    const { idUsuario, ...dataToSend } = userData;
+    if (!dataToSend.nameUsuario || !dataToSend.dniUsuario || !dataToSend.rolUsuarioId) {
+      console.error("Faltan campos obligatorios.");
+      setModalState({ 
+        show: true,
+        title: "Campos Faltantes",
+        msg: "Por favor, completa todos los campos obligatorios.",
+        isBadRequest: true,
+      });
+      return;
+    }
+
+    console.log("Cuerpo del Request (sin idUsuario):", dataToSend);
+    const result = await api.doPut(userEditable.idUsuario, dataToSend);
+    if (result.success) {
+      setModalState({
+        show: true,
+        title: "Usuario creado exitosamente",
+        msg: result.message,
+        isBadRequest: false,
+      });
+      setUserData({
+        idUsuario: null, dniUsuario: null, nameUsuario: "",
+        lastNameUsuario: "", emailUsuario: "", passUsuario: "",
+        rolUsuarioId: null,
+      });
+    } else {
+      setModalState({
+        show: true,
+        title: "Fallo la creación de Usuario",
+        msg: result.message,
+        isBadRequest: true,
+      });
+    }
+    handleCloseModal();
+  }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    if (userActive) setUserActive(undefined);
+    const inputValue = e.target.value; 
+    setInputVal(inputValue);
+
+    if (!usuariosData) return;
+    const filtroSanitizado = inputValue.trim().toLowerCase();
+
+    if (filtroSanitizado === '') {
+      setUsuariosFiltrados(null);
+      return;
+    }
+
+    const resultados = usuariosData.filter(user => {
+      const name = user.nameUsuario?.toLowerCase() || '';
+      const dni = String(user.dniUsuario)?.toLowerCase() || '';
+      const email = user.emailUsuario?.toLowerCase() || '';
+      const lastName = user.lastNameUsuario?.toLowerCase() || '';
+      return (
+        name.includes(filtroSanitizado) ||
+        dni.includes(filtroSanitizado) ||
+        email.includes(filtroSanitizado) ||
+        lastName.includes(filtroSanitizado)
+      );
+    });
+
+    setUsuariosFiltrados(resultados);
+  };
+
+  const toggleEditActivate = () => setOnlyRead(!onlyRead);
+  return (
+    <>
+      <label htmlFor="inputValue">Buscar 🔍</label>
+      <input name="inputValue" type="text" value={inputVal} onChange={handleChange} />
+      <h1>{inputVal}</h1>
+      <div className="resultados">
+        <div className="d-flex justify-content-center align-content-center flex-wrap">
+          {
+            usuariosFiltrados?.length ? (
+              usuariosFiltrados.map((usuario, index) => (
+                <div className="m-2 p-2 bg-dark text-light form-resultados"
+                  style={{ width: "22rem" }}
+                  key={index}
+                >
+                  <h3>{index}</h3>
+                  <InputGroup>
+                    <InputGroup.Text>ID:</InputGroup.Text>
+                    <Form.Control aria-label="With textarea"
+                      onChange={handleChangeForm}
+                      value={usuario.idUsuario ?? ''} />
+
+                  </InputGroup>
+                  <InputGroup>
+                    <InputGroup.Text>DNI:</InputGroup.Text>
+                    <Form.Control aria-label="With textarea"
+                      onChange={handleChangeForm}
+                      value={usuario.dniUsuario ?? ''} />
+                  </InputGroup>
+                  <InputGroup>
+                    <InputGroup.Text>Nombre:</InputGroup.Text>
+                    <Form.Control aria-label="With textarea"
+                      onChange={handleChangeForm}
+                      value={usuario.nameUsuario ?? ''} />
+                  </InputGroup>
+                  <InputGroup>
+                    <InputGroup.Text>Apellido:</InputGroup.Text>
+                    <Form.Control aria-label="With textarea"
+                      onChange={handleChangeForm}
+                      value={usuario.lastNameUsuario ?? ''} />
+                  </InputGroup>
+                  <InputGroup className="mb-3">
+                    <Form.Control
+                      placeholder="Email"
+                      aria-label="Email"
+                      aria-describedby="basic-addon2"
+                      onChange={handleChangeForm}
+                      value={usuario.emailUsuario ?? ''}
+                    />
+                    <InputGroup.Text id="basic-addon2">@</InputGroup.Text>
+                  </InputGroup>
+                  <Form.Label htmlFor="inputPassword5">Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    id="inputPassword5"
+                    aria-describedby="passwordHelpBlock"
+                    onChange={handleChangeForm}
+                    value={usuario.passUsuario ?? ''}
+
+                  />
+                  <Form.Label htmlFor="RolDeUsuario">Rol de Usuario</Form.Label>
+
+                  <Form.Select
+                    id="RolDeUsuario"
+                    aria-describedby="rolHelpBlock"
+                    name="rolUsuarioId"
+                    value={usuario.rolUsuarioId ?? ''}
+                    onChange={handleChangeForm}
+                  >
+                    {optionRolUsers?.map((valor: RolDeUsuario) => (
+                      <option
+                        key={valor.idRolUsuario}
+                        value={valor.idRolUsuario}
+                      >
+                        {valor.rolDeUsuario1}
+                      </option>
+                    ))}
+
+                  </Form.Select>
+                  <Button
+                    className={`btn btn-${(!onlyRead == true) && (usuario.idUsuario == userActive?.idUsuario) ? 'success' : 'danger'} m-3`}
+                    onClick={() => {
+                      toggleEditActivate();
+                      seleccionarUsuario(usuario);
+                    }}
+                  >
+                    ✏️ Editar
+                  </Button>
+                  <Button
+                    className="btn btn-primary m-3"
+                    type="submit"
+                  >
+                    💾 Actualizar
+                  </Button>
+                  <h2>{!onlyRead == true ? "Se puede editar" : "No se puede editar"}</h2>
+                </div>
+              ))
+            ) : (
+              <p>
+                {inputVal == "" || null ?
+                  "Ingresa un término de búsqueda para filtrar usuarios." :
+                  "No se han encontrado resultados"
+                }
+              </p>
+            )
+          }
+        </div>
+
+        <div className="previsualizar datos">
+          <pre>{JSON.stringify(userActive, null, 2)}</pre>
+        </div>
+      </div>
+      <div className="modal">
+        {showModal && userEditable && (
+          <ModalEditUsuario
+            show={showModal}
+            onClose={handleCloseModal}
+            userDataModal={userEditable}
+            handleChange={handleChangeForm}
+            onUpdate={handleUpdate}
+            optionRolUsers={optionRolUsers}
+          />
+        )}
+      </div>
+    </>
+  );
+}
+
+interface ModalEditUsuarioProps {
+  show: boolean;
+  onClose: () => void;
+  onUpdate: () => void;
+  userDataModal: Usuario;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
+  optionRolUsers: RolDeUsuario[] | undefined;
+}
+
+
+export function ModalEditUsuario({
+  show, onClose, onUpdate, userDataModal, handleChange, optionRolUsers
+}: ModalEditUsuarioProps) {
+  const [modalState, setModalState] = useState<{ show: boolean, title: string, msg: string, isBadRequest: boolean }>({
+    show: false,
+    title: "",
+    msg: "",
+    isBadRequest: false,
+  });
+  return (
+    <>
+      <Modal show={show} onHide={onClose} centered>
+        <Modal.Header closeButton className={`bg-primary text-white`}>
+          <Modal.Title>
+            ID: {userDataModal.idUsuario}
+          </Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <div className="">
+            <p className="m-3 p-2">
+
+              ✏️ Editar Usuario: {userDataModal.nameUsuario} {userDataModal.lastNameUsuario}
+            </p>
+          </div>
+          <form action="" method="put" onSubmit={onUpdate} style={{ width: '100%', height: '100%', overflow: 'auto' }}>
+
+            <FormUsuarios
+              userData={userDataModal}
+              handleChange={handleChange}
+              inputId={false}
+              rolUser={optionRolUsers}
+            />
+          </form>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={onClose}>
+            Cancelar
+          </Button>
+          <Button variant="success" >
+            💾 Guardar Cambios
+          </Button>
+        </Modal.Footer>
+      </Modal>
+          {modalState.show && (
+            <ModalApiResponse
+              title={modalState.title}
+              msg={modalState.msg}
+              isBadRequest={modalState.isBadRequest}
+              onClose={handleCloseModal}
+            />
+          )}
+    </>
+  );
+}

@@ -120,8 +120,5 @@ namespace GastaoAPI_.Controllers
 
             return NoContent();
         }
-
-        // ❌ El método auxiliar UsuarioExists ahora debe estar en el servicio
-        // private bool UsuarioExists(int id) { ... }
     }
 }

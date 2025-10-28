@@ -3,126 +3,129 @@ import type { RolDeUsuario, Usuario } from "../../../../DataContext/Usuarios/Dat
 import { FormUsuarios } from "./FormUsuarios";
 import { Button } from "react-bootstrap";
 import { UsuariosAPI } from "../../../../DataContext/APIs/GastaoAPIs";
-// Importar useMutation de @tanstack/react-query si se necesita manejo de estado de mutación
-
+import { ModalApiResponse } from "../../Modals/ModalApiResponse";
 
 export function CreateUsuario() {
-
-  // 1. Tipado de useState ajustado para permitir valores iniciales null/vacíos
   const [userData, setUserData] = useState<Usuario>({
-    // idUsuario se inicializa como null y se omitirá en el POST
-    idUsuario: null, 
+    idUsuario: null,
     dniUsuario: null,
-    nameUsuario: "",
-    lastNameUsuario: "",
-    emailUsuario: "",
-    passUsuario: "",
-    rolUsuarioId: null,
+    nameUsuario: null,
+    lastNameUsuario: null,
+    emailUsuario: null,
+    passUsuario: null,
+    rolUsuarioId: null
   });
-
   const [rolUserData] = useState<RolDeUsuario>({
     idRolUsuario: null,
-    rolDeUsuario1: "",
+    rolDeUsuario1: null
+  });
+
+  // 1. NUEVO ESTADO PARA EL MODAL
+  const [modalState, setModalState] = useState<{ show: boolean, title: string, msg: string, isBadRequest: boolean }>({
+    show: false,
+    title: "",
+    msg: "",
+    isBadRequest: false,
   });
 
   const api = new UsuariosAPI();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    
+
     // Convertir a número si el campo es numérico (DNI o ID de Rol)
     const isNumericField = name === 'dniUsuario' || name === 'rolUsuarioId';
     const finalValue = isNumericField && value !== "" ? Number(value) : value;
 
     setUserData((prevData) => ({
       ...prevData,
-      [name]: finalValue, 
+      [name]: finalValue,
     }));
   };
-
   /**
    * Función para preparar los datos y realizar la llamada POST a la API.
    * @param e Evento del formulario.
    */
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); 
-    
-    // ⚠️ 1. Sanitizar el cuerpo del request: Creamos una copia de userData
-    // y eliminamos la propiedad 'idUsuario'.
+    e.preventDefault();
+
     const { idUsuario, ...dataToSend } = userData;
-
-    // Opcional: Validación básica antes de enviar
     if (!dataToSend.nameUsuario || !dataToSend.dniUsuario || !dataToSend.rolUsuarioId) {
-        console.error("Faltan campos obligatorios.");
-        // Aquí se mostraría una notificación al usuario
-        return;
+      console.error("Faltan campos obligatorios.");
+      setModalState({ // Mostrar modal de campos faltantes
+        show: true,
+        title: "Campos Faltantes",
+        msg: "Por favor, completa todos los campos obligatorios.",
+        isBadRequest: true,
+      });
+      return;
     }
-    
+
     console.log("Cuerpo del Request (sin idUsuario):", dataToSend);
-    
-    // 2. Realizar la llamada POST a la API
-    try {
-        const response = await fetch(api.urlGet(), { // api.urlGet() debe retornar https://localhost:7212/api/Usuarios
-            method: 'POST',
-            headers: {
-                'accept': 'text/plain',
-                // El tipo de contenido debe ser 'application/json' o 'application/json-patch+json'
-                'Content-Type': 'application/json-patch+json', 
-            },
-            // 3. Convertir el objeto sanitizado a JSON para el cuerpo de la petición
-            body: JSON.stringify(dataToSend) 
-        });
 
-        if (!response.ok) {
-            // Manejar errores de la API (ej. 400 Bad Request, 500 Internal Server Error)
-            const errorData = await response.json();
-            throw new Error(`Error al crear el usuario: ${response.status} - ${errorData.title || JSON.stringify(errorData)}`);
-        }
+    // 2. USAR AWAIT EN LA LLAMADA A LA API
+    const result = await api.doPost(dataToSend);
 
-        const newUser = await response.json();
-        console.log("Usuario creado exitosamente:", newUser);
-        alert(`Usuario ${newUser.nameUsuario} creado con ID: ${newUser.idUsuario}`);
-        
-        // Opcional: Resetear el formulario o redirigir al usuario
-        setUserData({
-            idUsuario: null, dniUsuario: null, nameUsuario: "", 
-            lastNameUsuario: "", emailUsuario: "", passUsuario: "", 
-            rolUsuarioId: null, 
-        });
-
-    } catch (error) {
-        console.error("Hubo un error en la solicitud:", error);
-        if (error instanceof Error) {
-            alert(`Fallo la creación: ${error.message}`);
-        } else {
-            alert(`Fallo la creación: ${String(error)}`);
-        }
+    // 3. ACTUALIZAR EL ESTADO DEL MODAL CON LA RESPUESTA
+    if (result.success) {
+      setModalState({
+        show: true,
+        title: "Usuario creado exitosamente",
+        msg: result.message,
+        isBadRequest: false,
+      });
+      // Opcional: limpiar el formulario
+      setUserData({
+        idUsuario: null, dniUsuario: null, nameUsuario: "",
+        lastNameUsuario: "", emailUsuario: "", passUsuario: "",
+        rolUsuarioId: null,
+      });
+    } else {
+      setModalState({
+        show: true,
+        title: "Fallo la creación de Usuario",
+        msg: result.message,
+        isBadRequest: true,
+      });
     }
   };
 
+  // Función para cerrar el modal
+  const handleCloseModal = () => {
+    setModalState({ show: false, title: "", msg: "", isBadRequest: false });
+  }
 
   return (
-    // ⚠️ Usamos <form> y onSubmit para manejar el evento de envío
     <form onSubmit={handleSubmit} style={{ width: '100%', height: '100%', overflow: 'auto' }}>
       <h1>Create Usuario</h1>
       <p style={{ backgroundColor: "yellow" }}>Esta pagina es para crear el usuario.</p>
-      
+
       <FormUsuarios
         userData={userData}
         rolUser={rolUserData}
         handleChange={handleChange}
+        inputId={false}
       />
-      
-      <Button 
-        className="btn btn-warning mt-3" 
-        type="submit" // ⚠️ Cambiado de onClick a type="submit" para que active el onSubmit del form
+
+      <Button
+        className="btn btn-warning mt-3"
+        type="submit"
       >
         💾 Crear Usuario
       </Button>
-      
+
       <h3 className="mt-4">Previsualización del estado</h3>
       <pre>{JSON.stringify(userData, null, 2)}</pre>
-      
+
+      {/* 4. RENDERIZAR EL MODAL SI 'show' ES TRUE */}
+      {modalState.show && (
+        <ModalApiResponse
+          title={modalState.title}
+          msg={modalState.msg}
+          isBadRequest={modalState.isBadRequest}
+          onClose={handleCloseModal} // Necesitarás añadir esta prop en ModalApiResponse
+        />
+      )}
     </form>
   );
 }

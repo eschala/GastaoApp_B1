@@ -5,7 +5,7 @@ import { Home } from "./3.Views/1. Sidebar/Pages/Home/Home";
 import { About } from "./3.Views/1. Sidebar/Pages/About/About";
 import { HomeUsuarios } from "./3.Views/1. Sidebar/Pages/Usuarios/HomeUsuarios";
 import { CreateUsuario } from "./3.Views/1. Sidebar/Pages/Usuarios/CreateUsuario";
-import { EditUsuario } from "./3.Views/1. Sidebar/Pages/Usuarios/EditUsuarios";
+
 import { DeleteUsuario } from "./3.Views/1. Sidebar/Pages/Usuarios/DeleteUsuarios";
 import { SearchUsuario } from "./3.Views/1. Sidebar/Pages/Usuarios/SearchUsuarios";
 import { HomeRolDeUsuarios } from "./3.Views/1. Sidebar/Pages/RolDeUsuarios/HomeRolDeUsuarios";
@@ -14,6 +14,8 @@ import { EditRolDeUsuarios } from "./3.Views/1. Sidebar/Pages/RolDeUsuarios/Edit
 import { DeleteRolDeUsuarios } from "./3.Views/1. Sidebar/Pages/RolDeUsuarios/DeleteRolDeUsuarios";
 import { SearchRolDeUsuarios } from "./3.Views/1. Sidebar/Pages/RolDeUsuarios/SearchRolDeUsuarios";
 import { useState } from "react";
+import { EditUsuario } from "./3.Views/1. Sidebar/Pages/Usuarios/EditUsuarios";
+
 
 // MainLayout.jsx - Versión con transición suave
 function MainLayout() {

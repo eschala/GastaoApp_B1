@@ -3,24 +3,25 @@ import { ListaRolDeUsuarios, type RolDeUsuario, type Usuario } from "../../../..
 
 // 1. Define la nueva interfaz para las props, incluyendo 'handleChange'
 interface FormUsuariosProps {
+    inputId:boolean|any;
     userData: Usuario | any;
-    rolUser: RolDeUsuario;
+    rolUser: RolDeUsuario|any|null;
     handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
 }
 
 // 2. Desestructura las props con la nueva interfaz
-export function FormUsuarios({ userData, handleChange, rolUser }: FormUsuariosProps) {
+export function FormUsuarios({ userData, handleChange, inputId }: FormUsuariosProps) {
     /* rolUser */
 
     const getRolDeUsuarios = ListaRolDeUsuarios();
     const optionRolUsers = getRolDeUsuarios.data;
 
-    console.log(rolUser);
+    /* console.log(rolUser); */
     return (
 
         <>
             {/* ID - Generalmente deshabilitado en creación, pero se deja editable para ejemplo */}
-            <InputGroup className="d-none">
+            <InputGroup className={`${inputId==true?"d-block":"d-none"}`}>
                 <InputGroup.Text>ID:</InputGroup.Text>
                 <Form.Control
                     /* as="textarea" */
