@@ -6,7 +6,7 @@ import { About } from "./3.Views/1. Sidebar/Pages/About/About";
 import { HomeUsuarios } from "./3.Views/1. Sidebar/Pages/Usuarios/HomeUsuarios";
 import { CreateUsuario } from "./3.Views/1. Sidebar/Pages/Usuarios/CreateUsuario";
 
-import { DeleteUsuario } from "./3.Views/1. Sidebar/Pages/Usuarios/DeleteUsuarios";
+
 import { SearchUsuario } from "./3.Views/1. Sidebar/Pages/Usuarios/SearchUsuarios";
 import { HomeRolDeUsuarios } from "./3.Views/1. Sidebar/Pages/RolDeUsuarios/HomeRolDeUsuarios";
 import { CreateRolDeUsuarios } from "./3.Views/1. Sidebar/Pages/RolDeUsuarios/CreateRolDeUsuarios";
@@ -15,6 +15,8 @@ import { DeleteRolDeUsuarios } from "./3.Views/1. Sidebar/Pages/RolDeUsuarios/De
 import { SearchRolDeUsuarios } from "./3.Views/1. Sidebar/Pages/RolDeUsuarios/SearchRolDeUsuarios";
 import { useState } from "react";
 import { EditUsuario } from "./3.Views/1. Sidebar/Pages/Usuarios/EditUsuarios";
+import { DeleteUsuario } from "./3.Views/1. Sidebar/Pages/Usuarios/DeleteUsuarios";
+
 
 
 // MainLayout.jsx - Versión con transición suave
@@ -98,6 +100,7 @@ export function GastaoApp() {
                         <Route path="create" element={<CreateUsuario />} />
                         <Route path="edit" element={<EditUsuario />} />
                         <Route path="delete" element={<DeleteUsuario />} />
+                        
                         <Route path="search" element={<SearchUsuario />} />
                     </Route>
                         <Route path="rol-de-usuarios" element={<HomeRolDeUsuarios />}>

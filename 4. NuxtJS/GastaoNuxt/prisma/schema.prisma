@@ -1,0 +1,113 @@
+// prisma/schema.prisma
+
+// 1. Define el motor de la base de datos
+datasource db {
+  provider = "mysql"
+  // Reemplaza con tu cadena de conexión real.
+  // El nombre de la DB (Gastao_Db) se configura aquí.
+  url      = env("DATABASE_URL") 
+}
+
+// 2. Define el cliente de Prisma para interactuar con la DB
+generator client {
+  provider = "prisma-client-js"
+}
+
+// =========================================================
+// 3. MODELOS (ENTIDADES)
+// =========================================================
+
+// 3. TABLA: rol_de_usuarios
+model RolDeUsuario {
+  // @map se usa para mapear el nombre del modelo al nombre de la tabla SQL
+  id    Int     @id @default(autoincrement())
+  rol   String  @db.VarChar(255)
+
+  // Relación con 'usuarios'
+  usuarios Usuario[]
+
+  @@map("rol_de_usuarios")
+}
+
+// 4. TABLA: usuarios
+model Usuario {
+  id                Int      @id @default(autoincrement())
+  dni_usuario       Int      @unique @db.Int
+  name_usuario      String   @db.VarChar(255)
+  last_name_usuario String?  @db.VarChar(255) // El '?' indica que es opcional (NULLable)
+  email_usuario     String   @db.VarChar(255)
+  pass_usuario      String   @db.VarChar(255)
+  
+  // Relación Foreign Key a rol_de_usuarios
+  rol_id Int
+  rol    RolDeUsuario @relation(fields: [rol_id], references: [id])
+  
+  // Relaciones con otras tablas
+  egresos Egreso[]
+  ingresos Ingreso[]
+
+  @@map("usuarios")
+}
+
+// 5. TABLA: type_egresos
+model TypeEgreso {
+  id           Int      @id @default(autoincrement())
+  type_egreso  String   @db.VarChar(255)
+
+  // Relación con 'egresos'
+  egresos Egreso[]
+
+  @@map("type_egresos")
+}
+
+// 6. TABLA: egresos
+model Egreso {
+  id                Int      @id @default(autoincrement())
+  // @default(now()) simula DATETIME DEFAULT NOW()
+  reg_date_egreso   DateTime @default(now()) @db.DateTime(3) 
+  tittle_egreso     String   @db.VarChar(255)
+  description_egreso String?  @db.Text
+  amount_egreso     Int?     @db.Int // Se asume que es opcional (INT/NULL)
+  value_egreso      Float    @db.Float // FLOAT para números decimales
+  
+  // Foreign Key a type_egresos
+  type_egreso_id Int
+  type_egreso    TypeEgreso @relation(fields: [type_egreso_id], references: [id])
+
+  // Foreign Key a usuarios
+  usuario_Id Int
+  usuario    Usuario @relation(fields: [usuario_Id], references: [id])
+
+  @@map("egresos")
+}
+
+// 7. TABLA: type_ingresos
+model TypeIngreso {
+  id           Int      @id @default(autoincrement())
+  type_ingreso String   @db.VarChar(255)
+
+  // Relación con 'ingresos'
+  ingresos Ingreso[]
+
+  @@map("type_ingresos")
+}
+
+// 8. TABLA: ingresos
+model Ingreso {
+  id                Int      @id @default(autoincrement())
+  reg_date_ingreso  DateTime @default(now()) @db.DateTime(3)
+  tittle_ingreso    String   @db.VarChar(255)
+  description_ingreso String?  @db.Text
+  amount_ingreso    Int?     @db.Int
+  value_ingreso     Float    @db.Float
+  
+  // Foreign Key a type_ingresos
+  type_ingreso_id Int
+  type_ingreso    TypeIngreso @relation(fields: [type_ingreso_id], references: [id])
+
+  // Foreign Key a usuarios
+  usuario_Id Int
+  usuario    Usuario @relation(fields: [usuario_Id], references: [id])
+
+  @@map("ingresos")
+}
